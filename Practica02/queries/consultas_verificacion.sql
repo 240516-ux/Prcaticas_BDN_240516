@@ -13,7 +13,7 @@ SELECT COUNT(*) AS total_registros FROM tb_users;
 SELECT * FROM tb_users;
 -- Consulta para verificar que usuario de la base de datos , 
 -- inserto a que usuario de la plataforma ecommerce, agregando el rol del SGBD */
-SELECT u.nick, u.email, SUBSTRING_INDEX(b.db_user,'@',1) AS inserted_by, 
+SELECT u.nick, u.email, b.db_user AS inserted_by, 
 GROUP_CONCAT(DISTINCT re.FROM_USER  ORDER BY re.FROM_USER SEPARATOR ', ' ) AS roles,
     b.operation_description,
     b.operation_date
@@ -35,13 +35,13 @@ ORDER BY b.operation_date asc;
 SELECT COUNT(*) AS total_registros FROM tb_logs;
 
 /* 5. Consultar todas las operaciones realizadas en la base de datos */
-SELECT ID,table_name,table_operation,SUBSTRING_INDEX(db_user,'@',1) AS db_user,operation_description,operation_date,operation_status FROM tb_logs ORDER BY ID;
+SELECT * FROM tb_logs;
 
 /* 6. Verificar que los usuarios remotos hayan sido creados */
 SELECT User, Host FROM mysql.user WHERE Host = '%'  AND account_locked = 'N';
 
-/* 7. Verificar los roles creados */
-SELECT DISTINCT FROM_USER AS rol,FROM_HOST AS host FROM mysql.role_edges;
+/* 7. Verificar los roles que fueron creados */
+SELECT User, Host FROM mysql.user WHERE Host = '%'  AND account_locked = 'Y';
 
 /* 8. Verificar que usuarios tienen que roles */
 SELECT  TO_USER AS usuario,  TO_HOST AS host, FROM_USER AS rol, FROM_HOST AS rol_host
@@ -68,16 +68,3 @@ GROUP BY vp.inserted_by;
 
 
 
-
-/* Verificación funcional y de atribución por usuario */
-SELECT table_name,table_operation,SUBSTRING_INDEX(db_user,'@',1) AS usuario,actor_roles,COUNT(*) AS operaciones FROM tb_logs GROUP BY table_name,table_operation,usuario,actor_roles;
-SELECT inserted_by,roles,COUNT(*) AS productos_insertados FROM vw_trazabilidad_productos GROUP BY inserted_by,roles;
-SELECT COUNT(*) AS productos_sin_trazabilidad FROM tb_products p LEFT JOIN tb_logs b ON b.table_name='tb_products' AND b.table_operation='Create' AND b.record_id=p.ID WHERE b.ID IS NULL;
-SELECT TRIGGER_NAME,EVENT_MANIPULATION,EVENT_OBJECT_TABLE FROM information_schema.TRIGGERS WHERE TRIGGER_SCHEMA='bd_test';
-SELECT User AS usuario,Host AS acceso_remoto,plugin,account_locked FROM mysql.user WHERE Host='%' AND User IN ('alan.cruz','marco.ramirez','luis.david','bryan.javier','ivan.ojeda','ivan.macin');
-
-/* Llaves reales y resumen completo de la bitácora, sin límite de Workbench */
-SELECT TABLE_NAME,CONSTRAINT_NAME,CONSTRAINT_TYPE FROM information_schema.TABLE_CONSTRAINTS WHERE CONSTRAINT_SCHEMA='bd_test' ORDER BY TABLE_NAME,CONSTRAINT_NAME;
-SELECT TABLE_NAME,COLUMN_NAME,REFERENCED_TABLE_NAME,REFERENCED_COLUMN_NAME FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA='bd_test' AND REFERENCED_TABLE_NAME IS NOT NULL;
-SELECT COUNT(*) AS total_logs FROM tb_logs;
-SELECT table_name,table_operation,db_user AS usuario,actor_roles,COUNT(*) AS operaciones FROM tb_logs GROUP BY table_name,table_operation,db_user,actor_roles;

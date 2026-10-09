@@ -90,6 +90,10 @@ GRANT SELECT, INSERT, UPDATE
 ON bd_test.tbd_products_categories
 TO 'support';
 
+GRANT EXECUTE
+ON PROCEDURE bd_test.sp_soft_delete_user
+TO 'support'@'%';
+
 
 
 /* SELLER */
@@ -157,3 +161,18 @@ SELECT "Los usuarios y privilegios han sido creados correctamente" AS mensaje;
 
 
 
+
+-- Actualizar las contraseñas también si las cuentas ya existen.
+ALTER USER 'alan.cruz'@'%' IDENTIFIED BY '240516';
+ALTER USER 'marco.ramirez'@'%' IDENTIFIED BY 'qwerty123';
+ALTER USER 'luis.david'@'%' IDENTIFIED BY '240666';
+ALTER USER 'bryan.javier'@'%' IDENTIFIED BY '240078';
+ALTER USER 'ivan.ojeda'@'%' IDENTIFIED BY '240136';
+ALTER USER 'ivan.macin'@'%' IDENTIFIED BY '240793';
+-- Permitir consultar la trazabilidad sin conceder acceso directo a mysql.*.
+GRANT SELECT ON bd_test.vw_trazabilidad_productos TO 'seller','support';
+GRANT SELECT ON bd_test.vw_trazabilidad_usuarios TO 'support';
+GRANT EXECUTE ON PROCEDURE bd_test.sp_soft_delete_product TO 'admin';
+GRANT EXECUTE ON PROCEDURE bd_test.sp_restore_product TO 'admin';
+GRANT EXECUTE ON FUNCTION bd_test.fn_total_products_by_category TO 'support','seller';
+GRANT SELECT ON bd_test.vw_total_products_by_category TO 'support','seller';

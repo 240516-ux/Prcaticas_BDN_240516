@@ -1,7 +1,0 @@
-email,nick,password_hash,status
-alan.cruz@example.test,alan.cruz,scrypt$16384$8$1$74f653d9aa80e29b5bf1b9f80a57691e$c925fd0fc0f386de16f3955ec6e2ec00269e14ec243dc4e09877d68727a3c826,1
-marco.ramirez@example.test,marco.ramirez,scrypt$16384$8$1$1f607ff713f1d25564b412bff1d7dbe8$9c4e1f1607ac43dea6147288f81a9d6abc0a1722bc12e088f4dab4112910f6dc,1
-luis.david@example.test,luis.david,scrypt$16384$8$1$f1d36644088a8ad992192017d10925fc$de8397e508a1882f7939ac5c2a647a9a9f5e118e892880c02fc92382cf403508,1
-bryan.javier@example.test,bryan.javier,scrypt$16384$8$1$ec195086ad92a37649fc3d3b75e71ac0$cf05cac2fd34b08094153451096e848f170129c51df07bc2940797e0f0e0791c,1
-ivan.ojeda@example.test,ivan.ojeda,scrypt$16384$8$1$f45c5ef93afc737df1ab291caba9e093$b56fc9779c49ae756417bfd51eae6ffbd37fd4af74dd93830f7d7ae056163edb,1
-ivan.macin@example.test,ivan.macin,scrypt$16384$8$1$e31289987f0944cf471c3f0d583b3696$73539d1f54958c3ba8fc0e4676ef9e66941569238bafeecf3c180cb6f2819643,1
