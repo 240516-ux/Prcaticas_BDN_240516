@@ -8,14 +8,17 @@ IDENTIFIED BY 'qwerty123';
 CREATE USER IF NOT EXISTS 'alan.cruz'@'%'
 IDENTIFIED BY '240516';
 
-CREATE USER IF NOT EXISTS 'eutiquio.cruz'@'%'
-IDENTIFIED BY '240046';
+CREATE USER IF NOT EXISTS 'ivan.macin'@'%'
+IDENTIFIED BY '240793';
 
-CREATE USER IF NOT EXISTS 'samuel.vargas'@'%'
-IDENTIFIED BY '240023';
+CREATE USER IF NOT EXISTS 'luis.david'@'%'
+IDENTIFIED BY '240666';
 
-CREATE USER IF NOT EXISTS 'gadiel.bobadilla'@'%'
-IDENTIFIED BY '240349';
+CREATE USER IF NOT EXISTS 'ivan.ojeda'@'%'
+IDENTIFIED BY '240136';
+
+CREATE USER IF NOT EXISTS 'bryan.javier'@'%'
+IDENTIFIED BY '240078';
 
 
 /* ============================================================
@@ -24,7 +27,7 @@ IDENTIFIED BY '240349';
 
 /*
 IMPORTANTE:
-Este privilegio solamente debe asignarse al usuario administrador.
+Este privilegio solamente debe asignarse al usuario administrador
 */
 
 GRANT ALL PRIVILEGES ON *.*
@@ -32,12 +35,14 @@ TO 'alan.cruz'@'%';
 
 
 /*
-Asignar privilegios CRUD sobre la base bd_test.
+Asignar privilegios CRUD sobre la base bd_test. solo 1 vez al usuario sin rol
+no es considerada una buena práctica ya podría generar problemas de seguridad, 
+pero es para fines de aprendizaje.
 */
 
 GRANT SELECT, INSERT, UPDATE, DELETE
 ON bd_test.*
-TO 'samuel.vargas'@'%';
+TO 'ivan.macin'@'%';
 
 
 /* ============================================================
@@ -88,22 +93,22 @@ TO 'seller';
 
 -- Este deben ser ustedes
 GRANT 'superadmin'
-TO 'marco.ramirez'@'%';
+TO 'alan.cruz'@'%';
 
 -- Este debe ser el Prof. Marco
 GRANT 'admin'
 TO 'marco.ramirez'@'%';
 
--- IZQUIERDA
+-- SOPORTE
 GRANT 'support'
-TO 'samuel.vargas'@'%';
+TO 'luis.david'@'%';
 
--- DERECHA
+-- VENDEDORES
 GRANT 'seller'
-TO 'eutiquio.cruz'@'%';
+TO 'bryan.javier'@'%';
 
 GRANT 'seller'
-TO 'gadiel.bobadilla'@'%';
+TO 'ivan.ojeda'@'%';
 
 /* ============================================================
    ESTABLECER ROLES PREDETERMINADOS
@@ -113,24 +118,25 @@ TO 'gadiel.bobadilla'@'%';
 Esto permite que el rol se active automáticamente cuando
 el usuario inicia sesión.
 */
+SET DEFAULT ROLE 'superadmin'
+TO 'alan.cruz'@'%';
 
 SET DEFAULT ROLE 'admin'
 TO 'marco.ramirez'@'%';
 
 SET DEFAULT ROLE 'support'
-TO 'samuel.vargas'@'%';
+TO 'luis.david'@'%';
 
 SET DEFAULT ROLE 'seller'
-TO 'eutiquio.cruz'@'%';
+TO 'bryan.javier'@'%';
 SET DEFAULT ROLE 'seller'
-TO 'gadiel.bobadilla'@'%';
+TO 'ivan.ojeda'@'%';
 
 
 /* ============================================================
-   VERIFICACIÓN
+   MENSAJE DE CONFIRMACIÓN
    ============================================================ */
 
-/* Mostrar usuarios remotos creados */
 SELECT "Los usuarios y privilegios han sido creados correctamente" AS mensaje;
 
 
