@@ -78,13 +78,27 @@ GRANT SELECT, INSERT, UPDATE
 ON bd_test.tb_users
 TO 'support';
 
-GRANT SELECT, INSERT, UPDATE
+GRANT SELECT, UPDATE
 ON bd_test.tb_products
 TO 'support';
+
+GRANT SELECT 
+ON bd_test.tbc_categories
+TO 'support';
+
+GRANT SELECT, INSERT, UPDATE 
+ON bd_test.tbd_products_categories
+TO 'support';
+
+
 
 /* SELLER */
 GRANT SELECT, INSERT, UPDATE
 ON bd_test.tb_products
+TO 'seller';
+
+GRANT SELECT
+ON bd_test.tbc_categories
 TO 'seller';
 
 /* ============================================================
