@@ -1,0 +1,4458 @@
+{
+  "schema": "bd_test",
+  "observado": "2026-10-22T12:21:39",
+  "version": "8.0.42",
+  "tables": [
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tb_carts",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "TABLE_COMMENT": "",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    }
+  ],
+  "columns": [
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "seller_ID",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "subtotal",
+      "COLUMN_TYPE": "decimal(12,2)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "0.00",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 12,
+      "NUMERIC_SCALE": 2,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "shipping_cost",
+      "COLUMN_TYPE": "decimal(12,2)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "0.00",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 12,
+      "NUMERIC_SCALE": 2,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "fulfillment_status",
+      "COLUMN_TYPE": "enum('Pending','Accepted','Preparing','Sent','Delivered','Canceled','Returned')",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "Pending",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 9,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "ORDINAL_POSITION": 7,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "ORDINAL_POSITION": 8,
+      "COLUMN_NAME": "last_update",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "on update CURRENT_TIMESTAMP",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_carts",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_carts",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "user_ID",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_carts",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "ID",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "table_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 100,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "table_operation",
+      "COLUMN_TYPE": "enum('Create','Read','Update','Delete')",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 6,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "db_user",
+      "COLUMN_TYPE": "varchar(80)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 80,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "operation_description",
+      "COLUMN_TYPE": "text",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 65535,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "operation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "ORDINAL_POSITION": 7,
+      "COLUMN_NAME": "operation_status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "ORDINAL_POSITION": 8,
+      "COLUMN_NAME": "record_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "ORDINAL_POSITION": 9,
+      "COLUMN_NAME": "record_key",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 100,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "ORDINAL_POSITION": 10,
+      "COLUMN_NAME": "actor_roles",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 255,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "ID",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "table_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 100,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "table_operation",
+      "COLUMN_TYPE": "enum('Create','Read','Update','Delete')",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 6,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "db_user",
+      "COLUMN_TYPE": "varchar(80)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 80,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "operation_description",
+      "COLUMN_TYPE": "text",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 65535,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "operation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "ORDINAL_POSITION": 7,
+      "COLUMN_NAME": "operation_status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "ORDINAL_POSITION": 8,
+      "COLUMN_NAME": "record_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "ORDINAL_POSITION": 9,
+      "COLUMN_NAME": "record_key",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 100,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "ORDINAL_POSITION": 10,
+      "COLUMN_NAME": "actor_roles",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 255,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "user_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "first_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 100,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "last_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 100,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "second_last_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 100,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "birth_date",
+      "COLUMN_TYPE": "date",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "ORDINAL_POSITION": 7,
+      "COLUMN_NAME": "gender",
+      "COLUMN_TYPE": "varchar(30)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 30,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "ORDINAL_POSITION": 8,
+      "COLUMN_NAME": "phone",
+      "COLUMN_TYPE": "varchar(25)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 25,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "ORDINAL_POSITION": 9,
+      "COLUMN_NAME": "nationality",
+      "COLUMN_TYPE": "varchar(80)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 80,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "ORDINAL_POSITION": 10,
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "ORDINAL_POSITION": 11,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "ORDINAL_POSITION": 12,
+      "COLUMN_NAME": "last_update",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "on update CURRENT_TIMESTAMP",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "SKU",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 50,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "name",
+      "COLUMN_TYPE": "varchar(250)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 250,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "description",
+      "COLUMN_TYPE": "text",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 65535,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "current_price",
+      "COLUMN_TYPE": "decimal(10,2)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "0.00",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 2,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "current_stock",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "0",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "ORDINAL_POSITION": 7,
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "ORDINAL_POSITION": 8,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "ORDINAL_POSITION": 9,
+      "COLUMN_NAME": "last_update",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "ID",
+      "COLUMN_TYPE": "bigint unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 20,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "user_ID",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "address_label",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 100,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "recipient_name",
+      "COLUMN_TYPE": "varchar(150)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 150,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "recipient_phone",
+      "COLUMN_TYPE": "varchar(25)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 25,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "delivery_instructions",
+      "COLUMN_TYPE": "varchar(500)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 500,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "ORDINAL_POSITION": 7,
+      "COLUMN_NAME": "latitude",
+      "COLUMN_TYPE": "decimal(10,7)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 7,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "ORDINAL_POSITION": 8,
+      "COLUMN_NAME": "longitude",
+      "COLUMN_TYPE": "decimal(10,7)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 7,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "ORDINAL_POSITION": 9,
+      "COLUMN_NAME": "is_default",
+      "COLUMN_TYPE": "tinyint(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "0",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 3,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "ORDINAL_POSITION": 10,
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "ORDINAL_POSITION": 11,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "ORDINAL_POSITION": 12,
+      "COLUMN_NAME": "last_update",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "on update CURRENT_TIMESTAMP",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "ID",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "email",
+      "COLUMN_TYPE": "varchar(80)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 80,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "nick",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 100,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "password",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 255,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "last_update",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "ORDINAL_POSITION": 7,
+      "COLUMN_NAME": "last_login",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "ORDINAL_POSITION": 8,
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "name",
+      "COLUMN_TYPE": "varchar(120)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 120,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "description",
+      "COLUMN_TYPE": "text",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 65535,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "sup_id_category",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "ORDINAL_POSITION": 7,
+      "COLUMN_NAME": "last_update",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "code",
+      "COLUMN_TYPE": "varchar(30)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 30,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "description",
+      "COLUMN_TYPE": "text",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 65535,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "last_update",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "on update CURRENT_TIMESTAMP",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "ID",
+      "COLUMN_TYPE": "bigint unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 20,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "address_ID",
+      "COLUMN_TYPE": "bigint unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 20,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "value",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 255,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "component_type",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 50,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "address_sup_ID",
+      "COLUMN_TYPE": "bigint unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 20,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "ORDINAL_POSITION": 7,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "ORDINAL_POSITION": 8,
+      "COLUMN_NAME": "last_update",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "on update CURRENT_TIMESTAMP",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "cart_ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "provider_ID",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "product_ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "quantity",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "1",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "seller_order_ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "product_ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "provider_ID",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "product_name",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 255,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "quantity",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "ORDINAL_POSITION": 7,
+      "COLUMN_NAME": "unit_price",
+      "COLUMN_TYPE": "decimal(12,2)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 12,
+      "NUMERIC_SCALE": 2,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "ORDINAL_POSITION": 8,
+      "COLUMN_NAME": "subtotal",
+      "COLUMN_TYPE": "decimal(12,2)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "STORED GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 12,
+      "NUMERIC_SCALE": 2,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": "(`quantity` * `unit_price`)"
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "ORDINAL_POSITION": 9,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "category_ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "product_ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "last_update",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "user_ID",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "product_ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "type_ownership",
+      "COLUMN_TYPE": "enum('Owner','Reseller','Distributor')",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 11,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "avalaible_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "ORDINAL_POSITION": 7,
+      "COLUMN_NAME": "last_update",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "on update CURRENT_TIMESTAMP",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "ID",
+      "COLUMN_TYPE": "bigint unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "auto_increment",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 20,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "user_ID",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "payment_method_type_ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "provider",
+      "COLUMN_TYPE": "varchar(60)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 60,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "provider_method_ref",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 255,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "ORDINAL_POSITION": 6,
+      "COLUMN_NAME": "label",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 100,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "ORDINAL_POSITION": 7,
+      "COLUMN_NAME": "last_four",
+      "COLUMN_TYPE": "char(4)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": 4,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": "utf8mb4",
+      "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "ORDINAL_POSITION": 8,
+      "COLUMN_NAME": "is_default",
+      "COLUMN_TYPE": "tinyint(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "0",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 3,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "ORDINAL_POSITION": 9,
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "ORDINAL_POSITION": 10,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "ORDINAL_POSITION": 11,
+      "COLUMN_NAME": "last_update",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "on update CURRENT_TIMESTAMP",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "ORDINAL_POSITION": 1,
+      "COLUMN_NAME": "user_ID",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "ORDINAL_POSITION": 2,
+      "COLUMN_NAME": "product_ID",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 10,
+      "NUMERIC_SCALE": 0,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "ORDINAL_POSITION": 3,
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "bit(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "b'1'",
+      "EXTRA": "",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": 1,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "ORDINAL_POSITION": 4,
+      "COLUMN_NAME": "creation_date",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+      "EXTRA": "DEFAULT_GENERATED",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "ORDINAL_POSITION": 5,
+      "COLUMN_NAME": "last_update",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_DEFAULT": null,
+      "EXTRA": "on update CURRENT_TIMESTAMP",
+      "COLUMN_COMMENT": "",
+      "CHARACTER_MAXIMUM_LENGTH": null,
+      "NUMERIC_PRECISION": null,
+      "NUMERIC_SCALE": null,
+      "CHARACTER_SET_NAME": null,
+      "COLLATION_NAME": null,
+      "GENERATION_EXPRESSION": ""
+    }
+  ],
+  "indexes": [
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "INDEX_NAME": "seller_ID",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "seller_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_carts",
+      "INDEX_NAME": "fk_carts_user",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "user_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_carts",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "INDEX_NAME": "ix_trace",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "table_name",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "INDEX_NAME": "ix_trace",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 2,
+      "COLUMN_NAME": "record_id",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "INDEX_NAME": "ix_trace",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 3,
+      "COLUMN_NAME": "table_operation",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "INDEX_NAME": "ix_trace",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "table_name",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "INDEX_NAME": "ix_trace",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 2,
+      "COLUMN_NAME": "record_id",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "INDEX_NAME": "ix_trace",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 3,
+      "COLUMN_NAME": "table_operation",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "id",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "INDEX_NAME": "uk_people_user",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "user_id",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "INDEX_NAME": "SKU",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "SKU",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "INDEX_NAME": "idx_user_addresses",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "user_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "INDEX_NAME": "email",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "email",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "INDEX_NAME": "nickname",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "nick",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "INDEX_NAME": "fk_superior_category",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "sup_id_category",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "INDEX_NAME": "name",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "name",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "INDEX_NAME": "code_UNIQUE",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "code",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "INDEX_NAME": "idx_address_parent",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "address_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "INDEX_NAME": "idx_address_parent",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 2,
+      "COLUMN_NAME": "address_sup_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "INDEX_NAME": "uk_address_component",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "address_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "INDEX_NAME": "uk_address_component",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 2,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "INDEX_NAME": "idx_cart_items_provider_product",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "provider_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "INDEX_NAME": "idx_cart_items_provider_product",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 2,
+      "COLUMN_NAME": "product_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "cart_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 2,
+      "COLUMN_NAME": "provider_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 3,
+      "COLUMN_NAME": "product_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "INDEX_NAME": "idx_order_provider_product",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "provider_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "INDEX_NAME": "idx_order_provider_product",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 2,
+      "COLUMN_NAME": "product_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "INDEX_NAME": "product_ID",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "product_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "INDEX_NAME": "provider_ID",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "provider_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "INDEX_NAME": "seller_order_ID",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "seller_order_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "INDEX_NAME": "fk_product",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "product_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "category_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 2,
+      "COLUMN_NAME": "product_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "INDEX_NAME": "fk_products2",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "product_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "user_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 2,
+      "COLUMN_NAME": "product_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "INDEX_NAME": "idx_payment_method_type_ID",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "payment_method_type_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "INDEX_NAME": "idx_user_ID",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "user_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "INDEX_NAME": "uk_provider_method",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "provider",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "INDEX_NAME": "uk_provider_method",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 2,
+      "COLUMN_NAME": "provider_method_ref",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "INDEX_NAME": "fk_products3",
+      "NON_UNIQUE": 1,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "product_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 1,
+      "COLUMN_NAME": "user_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "INDEX_NAME": "PRIMARY",
+      "NON_UNIQUE": 0,
+      "SEQ_IN_INDEX": 2,
+      "COLUMN_NAME": "product_ID",
+      "COLLATION": "A",
+      "SUB_PART": null,
+      "INDEX_TYPE": "BTREE",
+      "IS_VISIBLE": "YES",
+      "EXPRESSION": null
+    }
+  ],
+  "keys": [
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "CONSTRAINT_NAME": "tb_buyer_orders_ibfk_1",
+      "COLUMN_NAME": "seller_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tb_carts",
+      "CONSTRAINT_NAME": "fk_carts_user",
+      "COLUMN_NAME": "user_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tb_carts",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "CONSTRAINT_NAME": "fk_people_user",
+      "COLUMN_NAME": "user_id",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "id",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "CONSTRAINT_NAME": "uk_people_user",
+      "COLUMN_NAME": "user_id",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "CONSTRAINT_NAME": "SKU",
+      "COLUMN_NAME": "SKU",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "CONSTRAINT_NAME": "fk_addresses_users",
+      "COLUMN_NAME": "user_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "CONSTRAINT_NAME": "email",
+      "COLUMN_NAME": "email",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "CONSTRAINT_NAME": "nickname",
+      "COLUMN_NAME": "nick",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "CONSTRAINT_NAME": "fk_superior_category",
+      "COLUMN_NAME": "sup_id_category",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tbc_categories",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "CONSTRAINT_NAME": "name",
+      "COLUMN_NAME": "name",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "CONSTRAINT_NAME": "code_UNIQUE",
+      "COLUMN_NAME": "code",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "CONSTRAINT_NAME": "fk_component_address",
+      "COLUMN_NAME": "address_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_user_addresses",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "CONSTRAINT_NAME": "fk_component_parent",
+      "COLUMN_NAME": "address_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tbd_address_components",
+      "REFERENCED_COLUMN_NAME": "address_ID"
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "CONSTRAINT_NAME": "fk_component_parent",
+      "COLUMN_NAME": "address_sup_ID",
+      "ORDINAL_POSITION": 2,
+      "REFERENCED_TABLE_NAME": "tbd_address_components",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "CONSTRAINT_NAME": "uk_address_component",
+      "COLUMN_NAME": "address_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "CONSTRAINT_NAME": "uk_address_component",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 2,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "CONSTRAINT_NAME": "fk_cart_items_cart",
+      "COLUMN_NAME": "cart_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_carts",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "CONSTRAINT_NAME": "fk_cart_items_provider_product",
+      "COLUMN_NAME": "provider_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tbd_products_users_providers",
+      "REFERENCED_COLUMN_NAME": "user_ID"
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "CONSTRAINT_NAME": "fk_cart_items_provider_product",
+      "COLUMN_NAME": "product_ID",
+      "ORDINAL_POSITION": 2,
+      "REFERENCED_TABLE_NAME": "tbd_products_users_providers",
+      "REFERENCED_COLUMN_NAME": "product_ID"
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "cart_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "provider_ID",
+      "ORDINAL_POSITION": 2,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "product_ID",
+      "ORDINAL_POSITION": 3,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "CONSTRAINT_NAME": "fk_order_provider_product",
+      "COLUMN_NAME": "provider_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tbd_products_users_providers",
+      "REFERENCED_COLUMN_NAME": "user_ID"
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "CONSTRAINT_NAME": "fk_order_provider_product",
+      "COLUMN_NAME": "product_ID",
+      "ORDINAL_POSITION": 2,
+      "REFERENCED_TABLE_NAME": "tbd_products_users_providers",
+      "REFERENCED_COLUMN_NAME": "product_ID"
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "CONSTRAINT_NAME": "tbd_order_items_ibfk_1",
+      "COLUMN_NAME": "seller_order_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_buyer_orders",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "CONSTRAINT_NAME": "fk_category",
+      "COLUMN_NAME": "category_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tbc_categories",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "CONSTRAINT_NAME": "fk_product",
+      "COLUMN_NAME": "product_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_products",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "category_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "product_ID",
+      "ORDINAL_POSITION": 2,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "CONSTRAINT_NAME": "fk_products2",
+      "COLUMN_NAME": "product_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_products",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "CONSTRAINT_NAME": "fk_user1",
+      "COLUMN_NAME": "user_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "user_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "product_ID",
+      "ORDINAL_POSITION": 2,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "CONSTRAINT_NAME": "fk_user_payment_methods_type",
+      "COLUMN_NAME": "payment_method_type_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tbc_payment_methods_types",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "CONSTRAINT_NAME": "fk_user_payment_methods_user",
+      "COLUMN_NAME": "user_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "CONSTRAINT_NAME": "uk_provider_method",
+      "COLUMN_NAME": "provider",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "CONSTRAINT_NAME": "uk_provider_method",
+      "COLUMN_NAME": "provider_method_ref",
+      "ORDINAL_POSITION": 2,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "CONSTRAINT_NAME": "fk_products3",
+      "COLUMN_NAME": "product_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_products",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "CONSTRAINT_NAME": "fk_user2",
+      "COLUMN_NAME": "user_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "REFERENCED_COLUMN_NAME": "ID"
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "user_ID",
+      "ORDINAL_POSITION": 1,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "COLUMN_NAME": "product_ID",
+      "ORDINAL_POSITION": 2,
+      "REFERENCED_TABLE_NAME": null,
+      "REFERENCED_COLUMN_NAME": null
+    }
+  ],
+  "foreign_keys": [
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "CONSTRAINT_NAME": "tb_buyer_orders_ibfk_1",
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "NO ACTION",
+      "columns": [
+        "seller_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tb_buyer_orders` a WHERE a.`seller_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_users` b WHERE a.`seller_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tb_carts",
+      "CONSTRAINT_NAME": "fk_carts_user",
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "UPDATE_RULE": "RESTRICT",
+      "DELETE_RULE": "RESTRICT",
+      "columns": [
+        "user_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tb_carts` a WHERE a.`user_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_users` b WHERE a.`user_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "CONSTRAINT_NAME": "fk_people_user",
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "UPDATE_RULE": "CASCADE",
+      "DELETE_RULE": "RESTRICT",
+      "columns": [
+        "user_id"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tb_people` a WHERE a.`user_id` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_users` b WHERE a.`user_id`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "CONSTRAINT_NAME": "fk_addresses_users",
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "NO ACTION",
+      "columns": [
+        "user_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tb_user_addresses` a WHERE a.`user_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_users` b WHERE a.`user_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "CONSTRAINT_NAME": "fk_superior_category",
+      "REFERENCED_TABLE_NAME": "tbc_categories",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "NO ACTION",
+      "columns": [
+        "sup_id_category"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbc_categories` a WHERE a.`sup_id_category` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tbc_categories` b WHERE a.`sup_id_category`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "CONSTRAINT_NAME": "fk_component_address",
+      "REFERENCED_TABLE_NAME": "tb_user_addresses",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "RESTRICT",
+      "columns": [
+        "address_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_address_components` a WHERE a.`address_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_user_addresses` b WHERE a.`address_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "CONSTRAINT_NAME": "fk_component_parent",
+      "REFERENCED_TABLE_NAME": "tbd_address_components",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "RESTRICT",
+      "columns": [
+        "address_ID",
+        "address_sup_ID"
+      ],
+      "referenced_columns": [
+        "address_ID",
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_address_components` a WHERE a.`address_ID` IS NOT NULL AND a.`address_sup_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tbd_address_components` b WHERE a.`address_ID`=b.`address_ID` AND a.`address_sup_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "CONSTRAINT_NAME": "fk_cart_items_cart",
+      "REFERENCED_TABLE_NAME": "tb_carts",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "CASCADE",
+      "columns": [
+        "cart_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_cart_items` a WHERE a.`cart_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_carts` b WHERE a.`cart_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "CONSTRAINT_NAME": "fk_cart_items_provider_product",
+      "REFERENCED_TABLE_NAME": "tbd_products_users_providers",
+      "UPDATE_RULE": "RESTRICT",
+      "DELETE_RULE": "RESTRICT",
+      "columns": [
+        "provider_ID",
+        "product_ID"
+      ],
+      "referenced_columns": [
+        "user_ID",
+        "product_ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_cart_items` a WHERE a.`provider_ID` IS NOT NULL AND a.`product_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tbd_products_users_providers` b WHERE a.`provider_ID`=b.`user_ID` AND a.`product_ID`=b.`product_ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "CONSTRAINT_NAME": "fk_order_provider_product",
+      "REFERENCED_TABLE_NAME": "tbd_products_users_providers",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "NO ACTION",
+      "columns": [
+        "provider_ID",
+        "product_ID"
+      ],
+      "referenced_columns": [
+        "user_ID",
+        "product_ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_order_items` a WHERE a.`provider_ID` IS NOT NULL AND a.`product_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tbd_products_users_providers` b WHERE a.`provider_ID`=b.`user_ID` AND a.`product_ID`=b.`product_ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "CONSTRAINT_NAME": "tbd_order_items_ibfk_1",
+      "REFERENCED_TABLE_NAME": "tb_buyer_orders",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "NO ACTION",
+      "columns": [
+        "seller_order_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_order_items` a WHERE a.`seller_order_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_buyer_orders` b WHERE a.`seller_order_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "CONSTRAINT_NAME": "fk_category",
+      "REFERENCED_TABLE_NAME": "tbc_categories",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "NO ACTION",
+      "columns": [
+        "category_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_products_categories` a WHERE a.`category_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tbc_categories` b WHERE a.`category_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "CONSTRAINT_NAME": "fk_product",
+      "REFERENCED_TABLE_NAME": "tb_products",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "NO ACTION",
+      "columns": [
+        "product_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_products_categories` a WHERE a.`product_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_products` b WHERE a.`product_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "CONSTRAINT_NAME": "fk_products2",
+      "REFERENCED_TABLE_NAME": "tb_products",
+      "UPDATE_RULE": "RESTRICT",
+      "DELETE_RULE": "RESTRICT",
+      "columns": [
+        "product_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_products_users_providers` a WHERE a.`product_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_products` b WHERE a.`product_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "CONSTRAINT_NAME": "fk_user1",
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "UPDATE_RULE": "RESTRICT",
+      "DELETE_RULE": "RESTRICT",
+      "columns": [
+        "user_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_products_users_providers` a WHERE a.`user_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_users` b WHERE a.`user_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "CONSTRAINT_NAME": "fk_user_payment_methods_type",
+      "REFERENCED_TABLE_NAME": "tbc_payment_methods_types",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "NO ACTION",
+      "columns": [
+        "payment_method_type_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_user_payment_methods` a WHERE a.`payment_method_type_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tbc_payment_methods_types` b WHERE a.`payment_method_type_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "CONSTRAINT_NAME": "fk_user_payment_methods_user",
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "NO ACTION",
+      "columns": [
+        "user_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_user_payment_methods` a WHERE a.`user_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_users` b WHERE a.`user_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "CONSTRAINT_NAME": "fk_products3",
+      "REFERENCED_TABLE_NAME": "tb_products",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "NO ACTION",
+      "columns": [
+        "product_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_users_wishlist_products` a WHERE a.`product_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_products` b WHERE a.`product_ID`=b.`ID`)"
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "CONSTRAINT_NAME": "fk_user2",
+      "REFERENCED_TABLE_NAME": "tb_users",
+      "UPDATE_RULE": "NO ACTION",
+      "DELETE_RULE": "NO ACTION",
+      "columns": [
+        "user_ID"
+      ],
+      "referenced_columns": [
+        "ID"
+      ],
+      "diagnostic_sql": "SELECT COUNT(*) AS huerfanos FROM `tbd_users_wishlist_products` a WHERE a.`user_ID` IS NOT NULL AND NOT EXISTS(SELECT 1 FROM `tb_users` b WHERE a.`user_ID`=b.`ID`)"
+    }
+  ],
+  "constraints": [
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "CONSTRAINT_NAME": "tb_buyer_orders_chk_1",
+      "CONSTRAINT_TYPE": "CHECK",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "CONSTRAINT_NAME": "tb_buyer_orders_chk_2",
+      "CONSTRAINT_TYPE": "CHECK",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_buyer_orders",
+      "CONSTRAINT_NAME": "tb_buyer_orders_ibfk_1",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_carts",
+      "CONSTRAINT_NAME": "fk_carts_user",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_carts",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_logs",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_logs_productos",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "CONSTRAINT_NAME": "fk_people_user",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_people",
+      "CONSTRAINT_NAME": "uk_people_user",
+      "CONSTRAINT_TYPE": "UNIQUE",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_products",
+      "CONSTRAINT_NAME": "SKU",
+      "CONSTRAINT_TYPE": "UNIQUE",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "CONSTRAINT_NAME": "chk_coordinates",
+      "CONSTRAINT_TYPE": "CHECK",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "CONSTRAINT_NAME": "chk_latitude",
+      "CONSTRAINT_TYPE": "CHECK",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "CONSTRAINT_NAME": "chk_longitude",
+      "CONSTRAINT_TYPE": "CHECK",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "CONSTRAINT_NAME": "fk_addresses_users",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_user_addresses",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "CONSTRAINT_NAME": "email",
+      "CONSTRAINT_TYPE": "UNIQUE",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "CONSTRAINT_NAME": "nickname",
+      "CONSTRAINT_TYPE": "UNIQUE",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tb_users",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "CONSTRAINT_NAME": "fk_superior_category",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "CONSTRAINT_NAME": "name",
+      "CONSTRAINT_TYPE": "UNIQUE",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbc_categories",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "CONSTRAINT_NAME": "code_UNIQUE",
+      "CONSTRAINT_TYPE": "UNIQUE",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbc_payment_methods_types",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "CONSTRAINT_NAME": "fk_component_address",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "CONSTRAINT_NAME": "fk_component_parent",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_address_components",
+      "CONSTRAINT_NAME": "uk_address_component",
+      "CONSTRAINT_TYPE": "UNIQUE",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "CONSTRAINT_NAME": "chk_cart_quantity",
+      "CONSTRAINT_TYPE": "CHECK",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "CONSTRAINT_NAME": "fk_cart_items_cart",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "CONSTRAINT_NAME": "fk_cart_items_provider_product",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_cart_items",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "CONSTRAINT_NAME": "fk_order_provider_product",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "CONSTRAINT_NAME": "tbd_order_items_chk_1",
+      "CONSTRAINT_TYPE": "CHECK",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "CONSTRAINT_NAME": "tbd_order_items_chk_2",
+      "CONSTRAINT_TYPE": "CHECK",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_order_items",
+      "CONSTRAINT_NAME": "tbd_order_items_ibfk_1",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "CONSTRAINT_NAME": "fk_category",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "CONSTRAINT_NAME": "fk_product",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_products_categories",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "CONSTRAINT_NAME": "fk_products2",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "CONSTRAINT_NAME": "fk_user1",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_products_users_providers",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "CONSTRAINT_NAME": "fk_user_payment_methods_type",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "CONSTRAINT_NAME": "fk_user_payment_methods_user",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_user_payment_methods",
+      "CONSTRAINT_NAME": "uk_provider_method",
+      "CONSTRAINT_TYPE": "UNIQUE",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "CONSTRAINT_NAME": "fk_products3",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "CONSTRAINT_NAME": "fk_user2",
+      "CONSTRAINT_TYPE": "FOREIGN KEY",
+      "ENFORCED": "YES"
+    },
+    {
+      "TABLE_NAME": "tbd_users_wishlist_products",
+      "CONSTRAINT_NAME": "PRIMARY",
+      "CONSTRAINT_TYPE": "PRIMARY KEY",
+      "ENFORCED": "YES"
+    }
+  ],
+  "checks": [
+    {
+      "CONSTRAINT_NAME": "chk_cart_quantity",
+      "CHECK_CLAUSE": "(`quantity` > 0)"
+    },
+    {
+      "CONSTRAINT_NAME": "chk_coordinates",
+      "CHECK_CLAUSE": "(((`latitude` is null) and (`longitude` is null)) or ((`latitude` is not null) and (`longitude` is not null)))"
+    },
+    {
+      "CONSTRAINT_NAME": "chk_latitude",
+      "CHECK_CLAUSE": "(`latitude` between -(90) and 90)"
+    },
+    {
+      "CONSTRAINT_NAME": "chk_longitude",
+      "CHECK_CLAUSE": "(`longitude` between -(180) and 180)"
+    },
+    {
+      "CONSTRAINT_NAME": "tb_buyer_orders_chk_1",
+      "CHECK_CLAUSE": "(`subtotal` >= 0)"
+    },
+    {
+      "CONSTRAINT_NAME": "tb_buyer_orders_chk_2",
+      "CHECK_CLAUSE": "(`shipping_cost` >= 0)"
+    },
+    {
+      "CONSTRAINT_NAME": "tbd_order_items_chk_1",
+      "CHECK_CLAUSE": "(`quantity` > 0)"
+    },
+    {
+      "CONSTRAINT_NAME": "tbd_order_items_chk_2",
+      "CHECK_CLAUSE": "(`unit_price` >= 0)"
+    }
+  ],
+  "views": [
+    {
+      "TABLE_NAME": "vw_bitacora_usuarios",
+      "VIEW_DEFINITION": "select `bd_test`.`tb_logs`.`ID` AS `log_id`,(case `bd_test`.`tb_logs`.`table_operation` when 'Create' then 'Insercion' when 'Update' then 'Modificacion' when 'Delete' then 'Eliminacion' else `bd_test`.`tb_logs`.`table_operation` end) AS `operacion`,`bd_test`.`tb_logs`.`record_id` AS `usuario_id`,(case when (`bd_test`.`tb_logs`.`table_operation` = 'Update') then json_unquote(json_extract(`bd_test`.`tb_logs`.`operation_description`,'$.despues.nick')) else json_unquote(json_extract(`bd_test`.`tb_logs`.`operation_description`,'$.nick')) end) AS `usuario`,`bd_test`.`tb_logs`.`db_user` AS `realizado_por`,coalesce(nullif(`bd_test`.`tb_logs`.`actor_roles`,''),'SIN ROL') AS `rol`,`bd_test`.`tb_logs`.`operation_date` AS `fecha`,`bd_test`.`tb_logs`.`operation_description` AS `detalle`,(case when (`bd_test`.`tb_logs`.`table_operation` = 'Update') then json_unquote(json_extract(`bd_test`.`tb_logs`.`operation_description`,'$.despues.email')) else json_unquote(json_extract(`bd_test`.`tb_logs`.`operation_description`,'$.email')) end) AS `email` from `bd_test`.`tb_logs` where (`bd_test`.`tb_logs`.`table_name` = 'tb_users')",
+      "CHECK_OPTION": "NONE",
+      "IS_UPDATABLE": "YES",
+      "SECURITY_TYPE": "DEFINER"
+    },
+    {
+      "TABLE_NAME": "vw_total_products_by_category",
+      "VIEW_DEFINITION": "select `c`.`ID` AS `category_id`,`c`.`name` AS `category_name`,count(`p`.`ID`) AS `total_products` from ((`bd_test`.`tbc_categories` `c` left join `bd_test`.`tbd_products_categories` `pc` on(((`pc`.`category_ID` = `c`.`ID`) and (`pc`.`status` = 0x01)))) left join `bd_test`.`tb_products` `p` on(((`p`.`ID` = `pc`.`product_ID`) and (`p`.`status` = 0x01)))) group by `c`.`ID`,`c`.`name` union all select NULL AS `NULL`,'Sin categoria' AS `Sin categoria`,count(0) AS `COUNT(*)` from `bd_test`.`tb_products` `p` where ((`p`.`status` = 0x01) and exists(select 1 from `bd_test`.`tbd_products_categories` `pc` where ((`pc`.`product_ID` = `p`.`ID`) and (`pc`.`status` = 0x01))) is false)",
+      "CHECK_OPTION": "NONE",
+      "IS_UPDATABLE": "NO",
+      "SECURITY_TYPE": "DEFINER"
+    },
+    {
+      "TABLE_NAME": "vw_trazabilidad_categorias",
+      "VIEW_DEFINITION": "select `bd_test`.`tb_logs`.`ID` AS `log_id`,`bd_test`.`tb_logs`.`record_id` AS `record_id`,`bd_test`.`tb_logs`.`record_key` AS `record_key`,`bd_test`.`tb_logs`.`table_operation` AS `operation`,substring_index(`bd_test`.`tb_logs`.`db_user`,'@',1) AS `db_user`,substring_index(`bd_test`.`tb_logs`.`db_user`,'@',1) AS `username`,`bd_test`.`tb_logs`.`actor_roles` AS `roles`,`bd_test`.`tb_logs`.`operation_description` AS `operation_description`,`bd_test`.`tb_logs`.`operation_date` AS `operation_date`,`bd_test`.`tb_logs`.`operation_status` AS `operation_status` from `bd_test`.`tb_logs` where (`bd_test`.`tb_logs`.`table_name` = 'tbc_categories')",
+      "CHECK_OPTION": "NONE",
+      "IS_UPDATABLE": "YES",
+      "SECURITY_TYPE": "DEFINER"
+    },
+    {
+      "TABLE_NAME": "vw_trazabilidad_categorizacion_productos",
+      "VIEW_DEFINITION": "select `bd_test`.`tb_logs`.`ID` AS `log_id`,`bd_test`.`tb_logs`.`record_id` AS `record_id`,`bd_test`.`tb_logs`.`record_key` AS `record_key`,`bd_test`.`tb_logs`.`table_operation` AS `operation`,substring_index(`bd_test`.`tb_logs`.`db_user`,'@',1) AS `db_user`,substring_index(`bd_test`.`tb_logs`.`db_user`,'@',1) AS `username`,`bd_test`.`tb_logs`.`actor_roles` AS `roles`,`bd_test`.`tb_logs`.`operation_description` AS `operation_description`,`bd_test`.`tb_logs`.`operation_date` AS `operation_date`,`bd_test`.`tb_logs`.`operation_status` AS `operation_status` from `bd_test`.`tb_logs` where (`bd_test`.`tb_logs`.`table_name` = 'tbd_products_categories')",
+      "CHECK_OPTION": "NONE",
+      "IS_UPDATABLE": "YES",
+      "SECURITY_TYPE": "DEFINER"
+    },
+    {
+      "TABLE_NAME": "vw_trazabilidad_productos",
+      "VIEW_DEFINITION": "select `p`.`ID` AS `id`,`p`.`SKU` AS `SKU`,`p`.`name` AS `name`,`p`.`description` AS `description`,`b`.`db_user` AS `inserted_by`,`b`.`actor_roles` AS `roles`,`b`.`operation_description` AS `operation_description`,`b`.`operation_date` AS `operation_date` from (`bd_test`.`tb_products` `p` join `bd_test`.`tb_logs_productos` `b` on(((`b`.`record_id` = `p`.`ID`) and (`b`.`table_name` = 'tb_products') and (`b`.`table_operation` = 'Create'))))",
+      "CHECK_OPTION": "NONE",
+      "IS_UPDATABLE": "YES",
+      "SECURITY_TYPE": "DEFINER"
+    },
+    {
+      "TABLE_NAME": "vw_trazabilidad_usuarios",
+      "VIEW_DEFINITION": "select `b`.`record_id` AS `id`,coalesce(`u`.`nick`,json_unquote(json_extract(`b`.`operation_description`,'$.nick'))) AS `nick`,coalesce(`u`.`email`,json_unquote(json_extract(`b`.`operation_description`,'$.email'))) AS `email`,`b`.`db_user` AS `inserted_by`,`b`.`actor_roles` AS `roles`,`b`.`operation_description` AS `operation_description`,`b`.`operation_date` AS `operation_date`,(case when (`u`.`ID` is null) then 'Eliminado' else 'Existente' end) AS `estado_actual` from (`bd_test`.`tb_logs` `b` left join `bd_test`.`tb_users` `u` on((`u`.`ID` = `b`.`record_id`))) where ((`b`.`table_name` = 'tb_users') and (`b`.`table_operation` = 'Create'))",
+      "CHECK_OPTION": "NONE",
+      "IS_UPDATABLE": "NO",
+      "SECURITY_TYPE": "DEFINER"
+    }
+  ],
+  "triggers": [
+    {
+      "TRIGGER_NAME": "trg_after_delete_buyer_orders",
+      "EVENT_OBJECT_TABLE": "tb_buyer_orders",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tb_buyer_orders', 'Delete', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN OLD.`ID` BETWEEN 0 AND 4294967295 THEN OLD.`ID` ELSE NULL END,\n     CAST(OLD.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', OLD.`ID`, 'seller_ID', OLD.`seller_ID`, 'subtotal', OLD.`subtotal`, 'shipping_cost', OLD.`shipping_cost`, 'fulfillment_status', OLD.`fulfillment_status`, 'status', OLD.`status`+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_after_insert_buyer_orders",
+      "EVENT_OBJECT_TABLE": "tb_buyer_orders",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tb_buyer_orders', 'Create', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', NEW.`ID`, 'seller_ID', NEW.`seller_ID`, 'subtotal', NEW.`subtotal`, 'shipping_cost', NEW.`shipping_cost`, 'fulfillment_status', NEW.`fulfillment_status`, 'status', NEW.`status`+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_after_update_buyer_orders",
+      "EVENT_OBJECT_TABLE": "tb_buyer_orders",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tb_buyer_orders', 'Update', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('antes', JSON_OBJECT('ID', OLD.`ID`, 'seller_ID', OLD.`seller_ID`, 'subtotal', OLD.`subtotal`, 'shipping_cost', OLD.`shipping_cost`, 'fulfillment_status', OLD.`fulfillment_status`, 'status', OLD.`status`+0), 'despues', JSON_OBJECT('ID', NEW.`ID`, 'seller_ID', NEW.`seller_ID`, 'subtotal', NEW.`subtotal`, 'shipping_cost', NEW.`shipping_cost`, 'fulfillment_status', NEW.`fulfillment_status`, 'status', NEW.`status`+0)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_carts_after_delete",
+      "EVENT_OBJECT_TABLE": "tb_carts",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tb_carts', 'Delete', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN OLD.`ID` BETWEEN 0 AND 4294967295 THEN OLD.`ID` ELSE NULL END,\n     CAST(OLD.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', OLD.`ID`, 'user_ID', OLD.`user_ID`, 'creation_date', OLD.`creation_date`));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_carts_after_insert",
+      "EVENT_OBJECT_TABLE": "tb_carts",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tb_carts', 'Create', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', NEW.`ID`, 'user_ID', NEW.`user_ID`, 'creation_date', NEW.`creation_date`));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_carts_after_update",
+      "EVENT_OBJECT_TABLE": "tb_carts",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tb_carts', 'Update', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('antes', JSON_OBJECT('ID', OLD.`ID`, 'user_ID', OLD.`user_ID`, 'creation_date', OLD.`creation_date`), 'despues', JSON_OBJECT('ID', NEW.`ID`, 'user_ID', NEW.`user_ID`, 'creation_date', NEW.`creation_date`)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_people_after_delete",
+      "EVENT_OBJECT_TABLE": "tb_people",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tb_people', 'Delete', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN OLD.`id` BETWEEN 0 AND 4294967295 THEN OLD.`id` ELSE NULL END,\n     CAST(OLD.`id` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('id', OLD.`id`, 'user_id', OLD.`user_id`, 'status', OLD.`status`+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_people_after_insert",
+      "EVENT_OBJECT_TABLE": "tb_people",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tb_people', 'Create', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`id` BETWEEN 0 AND 4294967295 THEN NEW.`id` ELSE NULL END,\n     CAST(NEW.`id` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('id', NEW.`id`, 'user_id', NEW.`user_id`, 'status', NEW.`status`+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_people_after_update",
+      "EVENT_OBJECT_TABLE": "tb_people",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tb_people', 'Update', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`id` BETWEEN 0 AND 4294967295 THEN NEW.`id` ELSE NULL END,\n     CAST(NEW.`id` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('antes', JSON_OBJECT('id', OLD.`id`, 'user_id', OLD.`user_id`, 'status', OLD.`status`+0), 'despues', JSON_OBJECT('id', NEW.`id`, 'user_id', NEW.`user_id`, 'status', NEW.`status`+0)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_products_after_delete",
+      "EVENT_OBJECT_TABLE": "tb_products",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n INSERT INTO tb_logs_productos(table_name,table_operation,db_user,record_id,record_key,actor_roles,operation_description)\n VALUES ('tb_products','Delete',SUBSTRING_INDEX(USER(),'@',1),OLD.ID,CAST(OLD.ID AS CHAR),\n (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ') FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),JSON_OBJECT('ID', OLD.ID, 'SKU', OLD.SKU, 'name', OLD.name, 'current_price', OLD.current_price, 'current_stock', OLD.current_stock, 'status', OLD.status+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_products_after_insert",
+      "EVENT_OBJECT_TABLE": "tb_products",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n INSERT INTO tb_logs_productos(table_name,table_operation,db_user,record_id,record_key,actor_roles,operation_description)\n VALUES ('tb_products','Create',SUBSTRING_INDEX(USER(),'@',1),NEW.ID,CAST(NEW.ID AS CHAR),\n (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ') FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),JSON_OBJECT('ID', NEW.ID, 'SKU', NEW.SKU, 'name', NEW.name, 'current_price', NEW.current_price, 'current_stock', NEW.current_stock, 'status', NEW.status+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_products_after_update",
+      "EVENT_OBJECT_TABLE": "tb_products",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n INSERT INTO tb_logs_productos(table_name,table_operation,db_user,record_id,record_key,actor_roles,operation_description)\n VALUES ('tb_products','Update',SUBSTRING_INDEX(USER(),'@',1),NEW.ID,CAST(NEW.ID AS CHAR),\n (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ') FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),JSON_OBJECT('antes', JSON_OBJECT('ID', OLD.ID, 'SKU', OLD.SKU, 'name', OLD.name, 'current_price', OLD.current_price, 'current_stock', OLD.current_stock, 'status', OLD.status+0), 'despues', JSON_OBJECT('ID', NEW.ID, 'SKU', NEW.SKU, 'name', NEW.name, 'current_price', NEW.current_price, 'current_stock', NEW.current_stock, 'status', NEW.status+0)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_user_addresses_after_delete",
+      "EVENT_OBJECT_TABLE": "tb_user_addresses",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tb_user_addresses', 'Delete', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN OLD.`ID` BETWEEN 0 AND 4294967295 THEN OLD.`ID` ELSE NULL END,\n     CAST(OLD.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', OLD.`ID`, 'user_ID', OLD.`user_ID`, 'status', OLD.`status`+0, 'is_default', OLD.`is_default`));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_user_addresses_after_insert",
+      "EVENT_OBJECT_TABLE": "tb_user_addresses",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tb_user_addresses', 'Create', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', NEW.`ID`, 'user_ID', NEW.`user_ID`, 'status', NEW.`status`+0, 'is_default', NEW.`is_default`));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_user_addresses_after_update",
+      "EVENT_OBJECT_TABLE": "tb_user_addresses",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tb_user_addresses', 'Update', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('antes', JSON_OBJECT('ID', OLD.`ID`, 'user_ID', OLD.`user_ID`, 'status', OLD.`status`+0, 'is_default', OLD.`is_default`), 'despues', JSON_OBJECT('ID', NEW.`ID`, 'user_ID', NEW.`user_ID`, 'status', NEW.`status`+0, 'is_default', NEW.`is_default`)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_users_after_delete",
+      "EVENT_OBJECT_TABLE": "tb_users",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n INSERT INTO tb_logs(table_name,table_operation,db_user,record_id,record_key,actor_roles,operation_description)\n VALUES ('tb_users','Delete',SUBSTRING_INDEX(USER(),'@',1),OLD.ID,CAST(OLD.ID AS CHAR),\n (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ') FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),JSON_OBJECT('ID', OLD.ID, 'email', OLD.email, 'nick', OLD.nick, 'status', OLD.status+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_users_after_insert",
+      "EVENT_OBJECT_TABLE": "tb_users",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n INSERT INTO tb_logs(table_name,table_operation,db_user,record_id,record_key,actor_roles,operation_description)\n VALUES ('tb_users','Create',SUBSTRING_INDEX(USER(),'@',1),NEW.ID,CAST(NEW.ID AS CHAR),\n (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ') FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),JSON_OBJECT('ID', NEW.ID, 'email', NEW.email, 'nick', NEW.nick, 'status', NEW.status+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_users_after_update",
+      "EVENT_OBJECT_TABLE": "tb_users",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n INSERT INTO tb_logs(table_name,table_operation,db_user,record_id,record_key,actor_roles,operation_description)\n VALUES ('tb_users','Update',SUBSTRING_INDEX(USER(),'@',1),NEW.ID,CAST(NEW.ID AS CHAR),\n (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ') FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),JSON_OBJECT('antes', JSON_OBJECT('ID', OLD.ID, 'email', OLD.email, 'nick', OLD.nick, 'status', OLD.status+0), 'despues', JSON_OBJECT('ID', NEW.ID, 'email', NEW.email, 'nick', NEW.nick, 'status', NEW.status+0)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_categories_after_delete",
+      "EVENT_OBJECT_TABLE": "tbc_categories",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n INSERT INTO tb_logs(table_name,table_operation,db_user,record_id,record_key,actor_roles,operation_description)\n VALUES ('tbc_categories','Delete',SUBSTRING_INDEX(USER(),'@',1),OLD.ID,CAST(OLD.ID AS CHAR),\n (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ') FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),JSON_OBJECT('ID', OLD.ID, 'name', OLD.name, 'description', OLD.description, 'sup_id_category', OLD.sup_id_category, 'status', OLD.status+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_categories_after_insert",
+      "EVENT_OBJECT_TABLE": "tbc_categories",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n INSERT INTO tb_logs(table_name,table_operation,db_user,record_id,record_key,actor_roles,operation_description)\n VALUES ('tbc_categories','Create',SUBSTRING_INDEX(USER(),'@',1),NEW.ID,CAST(NEW.ID AS CHAR),\n (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ') FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),JSON_OBJECT('ID', NEW.ID, 'name', NEW.name, 'description', NEW.description, 'sup_id_category', NEW.sup_id_category, 'status', NEW.status+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_categories_after_update",
+      "EVENT_OBJECT_TABLE": "tbc_categories",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n INSERT INTO tb_logs(table_name,table_operation,db_user,record_id,record_key,actor_roles,operation_description)\n VALUES ('tbc_categories','Update',SUBSTRING_INDEX(USER(),'@',1),NEW.ID,CAST(NEW.ID AS CHAR),\n (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ') FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),JSON_OBJECT('antes', JSON_OBJECT('ID', OLD.ID, 'name', OLD.name, 'description', OLD.description, 'sup_id_category', OLD.sup_id_category, 'status', OLD.status+0), 'despues', JSON_OBJECT('ID', NEW.ID, 'name', NEW.name, 'description', NEW.description, 'sup_id_category', NEW.sup_id_category, 'status', NEW.status+0)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_payment_methods_types_after_delete",
+      "EVENT_OBJECT_TABLE": "tbc_payment_methods_types",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbc_payment_methods_types', 'Delete', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN OLD.`ID` BETWEEN 0 AND 4294967295 THEN OLD.`ID` ELSE NULL END,\n     CAST(OLD.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', OLD.`ID`, 'code', OLD.`code`, 'status', OLD.`status`+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_payment_methods_types_after_insert",
+      "EVENT_OBJECT_TABLE": "tbc_payment_methods_types",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbc_payment_methods_types', 'Create', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', NEW.`ID`, 'code', NEW.`code`, 'status', NEW.`status`+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_payment_methods_types_after_update",
+      "EVENT_OBJECT_TABLE": "tbc_payment_methods_types",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbc_payment_methods_types', 'Update', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('antes', JSON_OBJECT('ID', OLD.`ID`, 'code', OLD.`code`, 'status', OLD.`status`+0), 'despues', JSON_OBJECT('ID', NEW.`ID`, 'code', NEW.`code`, 'status', NEW.`status`+0)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_address_components_after_delete",
+      "EVENT_OBJECT_TABLE": "tbd_address_components",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_address_components', 'Delete', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN OLD.`ID` BETWEEN 0 AND 4294967295 THEN OLD.`ID` ELSE NULL END,\n     CAST(OLD.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', OLD.`ID`, 'address_ID', OLD.`address_ID`, 'address_sup_ID', OLD.`address_sup_ID`, 'component_type', OLD.`component_type`, 'status', OLD.`status`+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_address_components_after_insert",
+      "EVENT_OBJECT_TABLE": "tbd_address_components",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_address_components', 'Create', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', NEW.`ID`, 'address_ID', NEW.`address_ID`, 'address_sup_ID', NEW.`address_sup_ID`, 'component_type', NEW.`component_type`, 'status', NEW.`status`+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_address_components_after_update",
+      "EVENT_OBJECT_TABLE": "tbd_address_components",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_address_components', 'Update', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('antes', JSON_OBJECT('ID', OLD.`ID`, 'address_ID', OLD.`address_ID`, 'address_sup_ID', OLD.`address_sup_ID`, 'component_type', OLD.`component_type`, 'status', OLD.`status`+0), 'despues', JSON_OBJECT('ID', NEW.`ID`, 'address_ID', NEW.`address_ID`, 'address_sup_ID', NEW.`address_sup_ID`, 'component_type', NEW.`component_type`, 'status', NEW.`status`+0)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_cart_items_after_delete",
+      "EVENT_OBJECT_TABLE": "tbd_cart_items",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_cart_items', 'Delete', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN OLD.`cart_ID` BETWEEN 0 AND 4294967295 THEN OLD.`cart_ID` ELSE NULL END,\n     CONCAT(OLD.`cart_ID`, ':', OLD.`provider_ID`, ':', OLD.`product_ID`),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('cart_ID', OLD.`cart_ID`, 'provider_ID', OLD.`provider_ID`, 'product_ID', OLD.`product_ID`, 'quantity', OLD.`quantity`));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_cart_items_after_insert",
+      "EVENT_OBJECT_TABLE": "tbd_cart_items",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_cart_items', 'Create', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`cart_ID` BETWEEN 0 AND 4294967295 THEN NEW.`cart_ID` ELSE NULL END,\n     CONCAT(NEW.`cart_ID`, ':', NEW.`provider_ID`, ':', NEW.`product_ID`),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('cart_ID', NEW.`cart_ID`, 'provider_ID', NEW.`provider_ID`, 'product_ID', NEW.`product_ID`, 'quantity', NEW.`quantity`));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_cart_items_after_update",
+      "EVENT_OBJECT_TABLE": "tbd_cart_items",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_cart_items', 'Update', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`cart_ID` BETWEEN 0 AND 4294967295 THEN NEW.`cart_ID` ELSE NULL END,\n     CONCAT(NEW.`cart_ID`, ':', NEW.`provider_ID`, ':', NEW.`product_ID`),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('antes', JSON_OBJECT('cart_ID', OLD.`cart_ID`, 'provider_ID', OLD.`provider_ID`, 'product_ID', OLD.`product_ID`, 'quantity', OLD.`quantity`), 'despues', JSON_OBJECT('cart_ID', NEW.`cart_ID`, 'provider_ID', NEW.`provider_ID`, 'product_ID', NEW.`product_ID`, 'quantity', NEW.`quantity`)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_order_items_after_delete",
+      "EVENT_OBJECT_TABLE": "tbd_order_items",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_order_items', 'Delete', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN OLD.`ID` BETWEEN 0 AND 4294967295 THEN OLD.`ID` ELSE NULL END,\n     CAST(OLD.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', OLD.`ID`, 'seller_order_ID', OLD.`seller_order_ID`, 'product_ID', OLD.`product_ID`, 'provider_ID', OLD.`provider_ID`, 'quantity', OLD.`quantity`, 'unit_price', OLD.`unit_price`, 'subtotal', OLD.`subtotal`));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_order_items_after_insert",
+      "EVENT_OBJECT_TABLE": "tbd_order_items",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_order_items', 'Create', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', NEW.`ID`, 'seller_order_ID', NEW.`seller_order_ID`, 'product_ID', NEW.`product_ID`, 'provider_ID', NEW.`provider_ID`, 'quantity', NEW.`quantity`, 'unit_price', NEW.`unit_price`, 'subtotal', NEW.`subtotal`));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_order_items_after_update",
+      "EVENT_OBJECT_TABLE": "tbd_order_items",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_order_items', 'Update', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('antes', JSON_OBJECT('ID', OLD.`ID`, 'seller_order_ID', OLD.`seller_order_ID`, 'product_ID', OLD.`product_ID`, 'provider_ID', OLD.`provider_ID`, 'quantity', OLD.`quantity`, 'unit_price', OLD.`unit_price`, 'subtotal', OLD.`subtotal`), 'despues', JSON_OBJECT('ID', NEW.`ID`, 'seller_order_ID', NEW.`seller_order_ID`, 'product_ID', NEW.`product_ID`, 'provider_ID', NEW.`provider_ID`, 'quantity', NEW.`quantity`, 'unit_price', NEW.`unit_price`, 'subtotal', NEW.`subtotal`)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_products_categories_after_delete",
+      "EVENT_OBJECT_TABLE": "tbd_products_categories",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n INSERT INTO tb_logs(table_name,table_operation,db_user,record_id,record_key,actor_roles,operation_description)\n VALUES ('tbd_products_categories','Delete',SUBSTRING_INDEX(USER(),'@',1),OLD.product_ID,CONCAT(OLD.category_ID, ':', OLD.product_ID),\n (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ') FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),JSON_OBJECT('category_ID', OLD.category_ID, 'product_ID', OLD.product_ID, 'status', OLD.status+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_products_categories_after_insert",
+      "EVENT_OBJECT_TABLE": "tbd_products_categories",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n INSERT INTO tb_logs(table_name,table_operation,db_user,record_id,record_key,actor_roles,operation_description)\n VALUES ('tbd_products_categories','Create',SUBSTRING_INDEX(USER(),'@',1),NEW.product_ID,CONCAT(NEW.category_ID, ':', NEW.product_ID),\n (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ') FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),JSON_OBJECT('category_ID', NEW.category_ID, 'product_ID', NEW.product_ID, 'status', NEW.status+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_products_categories_after_update",
+      "EVENT_OBJECT_TABLE": "tbd_products_categories",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n INSERT INTO tb_logs(table_name,table_operation,db_user,record_id,record_key,actor_roles,operation_description)\n VALUES ('tbd_products_categories','Update',SUBSTRING_INDEX(USER(),'@',1),NEW.product_ID,CONCAT(NEW.category_ID, ':', NEW.product_ID),\n (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ') FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),JSON_OBJECT('antes', JSON_OBJECT('category_ID', OLD.category_ID, 'product_ID', OLD.product_ID, 'status', OLD.status+0), 'despues', JSON_OBJECT('category_ID', NEW.category_ID, 'product_ID', NEW.product_ID, 'status', NEW.status+0)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_products_users_providers_after_delete",
+      "EVENT_OBJECT_TABLE": "tbd_products_users_providers",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_products_users_providers', 'Delete', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN OLD.`user_ID` BETWEEN 0 AND 4294967295 THEN OLD.`user_ID` ELSE NULL END,\n     CONCAT(OLD.`user_ID`, ':', OLD.`product_ID`),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('user_ID', OLD.`user_ID`, 'product_ID', OLD.`product_ID`, 'type_ownership', OLD.`type_ownership`, 'status', OLD.`status`+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_products_users_providers_after_insert",
+      "EVENT_OBJECT_TABLE": "tbd_products_users_providers",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_products_users_providers', 'Create', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`user_ID` BETWEEN 0 AND 4294967295 THEN NEW.`user_ID` ELSE NULL END,\n     CONCAT(NEW.`user_ID`, ':', NEW.`product_ID`),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('user_ID', NEW.`user_ID`, 'product_ID', NEW.`product_ID`, 'type_ownership', NEW.`type_ownership`, 'status', NEW.`status`+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_products_users_providers_after_update",
+      "EVENT_OBJECT_TABLE": "tbd_products_users_providers",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_products_users_providers', 'Update', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`user_ID` BETWEEN 0 AND 4294967295 THEN NEW.`user_ID` ELSE NULL END,\n     CONCAT(NEW.`user_ID`, ':', NEW.`product_ID`),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('antes', JSON_OBJECT('user_ID', OLD.`user_ID`, 'product_ID', OLD.`product_ID`, 'type_ownership', OLD.`type_ownership`, 'status', OLD.`status`+0), 'despues', JSON_OBJECT('user_ID', NEW.`user_ID`, 'product_ID', NEW.`product_ID`, 'type_ownership', NEW.`type_ownership`, 'status', NEW.`status`+0)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_user_payment_methods_after_delete",
+      "EVENT_OBJECT_TABLE": "tbd_user_payment_methods",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_user_payment_methods', 'Delete', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN OLD.`ID` BETWEEN 0 AND 4294967295 THEN OLD.`ID` ELSE NULL END,\n     CAST(OLD.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', OLD.`ID`, 'user_ID', OLD.`user_ID`, 'payment_method_type_ID', OLD.`payment_method_type_ID`, 'status', OLD.`status`+0, 'is_default', OLD.`is_default`));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_user_payment_methods_after_insert",
+      "EVENT_OBJECT_TABLE": "tbd_user_payment_methods",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_user_payment_methods', 'Create', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('ID', NEW.`ID`, 'user_ID', NEW.`user_ID`, 'payment_method_type_ID', NEW.`payment_method_type_ID`, 'status', NEW.`status`+0, 'is_default', NEW.`is_default`));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_user_payment_methods_after_update",
+      "EVENT_OBJECT_TABLE": "tbd_user_payment_methods",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_user_payment_methods', 'Update', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`ID` BETWEEN 0 AND 4294967295 THEN NEW.`ID` ELSE NULL END,\n     CAST(NEW.`ID` AS CHAR),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('antes', JSON_OBJECT('ID', OLD.`ID`, 'user_ID', OLD.`user_ID`, 'payment_method_type_ID', OLD.`payment_method_type_ID`, 'status', OLD.`status`+0, 'is_default', OLD.`is_default`), 'despues', JSON_OBJECT('ID', NEW.`ID`, 'user_ID', NEW.`user_ID`, 'payment_method_type_ID', NEW.`payment_method_type_ID`, 'status', NEW.`status`+0, 'is_default', NEW.`is_default`)));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_users_wishlist_products_after_delete",
+      "EVENT_OBJECT_TABLE": "tbd_users_wishlist_products",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "DELETE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_users_wishlist_products', 'Delete', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN OLD.`user_ID` BETWEEN 0 AND 4294967295 THEN OLD.`user_ID` ELSE NULL END,\n     CONCAT(OLD.`user_ID`, ':', OLD.`product_ID`),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('user_ID', OLD.`user_ID`, 'product_ID', OLD.`product_ID`, 'status', OLD.`status`+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_users_wishlist_products_after_insert",
+      "EVENT_OBJECT_TABLE": "tbd_users_wishlist_products",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "INSERT",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_users_wishlist_products', 'Create', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`user_ID` BETWEEN 0 AND 4294967295 THEN NEW.`user_ID` ELSE NULL END,\n     CONCAT(NEW.`user_ID`, ':', NEW.`product_ID`),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('user_ID', NEW.`user_ID`, 'product_ID', NEW.`product_ID`, 'status', NEW.`status`+0));\nEND"
+    },
+    {
+      "TRIGGER_NAME": "trg_users_wishlist_products_after_update",
+      "EVENT_OBJECT_TABLE": "tbd_users_wishlist_products",
+      "ACTION_TIMING": "AFTER",
+      "EVENT_MANIPULATION": "UPDATE",
+      "ACTION_STATEMENT": "BEGIN\n  INSERT INTO tb_logs\n    (table_name, table_operation, db_user, record_id, record_key, actor_roles, operation_description)\n  VALUES\n    ('tbd_users_wishlist_products', 'Update', SUBSTRING_INDEX(USER(),'@',1),\n     CASE WHEN NEW.`user_ID` BETWEEN 0 AND 4294967295 THEN NEW.`user_ID` ELSE NULL END,\n     CONCAT(NEW.`user_ID`, ':', NEW.`product_ID`),\n     (SELECT GROUP_CONCAT(DISTINCT FROM_USER ORDER BY FROM_USER SEPARATOR ', ')\n      FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%'),\n     JSON_OBJECT('antes', JSON_OBJECT('user_ID', OLD.`user_ID`, 'product_ID', OLD.`product_ID`, 'status', OLD.`status`+0), 'despues', JSON_OBJECT('user_ID', NEW.`user_ID`, 'product_ID', NEW.`product_ID`, 'status', NEW.`status`+0)));\nEND"
+    }
+  ],
+  "routines": [
+    {
+      "ROUTINE_NAME": "fn_total_products_by_category",
+      "ROUTINE_TYPE": "FUNCTION",
+      "DATA_TYPE": "bigint",
+      "DTD_IDENTIFIER": "bigint",
+      "ROUTINE_DEFINITION": "BEGIN\n RETURN (SELECT COUNT(*) FROM tbd_products_categories pc JOIN tb_products p ON p.ID=pc.product_ID WHERE pc.category_ID=p_category_id AND pc.status=b'1' AND p.status=b'1');\nEND"
+    },
+    {
+      "ROUTINE_NAME": "sp_restore_product",
+      "ROUTINE_TYPE": "PROCEDURE",
+      "DATA_TYPE": "",
+      "DTD_IDENTIFIER": null,
+      "ROUTINE_DEFINITION": "BEGIN\n IF NOT EXISTS(SELECT 1 FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%' AND FROM_USER IN ('superadmin','admin')) THEN\n SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Acceso denegado: rol no autorizado';\n END IF;\n IF NOT EXISTS(SELECT 1 FROM tb_products WHERE ID=p_id) THEN SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='El registro no existe'; END IF;\n UPDATE tb_products SET status=1 WHERE ID=p_id;\nEND"
+    },
+    {
+      "ROUTINE_NAME": "sp_soft_delete_product",
+      "ROUTINE_TYPE": "PROCEDURE",
+      "DATA_TYPE": "",
+      "DTD_IDENTIFIER": null,
+      "ROUTINE_DEFINITION": "BEGIN\n IF NOT EXISTS(SELECT 1 FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%' AND FROM_USER IN ('superadmin','admin')) THEN\n SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Acceso denegado: rol no autorizado';\n END IF;\n IF NOT EXISTS(SELECT 1 FROM tb_products WHERE ID=p_id) THEN SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='El registro no existe'; END IF;\n UPDATE tb_products SET status=0 WHERE ID=p_id;\nEND"
+    },
+    {
+      "ROUTINE_NAME": "sp_soft_delete_user",
+      "ROUTINE_TYPE": "PROCEDURE",
+      "DATA_TYPE": "",
+      "DTD_IDENTIFIER": null,
+      "ROUTINE_DEFINITION": "BEGIN\n IF NOT EXISTS(SELECT 1 FROM mysql.role_edges WHERE TO_USER=SUBSTRING_INDEX(USER(),'@',1) AND TO_HOST='%' AND FROM_USER IN ('superadmin','admin','support')) THEN\n SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Acceso denegado: rol no autorizado';\n END IF;\n IF NOT EXISTS(SELECT 1 FROM tb_users WHERE ID=p_id) THEN SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='El registro no existe'; END IF;\n UPDATE tb_users SET status=0 WHERE ID=p_id;\nEND"
+    }
+  ],
+  "parameters": [
+    {
+      "SPECIFIC_NAME": "fn_total_products_by_category",
+      "ORDINAL_POSITION": 0,
+      "PARAMETER_MODE": null,
+      "PARAMETER_NAME": null,
+      "DTD_IDENTIFIER": "bigint"
+    },
+    {
+      "SPECIFIC_NAME": "fn_total_products_by_category",
+      "ORDINAL_POSITION": 1,
+      "PARAMETER_MODE": "IN",
+      "PARAMETER_NAME": "p_category_id",
+      "DTD_IDENTIFIER": "int unsigned"
+    },
+    {
+      "SPECIFIC_NAME": "sp_restore_product",
+      "ORDINAL_POSITION": 1,
+      "PARAMETER_MODE": "IN",
+      "PARAMETER_NAME": "p_id",
+      "DTD_IDENTIFIER": "int unsigned"
+    },
+    {
+      "SPECIFIC_NAME": "sp_soft_delete_product",
+      "ORDINAL_POSITION": 1,
+      "PARAMETER_MODE": "IN",
+      "PARAMETER_NAME": "p_id",
+      "DTD_IDENTIFIER": "int unsigned"
+    },
+    {
+      "SPECIFIC_NAME": "sp_soft_delete_user",
+      "ORDINAL_POSITION": 1,
+      "PARAMETER_MODE": "IN",
+      "PARAMETER_NAME": "p_id",
+      "DTD_IDENTIFIER": "int unsigned"
+    }
+  ],
+  "events": [
+    {
+      "EVENT_NAME": "ev_actualizar_estado_relaciones",
+      "STATUS": "DISABLED",
+      "EVENT_TYPE": "RECURRING",
+      "INTERVAL_VALUE": "1",
+      "INTERVAL_FIELD": "DAY",
+      "EVENT_DEFINITION": "UPDATE tbd_products_categories pc JOIN tb_products p ON p.ID=pc.product_ID JOIN tbc_categories c ON c.ID=pc.category_ID\n SET pc.status=b'0' WHERE pc.status=b'1' AND (p.status=b'0' OR c.status=b'0')"
+    }
+  ],
+  "definitions": {
+    "tb_buyer_orders": "CREATE TABLE `tb_buyer_orders` (\n  `ID` int unsigned NOT NULL AUTO_INCREMENT,\n  `seller_ID` int NOT NULL,\n  `subtotal` decimal(12,2) NOT NULL DEFAULT '0.00',\n  `shipping_cost` decimal(12,2) NOT NULL DEFAULT '0.00',\n  `fulfillment_status` enum('Pending','Accepted','Preparing','Sent','Delivered','Canceled','Returned') NOT NULL DEFAULT 'Pending',\n  `status` bit(1) NOT NULL DEFAULT b'1',\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `last_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`ID`),\n  KEY `seller_ID` (`seller_ID`),\n  CONSTRAINT `tb_buyer_orders_ibfk_1` FOREIGN KEY (`seller_ID`) REFERENCES `tb_users` (`ID`),\n  CONSTRAINT `tb_buyer_orders_chk_1` CHECK ((`subtotal` >= 0)),\n  CONSTRAINT `tb_buyer_orders_chk_2` CHECK ((`shipping_cost` >= 0))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tb_carts": "CREATE TABLE `tb_carts` (\n  `ID` int unsigned NOT NULL AUTO_INCREMENT,\n  `user_ID` int NOT NULL,\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  PRIMARY KEY (`ID`),\n  KEY `fk_carts_user` (`user_ID`),\n  CONSTRAINT `fk_carts_user` FOREIGN KEY (`user_ID`) REFERENCES `tb_users` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tb_logs": "CREATE TABLE `tb_logs` (\n  `ID` int NOT NULL AUTO_INCREMENT,\n  `table_name` varchar(100) NOT NULL,\n  `table_operation` enum('Create','Read','Update','Delete') NOT NULL,\n  `db_user` varchar(80) NOT NULL,\n  `operation_description` text NOT NULL,\n  `operation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `operation_status` bit(1) DEFAULT b'1',\n  `record_id` int unsigned DEFAULT NULL,\n  `record_key` varchar(100) DEFAULT NULL,\n  `actor_roles` varchar(255) DEFAULT NULL,\n  PRIMARY KEY (`ID`),\n  KEY `ix_trace` (`table_name`,`record_id`,`table_operation`)\n) ENGINE=InnoDB AUTO_INCREMENT=46847 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tb_logs_productos": "CREATE TABLE `tb_logs_productos` (\n  `ID` int NOT NULL AUTO_INCREMENT,\n  `table_name` varchar(100) NOT NULL,\n  `table_operation` enum('Create','Read','Update','Delete') NOT NULL,\n  `db_user` varchar(80) NOT NULL,\n  `operation_description` text NOT NULL,\n  `operation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `operation_status` bit(1) DEFAULT b'1',\n  `record_id` int unsigned DEFAULT NULL,\n  `record_key` varchar(100) DEFAULT NULL,\n  `actor_roles` varchar(255) DEFAULT NULL,\n  PRIMARY KEY (`ID`),\n  KEY `ix_trace` (`table_name`,`record_id`,`table_operation`)\n) ENGINE=InnoDB AUTO_INCREMENT=15022 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tb_people": "CREATE TABLE `tb_people` (\n  `id` int NOT NULL AUTO_INCREMENT,\n  `user_id` int NOT NULL,\n  `first_name` varchar(100) NOT NULL,\n  `last_name` varchar(100) NOT NULL,\n  `second_last_name` varchar(100) DEFAULT NULL,\n  `birth_date` date DEFAULT NULL,\n  `gender` varchar(30) DEFAULT NULL,\n  `phone` varchar(25) DEFAULT NULL,\n  `nationality` varchar(80) DEFAULT NULL,\n  `status` bit(1) NOT NULL DEFAULT b'1',\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `last_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `uk_people_user` (`user_id`),\n  CONSTRAINT `fk_people_user` FOREIGN KEY (`user_id`) REFERENCES `tb_users` (`ID`) ON DELETE RESTRICT ON UPDATE CASCADE\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tb_products": "CREATE TABLE `tb_products` (\n  `ID` int unsigned NOT NULL AUTO_INCREMENT,\n  `SKU` varchar(50) NOT NULL,\n  `name` varchar(250) NOT NULL,\n  `description` text,\n  `current_price` decimal(10,2) NOT NULL DEFAULT '0.00',\n  `current_stock` int unsigned NOT NULL DEFAULT '0',\n  `status` bit(1) DEFAULT b'1',\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `last_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`ID`),\n  UNIQUE KEY `SKU` (`SKU`)\n) ENGINE=InnoDB AUTO_INCREMENT=15008 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tb_user_addresses": "CREATE TABLE `tb_user_addresses` (\n  `ID` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `user_ID` int NOT NULL,\n  `address_label` varchar(100) NOT NULL,\n  `recipient_name` varchar(150) DEFAULT NULL,\n  `recipient_phone` varchar(25) DEFAULT NULL,\n  `delivery_instructions` varchar(500) DEFAULT NULL,\n  `latitude` decimal(10,7) DEFAULT NULL,\n  `longitude` decimal(10,7) DEFAULT NULL,\n  `is_default` tinyint(1) NOT NULL DEFAULT '0',\n  `status` bit(1) NOT NULL DEFAULT b'1',\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `last_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`ID`),\n  KEY `idx_user_addresses` (`user_ID`),\n  CONSTRAINT `fk_addresses_users` FOREIGN KEY (`user_ID`) REFERENCES `tb_users` (`ID`),\n  CONSTRAINT `chk_coordinates` CHECK ((((`latitude` is null) and (`longitude` is null)) or ((`latitude` is not null) and (`longitude` is not null)))),\n  CONSTRAINT `chk_latitude` CHECK ((`latitude` between -(90) and 90)),\n  CONSTRAINT `chk_longitude` CHECK ((`longitude` between -(180) and 180))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tb_users": "CREATE TABLE `tb_users` (\n  `ID` int NOT NULL AUTO_INCREMENT,\n  `email` varchar(80) NOT NULL,\n  `nick` varchar(100) NOT NULL,\n  `password` varchar(255) NOT NULL,\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `last_update` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  `last_login` datetime DEFAULT NULL,\n  `status` bit(1) NOT NULL DEFAULT b'1',\n  PRIMARY KEY (`ID`),\n  UNIQUE KEY `email` (`email`),\n  UNIQUE KEY `nickname` (`nick`)\n) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tbc_categories": "CREATE TABLE `tbc_categories` (\n  `ID` int unsigned NOT NULL AUTO_INCREMENT,\n  `name` varchar(120) NOT NULL,\n  `description` text,\n  `sup_id_category` int unsigned DEFAULT NULL,\n  `status` bit(1) NOT NULL DEFAULT b'1',\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `last_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`ID`),\n  UNIQUE KEY `name` (`name`),\n  KEY `fk_superior_category` (`sup_id_category`),\n  CONSTRAINT `fk_superior_category` FOREIGN KEY (`sup_id_category`) REFERENCES `tbc_categories` (`ID`)\n) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tbc_payment_methods_types": "CREATE TABLE `tbc_payment_methods_types` (\n  `ID` int unsigned NOT NULL AUTO_INCREMENT,\n  `code` varchar(30) NOT NULL,\n  `description` text NOT NULL,\n  `status` bit(1) NOT NULL DEFAULT b'1',\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `last_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`ID`),\n  UNIQUE KEY `code_UNIQUE` (`code`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tbd_address_components": "CREATE TABLE `tbd_address_components` (\n  `ID` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `address_ID` bigint unsigned NOT NULL,\n  `value` varchar(255) NOT NULL,\n  `component_type` varchar(50) NOT NULL,\n  `status` bit(1) NOT NULL DEFAULT b'1',\n  `address_sup_ID` bigint unsigned DEFAULT NULL,\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `last_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`ID`),\n  UNIQUE KEY `uk_address_component` (`address_ID`,`ID`),\n  KEY `idx_address_parent` (`address_ID`,`address_sup_ID`),\n  CONSTRAINT `fk_component_address` FOREIGN KEY (`address_ID`) REFERENCES `tb_user_addresses` (`ID`) ON DELETE RESTRICT,\n  CONSTRAINT `fk_component_parent` FOREIGN KEY (`address_ID`, `address_sup_ID`) REFERENCES `tbd_address_components` (`address_ID`, `ID`) ON DELETE RESTRICT\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tbd_cart_items": "CREATE TABLE `tbd_cart_items` (\n  `cart_ID` int unsigned NOT NULL,\n  `provider_ID` int NOT NULL,\n  `product_ID` int unsigned NOT NULL,\n  `quantity` int unsigned NOT NULL DEFAULT '1',\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  PRIMARY KEY (`cart_ID`,`provider_ID`,`product_ID`),\n  KEY `idx_cart_items_provider_product` (`provider_ID`,`product_ID`),\n  CONSTRAINT `fk_cart_items_cart` FOREIGN KEY (`cart_ID`) REFERENCES `tb_carts` (`ID`) ON DELETE CASCADE,\n  CONSTRAINT `fk_cart_items_provider_product` FOREIGN KEY (`provider_ID`, `product_ID`) REFERENCES `tbd_products_users_providers` (`user_ID`, `product_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,\n  CONSTRAINT `chk_cart_quantity` CHECK ((`quantity` > 0))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tbd_order_items": "CREATE TABLE `tbd_order_items` (\n  `ID` int unsigned NOT NULL AUTO_INCREMENT,\n  `seller_order_ID` int unsigned NOT NULL,\n  `product_ID` int unsigned NOT NULL,\n  `provider_ID` int NOT NULL,\n  `product_name` varchar(255) NOT NULL,\n  `quantity` int unsigned NOT NULL,\n  `unit_price` decimal(12,2) NOT NULL,\n  `subtotal` decimal(12,2) GENERATED ALWAYS AS ((`quantity` * `unit_price`)) STORED,\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  PRIMARY KEY (`ID`),\n  KEY `seller_order_ID` (`seller_order_ID`),\n  KEY `product_ID` (`product_ID`),\n  KEY `provider_ID` (`provider_ID`),\n  KEY `idx_order_provider_product` (`provider_ID`,`product_ID`),\n  CONSTRAINT `fk_order_provider_product` FOREIGN KEY (`provider_ID`, `product_ID`) REFERENCES `tbd_products_users_providers` (`user_ID`, `product_ID`),\n  CONSTRAINT `tbd_order_items_ibfk_1` FOREIGN KEY (`seller_order_ID`) REFERENCES `tb_buyer_orders` (`ID`),\n  CONSTRAINT `tbd_order_items_chk_1` CHECK ((`quantity` > 0)),\n  CONSTRAINT `tbd_order_items_chk_2` CHECK ((`unit_price` >= 0))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tbd_products_categories": "CREATE TABLE `tbd_products_categories` (\n  `category_ID` int unsigned NOT NULL,\n  `product_ID` int unsigned NOT NULL,\n  `status` bit(1) NOT NULL DEFAULT b'1',\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `last_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`category_ID`,`product_ID`),\n  KEY `fk_product` (`product_ID`),\n  CONSTRAINT `fk_category` FOREIGN KEY (`category_ID`) REFERENCES `tbc_categories` (`ID`),\n  CONSTRAINT `fk_product` FOREIGN KEY (`product_ID`) REFERENCES `tb_products` (`ID`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tbd_products_users_providers": "CREATE TABLE `tbd_products_users_providers` (\n  `user_ID` int NOT NULL,\n  `product_ID` int unsigned NOT NULL,\n  `type_ownership` enum('Owner','Reseller','Distributor') DEFAULT NULL,\n  `status` bit(1) NOT NULL DEFAULT b'1',\n  `avalaible_date` datetime NOT NULL,\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `last_update` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`user_ID`,`product_ID`),\n  KEY `fk_products2` (`product_ID`),\n  CONSTRAINT `fk_products2` FOREIGN KEY (`product_ID`) REFERENCES `tb_products` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,\n  CONSTRAINT `fk_user1` FOREIGN KEY (`user_ID`) REFERENCES `tb_users` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tbd_user_payment_methods": "CREATE TABLE `tbd_user_payment_methods` (\n  `ID` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `user_ID` int NOT NULL,\n  `payment_method_type_ID` int unsigned NOT NULL,\n  `provider` varchar(60) NOT NULL,\n  `provider_method_ref` varchar(255) NOT NULL,\n  `label` varchar(100) DEFAULT NULL,\n  `last_four` char(4) DEFAULT NULL,\n  `is_default` tinyint(1) NOT NULL DEFAULT '0',\n  `status` bit(1) NOT NULL DEFAULT b'1',\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `last_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`ID`),\n  UNIQUE KEY `uk_provider_method` (`provider`,`provider_method_ref`),\n  KEY `idx_user_ID` (`user_ID`),\n  KEY `idx_payment_method_type_ID` (`payment_method_type_ID`),\n  CONSTRAINT `fk_user_payment_methods_type` FOREIGN KEY (`payment_method_type_ID`) REFERENCES `tbc_payment_methods_types` (`ID`),\n  CONSTRAINT `fk_user_payment_methods_user` FOREIGN KEY (`user_ID`) REFERENCES `tb_users` (`ID`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+    "tbd_users_wishlist_products": "CREATE TABLE `tbd_users_wishlist_products` (\n  `user_ID` int NOT NULL,\n  `product_ID` int unsigned NOT NULL,\n  `status` bit(1) NOT NULL DEFAULT b'1',\n  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `last_update` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`user_ID`,`product_ID`),\n  KEY `fk_products3` (`product_ID`),\n  CONSTRAINT `fk_products3` FOREIGN KEY (`product_ID`) REFERENCES `tb_products` (`ID`),\n  CONSTRAINT `fk_user2` FOREIGN KEY (`user_ID`) REFERENCES `tb_users` (`ID`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci"
+  }
+}

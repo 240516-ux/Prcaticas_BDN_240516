@@ -1,75 +1,136 @@
-﻿esquema,tabla,descripcion_tabla,columna,tipo,longitud,precision,escala,nullable,predeterminado,extra,claves,indices,referencias,registros,triggers,vistas,observaciones
-bd_test,tb_carts,Pendiente de confirmar,ID,int unsigned,,10,0,NO,null,auto_increment,PRIMARY,PRIMARY UNIQUE,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_carts,Pendiente de confirmar,user_ID,int unsigned,,10,0,NO,null,,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_carts,Pendiente de confirmar,creation_date,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs,Pendiente de confirmar,ID,int,,10,0,NO,null,auto_increment,PRIMARY,PRIMARY UNIQUE,,41839,,vw_trazabilidad_usuarios; vw_bitacora_usuarios; vw_trazabilidad_categorias; vw_trazabilidad_categorizacion_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs,Pendiente de confirmar,table_name,varchar(100),100,,,NO,null,,,ix_trace,,41839,,vw_trazabilidad_usuarios; vw_bitacora_usuarios; vw_trazabilidad_categorias; vw_trazabilidad_categorizacion_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs,Pendiente de confirmar,table_operation,"enum('Create','Read','Update','Delete')",6,,,NO,null,,,ix_trace,,41839,,vw_trazabilidad_usuarios; vw_bitacora_usuarios; vw_trazabilidad_categorias; vw_trazabilidad_categorizacion_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs,Pendiente de confirmar,db_user,varchar(80),80,,,NO,null,,,,,41839,,vw_trazabilidad_usuarios; vw_bitacora_usuarios; vw_trazabilidad_categorias; vw_trazabilidad_categorizacion_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs,Pendiente de confirmar,operation_description,text,65535,,,NO,null,,,,,41839,,vw_trazabilidad_usuarios; vw_bitacora_usuarios; vw_trazabilidad_categorias; vw_trazabilidad_categorizacion_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs,Pendiente de confirmar,operation_date,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,41839,,vw_trazabilidad_usuarios; vw_bitacora_usuarios; vw_trazabilidad_categorias; vw_trazabilidad_categorizacion_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs,Pendiente de confirmar,operation_status,bit(1),,1,,YES,"""b'1'""",,,,,41839,,vw_trazabilidad_usuarios; vw_bitacora_usuarios; vw_trazabilidad_categorias; vw_trazabilidad_categorizacion_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs,Pendiente de confirmar,record_id,int unsigned,,10,0,YES,null,,,ix_trace,,41839,,vw_trazabilidad_usuarios; vw_bitacora_usuarios; vw_trazabilidad_categorias; vw_trazabilidad_categorizacion_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs,Pendiente de confirmar,record_key,varchar(100),100,,,YES,null,,,,,41839,,vw_trazabilidad_usuarios; vw_bitacora_usuarios; vw_trazabilidad_categorias; vw_trazabilidad_categorizacion_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs,Pendiente de confirmar,actor_roles,varchar(255),255,,,YES,null,,,,,41839,,vw_trazabilidad_usuarios; vw_bitacora_usuarios; vw_trazabilidad_categorias; vw_trazabilidad_categorizacion_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs_productos,Pendiente de confirmar,ID,int,,10,0,NO,null,auto_increment,PRIMARY,PRIMARY UNIQUE,,15007,,vw_trazabilidad_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs_productos,Pendiente de confirmar,table_name,varchar(100),100,,,NO,null,,,ix_trace,,15007,,vw_trazabilidad_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs_productos,Pendiente de confirmar,table_operation,"enum('Create','Read','Update','Delete')",6,,,NO,null,,,ix_trace,,15007,,vw_trazabilidad_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs_productos,Pendiente de confirmar,db_user,varchar(80),80,,,NO,null,,,,,15007,,vw_trazabilidad_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs_productos,Pendiente de confirmar,operation_description,text,65535,,,NO,null,,,,,15007,,vw_trazabilidad_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs_productos,Pendiente de confirmar,operation_date,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,15007,,vw_trazabilidad_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs_productos,Pendiente de confirmar,operation_status,bit(1),,1,,YES,"""b'1'""",,,,,15007,,vw_trazabilidad_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs_productos,Pendiente de confirmar,record_id,int unsigned,,10,0,YES,null,,,ix_trace,,15007,,vw_trazabilidad_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs_productos,Pendiente de confirmar,record_key,varchar(100),100,,,YES,null,,,,,15007,,vw_trazabilidad_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_logs_productos,Pendiente de confirmar,actor_roles,varchar(255),255,,,YES,null,,,,,15007,,vw_trazabilidad_productos,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_products,Pendiente de confirmar,ID,int unsigned,,10,0,NO,null,auto_increment,PRIMARY,PRIMARY UNIQUE,,15007,trg_products_after_delete; trg_products_after_insert; trg_products_after_update,vw_trazabilidad_productos; vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_products,Pendiente de confirmar,SKU,varchar(50),50,,,NO,null,,SKU,SKU UNIQUE,,15007,trg_products_after_delete; trg_products_after_insert; trg_products_after_update,vw_trazabilidad_productos; vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_products,Pendiente de confirmar,name,varchar(250),250,,,NO,null,,,,,15007,trg_products_after_delete; trg_products_after_insert; trg_products_after_update,vw_trazabilidad_productos; vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_products,Pendiente de confirmar,description,text,65535,,,YES,null,,,,,15007,trg_products_after_delete; trg_products_after_insert; trg_products_after_update,vw_trazabilidad_productos; vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_products,Pendiente de confirmar,current_price,"decimal(10,2)",,10,2,NO,"""0.00""",,,,,15007,trg_products_after_delete; trg_products_after_insert; trg_products_after_update,vw_trazabilidad_productos; vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_products,Pendiente de confirmar,current_stock,int unsigned,,10,0,NO,"""0""",,,,,15007,trg_products_after_delete; trg_products_after_insert; trg_products_after_update,vw_trazabilidad_productos; vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_products,Pendiente de confirmar,status,bit(1),,1,,YES,"""b'1'""",,,,,15007,trg_products_after_delete; trg_products_after_insert; trg_products_after_update,vw_trazabilidad_productos; vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_products,Pendiente de confirmar,creation_date,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,15007,trg_products_after_delete; trg_products_after_insert; trg_products_after_update,vw_trazabilidad_productos; vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_products,Pendiente de confirmar,last_update,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED on update CURRENT_TIMESTAMP,,,,15007,trg_products_after_delete; trg_products_after_insert; trg_products_after_update,vw_trazabilidad_productos; vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_users,Pendiente de confirmar,ID,int,,10,0,NO,null,auto_increment,PRIMARY,PRIMARY UNIQUE,,6,trg_users_after_insert; trg_users_after_update; trg_users_after_delete,vw_trazabilidad_usuarios,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_users,Pendiente de confirmar,email,varchar(80),80,,,NO,null,,email,email UNIQUE,,6,trg_users_after_insert; trg_users_after_update; trg_users_after_delete,vw_trazabilidad_usuarios,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_users,Pendiente de confirmar,nick,varchar(100),100,,,NO,null,,nickname,nickname UNIQUE,,6,trg_users_after_insert; trg_users_after_update; trg_users_after_delete,vw_trazabilidad_usuarios,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_users,Pendiente de confirmar,password,varchar(255),255,,,NO,null,,,,,6,trg_users_after_insert; trg_users_after_update; trg_users_after_delete,vw_trazabilidad_usuarios,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_users,Pendiente de confirmar,creation_date,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,6,trg_users_after_insert; trg_users_after_update; trg_users_after_delete,vw_trazabilidad_usuarios,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_users,Pendiente de confirmar,last_update,datetime,,,,YES,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED on update CURRENT_TIMESTAMP,,,,6,trg_users_after_insert; trg_users_after_update; trg_users_after_delete,vw_trazabilidad_usuarios,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_users,Pendiente de confirmar,last_login,datetime,,,,YES,null,,,,,6,trg_users_after_insert; trg_users_after_update; trg_users_after_delete,vw_trazabilidad_usuarios,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tb_users,Pendiente de confirmar,status,bit(1),,1,,NO,"""b'1'""",,,,,6,trg_users_after_insert; trg_users_after_update; trg_users_after_delete,vw_trazabilidad_usuarios,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_categories,Pendiente de confirmar,ID,int unsigned,,10,0,NO,null,auto_increment,PRIMARY,PRIMARY UNIQUE,,100,trg_categories_after_insert; trg_categories_after_update; trg_categories_after_delete,vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_categories,Pendiente de confirmar,name,varchar(120),120,,,NO,null,,name,name UNIQUE,,100,trg_categories_after_insert; trg_categories_after_update; trg_categories_after_delete,vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_categories,Pendiente de confirmar,description,text,65535,,,YES,null,,,,,100,trg_categories_after_insert; trg_categories_after_update; trg_categories_after_delete,vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_categories,Pendiente de confirmar,sup_id_category,int unsigned,,10,0,YES,null,,fk_superior_category,fk_superior_category,tbc_categories.ID,100,trg_categories_after_insert; trg_categories_after_update; trg_categories_after_delete,vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_categories,Pendiente de confirmar,status,bit(1),,1,,NO,"""b'1'""",,,,,100,trg_categories_after_insert; trg_categories_after_update; trg_categories_after_delete,vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_categories,Pendiente de confirmar,creation_date,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,100,trg_categories_after_insert; trg_categories_after_update; trg_categories_after_delete,vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_categories,Pendiente de confirmar,last_update,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED on update CURRENT_TIMESTAMP,,,,100,trg_categories_after_insert; trg_categories_after_update; trg_categories_after_delete,vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_payment_methods_types,Pendiente de confirmar,ID,int unsigned,,10,0,NO,null,auto_increment,PRIMARY,PRIMARY UNIQUE,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_payment_methods_types,Pendiente de confirmar,code,varchar(30),30,,,NO,null,,code_UNIQUE,code_UNIQUE UNIQUE,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_payment_methods_types,Pendiente de confirmar,description,text,65535,,,NO,null,,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_payment_methods_types,Pendiente de confirmar,status,bit(1),,1,,NO,"""b'1'""",,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_payment_methods_types,Pendiente de confirmar,creation_date,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbc_payment_methods_types,Pendiente de confirmar,last_update,datetime,,,,YES,null,on update CURRENT_TIMESTAMP,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_cart_items,Pendiente de confirmar,cart_ID,int unsigned,,10,0,NO,null,,PRIMARY; fk_cart_items_cart,PRIMARY UNIQUE,tb_carts.ID,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_cart_items,Pendiente de confirmar,provider_ID,int unsigned,,10,0,NO,null,,PRIMARY,PRIMARY UNIQUE,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_cart_items,Pendiente de confirmar,product_ID,int unsigned,,10,0,NO,null,,PRIMARY,PRIMARY UNIQUE,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_cart_items,Pendiente de confirmar,quantity,int unsigned,,10,0,NO,"""1""",,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_cart_items,Pendiente de confirmar,creation_date,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_products_categories,Pendiente de confirmar,category_ID,int unsigned,,10,0,NO,null,,PRIMARY; fk_category,PRIMARY UNIQUE,tbc_categories.ID,41713,trg_products_categories_after_insert; trg_products_categories_after_update; trg_products_categories_after_delete,vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_products_categories,Pendiente de confirmar,product_ID,int unsigned,,10,0,NO,null,,PRIMARY; fk_product,PRIMARY UNIQUE; fk_product,tb_products.ID,41713,trg_products_categories_after_insert; trg_products_categories_after_update; trg_products_categories_after_delete,vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_products_categories,Pendiente de confirmar,status,bit(1),,1,,NO,"""b'1'""",,,,,41713,trg_products_categories_after_insert; trg_products_categories_after_update; trg_products_categories_after_delete,vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_products_categories,Pendiente de confirmar,creation_date,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,41713,trg_products_categories_after_insert; trg_products_categories_after_update; trg_products_categories_after_delete,vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_products_categories,Pendiente de confirmar,last_update,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED on update CURRENT_TIMESTAMP,,,,41713,trg_products_categories_after_insert; trg_products_categories_after_update; trg_products_categories_after_delete,vw_total_products_by_category,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_user_payment_methods,Pendiente de confirmar,ID,bigint unsigned,,20,0,NO,null,auto_increment,PRIMARY,PRIMARY UNIQUE,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_user_payment_methods,Pendiente de confirmar,user_ID,int,,10,0,NO,null,,fk_user_payment_methods_user,idx_user_ID,tb_users.ID,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_user_payment_methods,Pendiente de confirmar,payment_method_type_ID,int unsigned,,10,0,NO,null,,fk_user_payment_methods_type,idx_payment_method_type_ID,tbc_payment_methods_types.ID,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_user_payment_methods,Pendiente de confirmar,provider,varchar(60),60,,,NO,null,,uk_provider_method,uk_provider_method UNIQUE,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_user_payment_methods,Pendiente de confirmar,provider_method_ref,varchar(255),255,,,NO,null,,uk_provider_method,uk_provider_method UNIQUE,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_user_payment_methods,Pendiente de confirmar,label,varchar(100),100,,,YES,null,,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_user_payment_methods,Pendiente de confirmar,last_four,char(4),4,,,YES,null,,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_user_payment_methods,Pendiente de confirmar,is_default,tinyint(1),,3,0,NO,"""0""",,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_user_payment_methods,Pendiente de confirmar,status,bit(1),,1,,NO,"""b'1'""",,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_user_payment_methods,Pendiente de confirmar,creation_date,datetime,,,,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
-bd_test,tbd_user_payment_methods,Pendiente de confirmar,last_update,datetime,,,,YES,null,on update CURRENT_TIMESTAMP,,,,0,,,Sin comentario de columna; descripción de negocio pendiente de confirmar
+﻿esquema,modulo,tabla,orden,columna,tipo,nullable,predeterminado,extra,claves,indices,referencias,generacion,comentario,longitud,precision,escala,charset,collation
+bd_test,Identidad,tb_users,1,ID,int,NO,null,auto_increment,PRIMARY,PRIMARY [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Identidad,tb_users,2,email,varchar(80),NO,null,,email,email [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,80,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Identidad,tb_users,3,nick,varchar(100),NO,null,,nickname,nickname [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,100,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Identidad,tb_users,4,password,varchar(255),NO,null,,,,,,Descripción de negocio pendiente de confirmar,255,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Identidad,tb_users,5,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Identidad,tb_users,6,last_update,datetime,YES,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED on update CURRENT_TIMESTAMP,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Identidad,tb_users,7,last_login,datetime,YES,null,,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Identidad,tb_users,8,status,bit(1),NO,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Identidad,tb_people,1,id,int,NO,null,auto_increment,PRIMARY,PRIMARY [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Identidad,tb_people,2,user_id,int,NO,null,,fk_people_user; uk_people_user,uk_people_user [1] UNIQUE,tb_users.ID [fk_people_user],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Identidad,tb_people,3,first_name,varchar(100),NO,null,,,,,,Descripción de negocio pendiente de confirmar,100,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Identidad,tb_people,4,last_name,varchar(100),NO,null,,,,,,Descripción de negocio pendiente de confirmar,100,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Identidad,tb_people,5,second_last_name,varchar(100),YES,null,,,,,,Descripción de negocio pendiente de confirmar,100,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Identidad,tb_people,6,birth_date,date,YES,null,,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Identidad,tb_people,7,gender,varchar(30),YES,null,,,,,,Descripción de negocio pendiente de confirmar,30,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Identidad,tb_people,8,phone,varchar(25),YES,null,,,,,,Descripción de negocio pendiente de confirmar,25,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Identidad,tb_people,9,nationality,varchar(80),YES,null,,,,,,Descripción de negocio pendiente de confirmar,80,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Identidad,tb_people,10,status,bit(1),NO,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Identidad,tb_people,11,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Identidad,tb_people,12,last_update,datetime,YES,null,on update CURRENT_TIMESTAMP,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Direcciones,tb_user_addresses,1,ID,bigint unsigned,NO,null,auto_increment,PRIMARY,PRIMARY [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,,20,0,,
+bd_test,Direcciones,tb_user_addresses,2,user_ID,int,NO,null,,fk_addresses_users,idx_user_addresses [1],tb_users.ID [fk_addresses_users],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Direcciones,tb_user_addresses,3,address_label,varchar(100),NO,null,,,,,,Descripción de negocio pendiente de confirmar,100,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Direcciones,tb_user_addresses,4,recipient_name,varchar(150),YES,null,,,,,,Descripción de negocio pendiente de confirmar,150,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Direcciones,tb_user_addresses,5,recipient_phone,varchar(25),YES,null,,,,,,Descripción de negocio pendiente de confirmar,25,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Direcciones,tb_user_addresses,6,delivery_instructions,varchar(500),YES,null,,,,,,Descripción de negocio pendiente de confirmar,500,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Direcciones,tb_user_addresses,7,latitude,"decimal(10,7)",YES,null,,,,,,Descripción de negocio pendiente de confirmar,,10,7,,
+bd_test,Direcciones,tb_user_addresses,8,longitude,"decimal(10,7)",YES,null,,,,,,Descripción de negocio pendiente de confirmar,,10,7,,
+bd_test,Direcciones,tb_user_addresses,9,is_default,tinyint(1),NO,"""0""",,,,,,Descripción de negocio pendiente de confirmar,,3,0,,
+bd_test,Direcciones,tb_user_addresses,10,status,bit(1),NO,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Direcciones,tb_user_addresses,11,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Direcciones,tb_user_addresses,12,last_update,datetime,YES,null,on update CURRENT_TIMESTAMP,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Direcciones,tbd_address_components,1,ID,bigint unsigned,NO,null,auto_increment,PRIMARY; uk_address_component,PRIMARY [1] UNIQUE; uk_address_component [2] UNIQUE,,,Descripción de negocio pendiente de confirmar,,20,0,,
+bd_test,Direcciones,tbd_address_components,2,address_ID,bigint unsigned,NO,null,,fk_component_address; fk_component_parent; uk_address_component,idx_address_parent [1]; uk_address_component [1] UNIQUE,tb_user_addresses.ID [fk_component_address]; tbd_address_components.address_ID [fk_component_parent],,Descripción de negocio pendiente de confirmar,,20,0,,
+bd_test,Direcciones,tbd_address_components,3,value,varchar(255),NO,null,,,,,,Descripción de negocio pendiente de confirmar,255,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Direcciones,tbd_address_components,4,component_type,varchar(50),NO,null,,,,,,Descripción de negocio pendiente de confirmar,50,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Direcciones,tbd_address_components,5,status,bit(1),NO,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Direcciones,tbd_address_components,6,address_sup_ID,bigint unsigned,YES,null,,fk_component_parent,idx_address_parent [2],tbd_address_components.ID [fk_component_parent],,Descripción de negocio pendiente de confirmar,,20,0,,
+bd_test,Direcciones,tbd_address_components,7,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Direcciones,tbd_address_components,8,last_update,datetime,YES,null,on update CURRENT_TIMESTAMP,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Pagos,tbc_payment_methods_types,1,ID,int unsigned,NO,null,auto_increment,PRIMARY,PRIMARY [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Pagos,tbc_payment_methods_types,2,code,varchar(30),NO,null,,code_UNIQUE,code_UNIQUE [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,30,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Pagos,tbc_payment_methods_types,3,description,text,NO,null,,,,,,Descripción de negocio pendiente de confirmar,65535,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Pagos,tbc_payment_methods_types,4,status,bit(1),NO,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Pagos,tbc_payment_methods_types,5,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Pagos,tbc_payment_methods_types,6,last_update,datetime,YES,null,on update CURRENT_TIMESTAMP,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Pagos,tbd_user_payment_methods,1,ID,bigint unsigned,NO,null,auto_increment,PRIMARY,PRIMARY [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,,20,0,,
+bd_test,Pagos,tbd_user_payment_methods,2,user_ID,int,NO,null,,fk_user_payment_methods_user,idx_user_ID [1],tb_users.ID [fk_user_payment_methods_user],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Pagos,tbd_user_payment_methods,3,payment_method_type_ID,int unsigned,NO,null,,fk_user_payment_methods_type,idx_payment_method_type_ID [1],tbc_payment_methods_types.ID [fk_user_payment_methods_type],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Pagos,tbd_user_payment_methods,4,provider,varchar(60),NO,null,,uk_provider_method,uk_provider_method [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,60,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Pagos,tbd_user_payment_methods,5,provider_method_ref,varchar(255),NO,null,,uk_provider_method,uk_provider_method [2] UNIQUE,,,Descripción de negocio pendiente de confirmar,255,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Pagos,tbd_user_payment_methods,6,label,varchar(100),YES,null,,,,,,Descripción de negocio pendiente de confirmar,100,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Pagos,tbd_user_payment_methods,7,last_four,char(4),YES,null,,,,,,Descripción de negocio pendiente de confirmar,4,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Pagos,tbd_user_payment_methods,8,is_default,tinyint(1),NO,"""0""",,,,,,Descripción de negocio pendiente de confirmar,,3,0,,
+bd_test,Pagos,tbd_user_payment_methods,9,status,bit(1),NO,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Pagos,tbd_user_payment_methods,10,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Pagos,tbd_user_payment_methods,11,last_update,datetime,YES,null,on update CURRENT_TIMESTAMP,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Catálogo,tb_products,1,ID,int unsigned,NO,null,auto_increment,PRIMARY,PRIMARY [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Catálogo,tb_products,2,SKU,varchar(50),NO,null,,SKU,SKU [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,50,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Catálogo,tb_products,3,name,varchar(250),NO,null,,,,,,Descripción de negocio pendiente de confirmar,250,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Catálogo,tb_products,4,description,text,YES,null,,,,,,Descripción de negocio pendiente de confirmar,65535,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Catálogo,tb_products,5,current_price,"decimal(10,2)",NO,"""0.00""",,,,,,Descripción de negocio pendiente de confirmar,,10,2,,
+bd_test,Catálogo,tb_products,6,current_stock,int unsigned,NO,"""0""",,,,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Catálogo,tb_products,7,status,bit(1),YES,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Catálogo,tb_products,8,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Catálogo,tb_products,9,last_update,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED on update CURRENT_TIMESTAMP,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Catálogo,tbc_categories,1,ID,int unsigned,NO,null,auto_increment,PRIMARY,PRIMARY [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Catálogo,tbc_categories,2,name,varchar(120),NO,null,,name,name [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,120,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Catálogo,tbc_categories,3,description,text,YES,null,,,,,,Descripción de negocio pendiente de confirmar,65535,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Catálogo,tbc_categories,4,sup_id_category,int unsigned,YES,null,,fk_superior_category,fk_superior_category [1],tbc_categories.ID [fk_superior_category],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Catálogo,tbc_categories,5,status,bit(1),NO,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Catálogo,tbc_categories,6,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Catálogo,tbc_categories,7,last_update,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED on update CURRENT_TIMESTAMP,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Catálogo,tbd_products_users_providers,1,user_ID,int,NO,null,,fk_user1; PRIMARY,PRIMARY [1] UNIQUE,tb_users.ID [fk_user1],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Catálogo,tbd_products_users_providers,2,product_ID,int unsigned,NO,null,,fk_products2; PRIMARY,fk_products2 [1]; PRIMARY [2] UNIQUE,tb_products.ID [fk_products2],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Catálogo,tbd_products_users_providers,3,type_ownership,"enum('Owner','Reseller','Distributor')",YES,null,,,,,,Descripción de negocio pendiente de confirmar,11,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Catálogo,tbd_products_users_providers,4,status,bit(1),NO,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Catálogo,tbd_products_users_providers,5,avalaible_date,datetime,NO,null,,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Catálogo,tbd_products_users_providers,6,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Catálogo,tbd_products_users_providers,7,last_update,datetime,NO,null,on update CURRENT_TIMESTAMP,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Catálogo,tbd_products_categories,1,category_ID,int unsigned,NO,null,,fk_category; PRIMARY,PRIMARY [1] UNIQUE,tbc_categories.ID [fk_category],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Catálogo,tbd_products_categories,2,product_ID,int unsigned,NO,null,,fk_product; PRIMARY,fk_product [1]; PRIMARY [2] UNIQUE,tb_products.ID [fk_product],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Catálogo,tbd_products_categories,3,status,bit(1),NO,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Catálogo,tbd_products_categories,4,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Catálogo,tbd_products_categories,5,last_update,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED on update CURRENT_TIMESTAMP,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Ventas,tb_carts,1,ID,int unsigned,NO,null,auto_increment,PRIMARY,PRIMARY [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tb_carts,2,user_ID,int,NO,null,,fk_carts_user,fk_carts_user [1],tb_users.ID [fk_carts_user],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tb_carts,3,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Ventas,tbd_cart_items,1,cart_ID,int unsigned,NO,null,,fk_cart_items_cart; PRIMARY,PRIMARY [1] UNIQUE,tb_carts.ID [fk_cart_items_cart],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tbd_cart_items,2,provider_ID,int,NO,null,,fk_cart_items_provider_product; PRIMARY,idx_cart_items_provider_product [1]; PRIMARY [2] UNIQUE,tbd_products_users_providers.user_ID [fk_cart_items_provider_product],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tbd_cart_items,3,product_ID,int unsigned,NO,null,,fk_cart_items_provider_product; PRIMARY,idx_cart_items_provider_product [2]; PRIMARY [3] UNIQUE,tbd_products_users_providers.product_ID [fk_cart_items_provider_product],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tbd_cart_items,4,quantity,int unsigned,NO,"""1""",,,,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tbd_cart_items,5,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Ventas,tb_buyer_orders,1,ID,int unsigned,NO,null,auto_increment,PRIMARY,PRIMARY [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tb_buyer_orders,2,seller_ID,int,NO,null,,tb_buyer_orders_ibfk_1,seller_ID [1],tb_users.ID [tb_buyer_orders_ibfk_1],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tb_buyer_orders,3,subtotal,"decimal(12,2)",NO,"""0.00""",,,,,,Descripción de negocio pendiente de confirmar,,12,2,,
+bd_test,Ventas,tb_buyer_orders,4,shipping_cost,"decimal(12,2)",NO,"""0.00""",,,,,,Descripción de negocio pendiente de confirmar,,12,2,,
+bd_test,Ventas,tb_buyer_orders,5,fulfillment_status,"enum('Pending','Accepted','Preparing','Sent','Delivered','Canceled','Returned')",NO,"""Pending""",,,,,,Descripción de negocio pendiente de confirmar,9,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Ventas,tb_buyer_orders,6,status,bit(1),NO,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Ventas,tb_buyer_orders,7,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Ventas,tb_buyer_orders,8,last_update,datetime,YES,null,on update CURRENT_TIMESTAMP,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Ventas,tbd_order_items,1,ID,int unsigned,NO,null,auto_increment,PRIMARY,PRIMARY [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tbd_order_items,2,seller_order_ID,int unsigned,NO,null,,tbd_order_items_ibfk_1,seller_order_ID [1],tb_buyer_orders.ID [tbd_order_items_ibfk_1],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tbd_order_items,3,product_ID,int unsigned,NO,null,,fk_order_provider_product,idx_order_provider_product [2]; product_ID [1],tbd_products_users_providers.product_ID [fk_order_provider_product],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tbd_order_items,4,provider_ID,int,NO,null,,fk_order_provider_product,idx_order_provider_product [1]; provider_ID [1],tbd_products_users_providers.user_ID [fk_order_provider_product],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tbd_order_items,5,product_name,varchar(255),NO,null,,,,,,Descripción de negocio pendiente de confirmar,255,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Ventas,tbd_order_items,6,quantity,int unsigned,NO,null,,,,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tbd_order_items,7,unit_price,"decimal(12,2)",NO,null,,,,,,Descripción de negocio pendiente de confirmar,,12,2,,
+bd_test,Ventas,tbd_order_items,8,subtotal,"decimal(12,2)",YES,null,STORED GENERATED,,,,(`quantity` * `unit_price`),Descripción de negocio pendiente de confirmar,,12,2,,
+bd_test,Ventas,tbd_order_items,9,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Ventas,tbd_users_wishlist_products,1,user_ID,int,NO,null,,fk_user2; PRIMARY,PRIMARY [1] UNIQUE,tb_users.ID [fk_user2],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tbd_users_wishlist_products,2,product_ID,int unsigned,NO,null,,fk_products3; PRIMARY,fk_products3 [1]; PRIMARY [2] UNIQUE,tb_products.ID [fk_products3],,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Ventas,tbd_users_wishlist_products,3,status,bit(1),NO,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Ventas,tbd_users_wishlist_products,4,creation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Ventas,tbd_users_wishlist_products,5,last_update,datetime,NO,null,on update CURRENT_TIMESTAMP,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Auditoría,tb_logs,1,ID,int,NO,null,auto_increment,PRIMARY,PRIMARY [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Auditoría,tb_logs,2,table_name,varchar(100),NO,null,,,ix_trace [1],,,Descripción de negocio pendiente de confirmar,100,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Auditoría,tb_logs,3,table_operation,"enum('Create','Read','Update','Delete')",NO,null,,,ix_trace [3],,,Descripción de negocio pendiente de confirmar,6,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Auditoría,tb_logs,4,db_user,varchar(80),NO,null,,,,,,Descripción de negocio pendiente de confirmar,80,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Auditoría,tb_logs,5,operation_description,text,NO,null,,,,,,Descripción de negocio pendiente de confirmar,65535,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Auditoría,tb_logs,6,operation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Auditoría,tb_logs,7,operation_status,bit(1),YES,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Auditoría,tb_logs,8,record_id,int unsigned,YES,null,,,ix_trace [2],,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Auditoría,tb_logs,9,record_key,varchar(100),YES,null,,,,,,Descripción de negocio pendiente de confirmar,100,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Auditoría,tb_logs,10,actor_roles,varchar(255),YES,null,,,,,,Descripción de negocio pendiente de confirmar,255,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Auditoría,tb_logs_productos,1,ID,int,NO,null,auto_increment,PRIMARY,PRIMARY [1] UNIQUE,,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Auditoría,tb_logs_productos,2,table_name,varchar(100),NO,null,,,ix_trace [1],,,Descripción de negocio pendiente de confirmar,100,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Auditoría,tb_logs_productos,3,table_operation,"enum('Create','Read','Update','Delete')",NO,null,,,ix_trace [3],,,Descripción de negocio pendiente de confirmar,6,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Auditoría,tb_logs_productos,4,db_user,varchar(80),NO,null,,,,,,Descripción de negocio pendiente de confirmar,80,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Auditoría,tb_logs_productos,5,operation_description,text,NO,null,,,,,,Descripción de negocio pendiente de confirmar,65535,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Auditoría,tb_logs_productos,6,operation_date,datetime,NO,"""CURRENT_TIMESTAMP""",DEFAULT_GENERATED,,,,,Descripción de negocio pendiente de confirmar,,,,,
+bd_test,Auditoría,tb_logs_productos,7,operation_status,bit(1),YES,"""b'1'""",,,,,,Descripción de negocio pendiente de confirmar,,1,,,
+bd_test,Auditoría,tb_logs_productos,8,record_id,int unsigned,YES,null,,,ix_trace [2],,,Descripción de negocio pendiente de confirmar,,10,0,,
+bd_test,Auditoría,tb_logs_productos,9,record_key,varchar(100),YES,null,,,,,,Descripción de negocio pendiente de confirmar,100,,,utf8mb4,utf8mb4_0900_ai_ci
+bd_test,Auditoría,tb_logs_productos,10,actor_roles,varchar(255),YES,null,,,,,,Descripción de negocio pendiente de confirmar,255,,,utf8mb4,utf8mb4_0900_ai_ci
