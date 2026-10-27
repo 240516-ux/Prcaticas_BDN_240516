@@ -1,0 +1,22 @@
+# Entregas: nunca publicar secretos ni respaldos privados.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+.pgpass
+.my.cnf
+.mylogin.cnf
+credentials*.json
+**/backups/
+**/respaldos/
+**/Respaldos/
+**/evidencias/originales/
+**/evidencias/privadas/
+**/docs/.revision/
+__pycache__/
+*.tmp
