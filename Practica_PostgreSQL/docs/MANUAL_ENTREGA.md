@@ -1,6 +1,6 @@
 # Manual de Bases de Datos en la Nube
 
-**Edición provisional para revisión. 26 de octubre de 2026.**
+**Edición provisional para revisión. 27 de octubre de 2026.**
 
 Universidad Tecnológica de Xicotepec de Juárez. Ingeniería en Tecnologías de la Información e Innovación Digital. Optativa I: Bases de Datos en la Nube. Examen práctico de la Unidad 1.
 
@@ -24,9 +24,11 @@ Histórico comprobado: una captura muestra un resultado en aquel momento, no el 
 
 Si ya tienes el proyecto desplegado, continúa por las lecturas y conserva los datos. Los pasos de instalación e inicialización corresponden solo a un entorno nuevo, propio y autorizado. No reimportes SQL completos sobre las bases existentes.
 
-Se revisaron 35 capturas del documento de instalación y 22 de caps.docx: 57 originales diferentes. Esta edición incorpora 33, incluidas 17 de caps.docx. Las otras 24 se excluyen por secretos, información ajena, repetición o resultados insuficientes. No equivalen a 24 capturas nuevas pendientes. El inventario explica cada decisión.
+Se revisaron 35 capturas del documento de instalación y 22 de caps.docx: 57 originales diferentes. Esta edición incorpora 39, incluidas 21 de caps.docx. Las otras 18 se excluyen por secretos, información ajena, repetición o resultados insuficientes. No equivalen a 18 capturas nuevas pendientes. El inventario explica cada decisión.
 
 ## 2. Conceptos y requisitos previos
+
+Una terminal es una ventana donde escribes instrucciones y lees su respuesta. PowerShell es la terminal usada en Windows; una sesión SSH muestra la terminal Linux del servidor remoto. Un privilegio autoriza una operación; una cuenta identifica a quien inicia sesión.
 
 Un VPS es un servidor virtual accesible por Internet. Debian es su sistema operativo. SSH abre una terminal remota autenticada. Docker ejecuta procesos aislados, llamados contenedores; una imagen es su plantilla. Compose describe varios servicios. Un volumen conserva datos fuera de la vida del contenedor. Un puerto dirige conexiones a un servicio.
 
@@ -141,6 +143,12 @@ ls -l docker-compose.yml sql/
 
 Resultado esperado: archivo Compose y SQL propios en el directorio autorizado. SCP puede sobrescribir archivos: no usarlo sobre un despliegue existente sin revisión. El administrador prepara el entorno privado por canal seguro. Falta captura de esta transferencia inicial; no se exige repetirla si la independencia del proyecto ya está demostrada por Compose y CAPS-01.
 
+En DOCX-25 el listado histórico muestra .env legible para otros según los bits de permiso. No se ve su contenido. En un VPS compartido es una observación de seguridad para el administrador: revisar acceso del archivo sin imprimirlo, no asumir confidencialidad por usar Docker. Aquí no se modificaron permisos.
+
+[FIG DOCX-25 | Archivos del proyecto y SQL colocados en el directorio propio del VPS. El listado acredita nombres y ubicación; no autoriza repetir el mv histórico ni demuestra permisos de todo el equipo.]
+
+
+
 ## 5. Git, Docker Engine y Compose en el VPS
 
 Objetivo: comprobar antes de instalar. Dónde: SSH autorizado.
@@ -179,6 +187,8 @@ Objetivo: saber qué se desplegaría. Dónde: VS Code, Practica_PostgreSQL. No a
 Windows utiliza el puerto externo. Dentro de Compose, pgAdmin conecta a postgres por 5432, no 40516. Ambos motores inicializan bd_test_alan con alan_admin; esto no prueba sus privilegios efectivos.
 
 [FIG DOCX-13 | Archivo Compose y validación silenciosa: imágenes, puertos y referencias a variables sin valores privados.]
+
+[FIG DOCX-16 | Continuación del archivo Compose: MySQL, pgAdmin y volúmenes declarados. La imagen original es parcial y su reloj queda cortado; sirve para leer configuración, no acredita por sí sola el indicador de captura completa.]
 
 ### 6.2 Variables y persistencia
 
@@ -296,7 +306,17 @@ SELECT current_database(), current_user;
 
 Espera bd_test_alan y tu cuenta efectiva. Si aparece otra base, selecciona la correcta antes de seguir. Continúa con el origen externo que exige la rúbrica.
 
-### 9.3 Cliente PostgreSQL externo
+### 9.3 Reconocer la identidad interna histórica
+
+Objetivo: comprobar que las consultas corresponden a bd_test_alan y distinguir identidad de origen de conexión. Las capturas siguientes ya existen: muestran consultas SELECT por docker exec desde SSH, primero PostgreSQL y después MySQL. current_database/DATABASE identifica la base y current_user/CURRENT_USER la cuenta efectiva; no demuestra que esa cuenta tenga todos los privilegios.
+
+[FIG CAPS-02 | PostgreSQL interno devuelve bd_test_alan y alan_admin. Resultado histórico de identidad, no prueba de cliente SQL externo.]
+
+[FIG CAPS-03 | MySQL interno devuelve bd_test_alan y alan_admin@%. El indicador externo sigue pendiente; no es necesario repetir esta consulta interna.]
+
+Siguiente paso: realizar la comprobación desde un cliente local cuando exista acceso autorizado; no copiar docker exec como sustituto del requisito externo.
+
+### 9.4 Cliente PostgreSQL externo
 
 La nota oficial exige consultas desde fuera de los contenedores, sin SSH/PuTTY para las pruebas. La web pgAdmin no acredita por sí sola todos los privilegios ni el origen externo del cliente SQL.
 
@@ -310,7 +330,7 @@ psql -h HOST_VPS -p 40516 -U alan_admin -d bd_test_alan -W
 3. Dentro de psql ejecuta SELECT current_database(), current_user; y el validador de permisos autorizado. -h es host, -p puerto, -U cuenta y -d base.
 4. Toma I04 con ventana completa y reloj, sin secretos. SQL mediante docker exec o SSH no sustituye esa evidencia pendiente.
 
-### 9.4 Cliente MySQL Workbench externo
+### 9.5 Cliente MySQL Workbench externo
 
 Procedimiento preparado, sin captura externa válida. Dónde: Windows. Requisitos: Workbench y acceso autorizado.
 
@@ -448,6 +468,10 @@ FROM tb_logs ORDER BY id DESC;
 
 id identifica el evento y record_id la entidad. Un DELETE puede referirse a una fila inexistente actualmente; no exijas INNER JOIN para reconstruirla.
 
+[FIG CAPS-10 | Consulta directa de public.tb_logs con siete INSERT históricos antes de los UPDATE. Permite contrastar tabla y vistas. El JSON se extiende horizontalmente: no demuestra que todo el detalle sea visible.]
+
+Para comparar sin alterar historial, filtra tb_logs por table_name igual que la vista y coteja id, operation y record_id. Una fila de log es un evento; no equivale a una cuenta de acceso ni a un usuario actual.
+
 ### 12.3 Verificar eventos PostgreSQL
 
 1. En Query Tool de bd_test_alan ejecuta:
@@ -500,13 +524,12 @@ PostgreSQL guarda NEW en INSERT/UPDATE y OLD en DELETE; no OLD y NEW juntos por 
 
 [FIG CAPS-20 | Log UPDATE del usuario afectado. ID del evento y record_id tienen funciones distintas.]
 
+[FIG CAPS-21 | Segundo UPDATE histórico del mismo producto: stock 12. Es una operación distinta de stock 11, relacionada con el evento siguiente; la fuente tiene menor resolución, pero consulta y resultado son legibles.]
+
 [FIG CAPS-22 | UPDATE a stock 11 y luego 12 son eventos distintos, no duplicados. El ID máximo no es COUNT(*).]
 
 
 
-### 12.6 MySQL pendiente
-
-SHOW TRIGGERS no mostró objetos, la confianza seguía OFF y los logs estaban vacíos. Las vistas se declaran en SQL, pero no se certifica instalación ni resultados. El capítulo 15 explica la continuación con el administrador sin eludir permisos ni repetir importación.
 
 ## 13. Ocho apartados y diez casos oficiales
 
@@ -632,7 +655,7 @@ Estado: bloqueado, sin nueva evidencia de solución. La aclaración docente de p
 
 ### 16.1 Revisar sin perder avances
 
-Objetivo: conservar archivos e índice. Dónde: PowerShell, raíz del repositorio. Rama: Manual_VPS_BDs_Relacionales. No se cambia ni se crean commits aquí.
+Objetivo: conservar archivos e índice. Dónde: PowerShell, raíz del repositorio. Rama local de trabajo: Manual_VPS_BDs_Relacionales. Se conserva su historial; no se cambia de rama. Los nuevos cambios documentales se guardan por separado sin incluir el índice ajeno.
 
 ```powershell
 git branch --show-current
@@ -646,11 +669,11 @@ Distingue cambios de trabajo e índice. No uses git add . ni descarte; no incluy
 ### 16.2 Preparar la entrega futura
 
 1. Revisa PDF, evidencias seguras, Compose sin valores resueltos y SQL.
-2. Completa portada y conclusiones. Confirma el nombre oficial Reporte_Unidad1_Matricula.pdf; se conserva por ahora el solicitado, sin copias redundantes.
+2. Completa portada y conclusiones. La rúbrica, página 7, pide Reporte_Unidad1_Matricula.pdf: la copia de entrega es Reporte_Unidad1_240516.pdf, idéntica al manual actualizado. El nombre Manual_Bases_Datos_Nube_FINAL.pdf se conserva para los enlaces existentes; la fuente editable única es MANUAL_ENTREGA.md.
 3. Autoriza selección exacta de archivos. Solo después se preparan rutas explícitas y se revisa el diff del índice antes de confirmar.
-4. Repositorio privado, commits y fusión son requisitos pendientes. No se realizó commit, push, merge ni reescritura de historial.
+4. Ya se publicaron dos ramas seguras: codex/entrega-practica03-segura termina en 579c439 y codex/entrega-manual-vps-segura en 10c3fe0. La segunda conserva en 3463afd el contenido exacto del original 9319fb8. Esto documenta avances reales y separados, no una fusión a main. La privacidad del repositorio y el nombre normal de una entrega segura siguen sin resolverse. En esta revisión no se hace push ni se reescribe historial.
 
-Falta I12 para privacidad/commits/fusión autorizada. La rama ya aparece en capturas: no repetir solo por eso.
+I12 conserva solo la evidencia faltante de privacidad y fusión autorizada: los commits ya existen y no hay que rehacerlos. La rama local de nombre normal hereda credenciales; no puede publicarse de forma segura por añadir .gitignore o por fusionar ramas seguras. Preservarla intacta y exigir simultáneamente historia limpia con el mismo nombre es incompatible sin autorizar una operación adicional sobre su nombre/referencia. Se mantiene local y no se fuerza esa decisión.
 
 ## 17. Conclusiones, limitaciones y referencias
 
@@ -679,4 +702,4 @@ No se cargaron productos, crearon tablas, cambiaron permisos, repitieron UPDATE 
 7. MySQL: https://dev.mysql.com/doc/refman/8.4/en/stored-programs-logging.html y https://dev.mysql.com/doc/refman/8.4/en/mysqldump.html.
 8. PostgreSQL: https://www.postgresql.org/docs/18/app-pgdump.html y https://www.postgresql.org/docs/18/app-pgrestore.html.
 
-Anexos existentes: CUMPLIMIENTO_RUBRICA.md/.csv contiene los 56 indicadores; CASOS_SIMULACION.md/.csv la matriz por actor/motor; RESPALDOS_PREPARACION.md los bloques completos; evidencias/INVENTARIO_GENERAL.csv las 57 imágenes. Las 31 copias técnicas están en evidencias/seguras/Evidencias_tecnicas_redactadas.pdf; las dos Docker seguras, en evidencias/seleccionadas. Las figuras se insertan junto a sus procedimientos, no solo en anexos.
+Anexos existentes: CUMPLIMIENTO_RUBRICA.md/.csv contiene los 56 indicadores; CASOS_SIMULACION.md/.csv la matriz por actor/motor; RESPALDOS_PREPARACION.md los bloques completos; evidencias/INVENTARIO_GENERAL.csv las 57 imágenes. Las 37 copias técnicas están en evidencias/seguras/Evidencias_tecnicas_redactadas.pdf; las dos Docker seguras, en evidencias/seleccionadas. Las figuras se insertan junto a sus procedimientos, no solo en anexos.

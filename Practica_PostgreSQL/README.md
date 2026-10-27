@@ -4,7 +4,7 @@ Manual individual de `Practica_PostgreSQL`, con PostgreSQL, MySQL y pgAdmin en u
 
 ## Documentos principales
 
-- [Manual PDF](docs/Manual_Bases_Datos_Nube_FINAL.pdf): 69 páginas, con 33 capturas junto a sus procedimientos (57 originales revisados; 24 excluidos con motivo).
+- [Manual PDF](docs/Manual_Bases_Datos_Nube_FINAL.pdf): 78 páginas, con 39 capturas junto a sus procedimientos (57 originales revisados; 18 excluidos con motivo).
 - [Cumplimiento por indicador](docs/CUMPLIMIENTO_RUBRICA.md), con [CSV](docs/CUMPLIMIENTO_RUBRICA.csv): requisito literal, estado, evidencia existente/faltante y acción.
 - [Pendientes priorizados](docs/PENDIENTES_ENTREGA.md), [fuente del manual](docs/MANUAL_ENTREGA.md) y [validación local](docs/VALIDACION_LOCAL.md).
 - [Evidencias seguras](evidencias/seguras/README.md), [inventario de caps.docx](evidencias/caps/README.md) y [fuentes](docs/FUENTES.md).
@@ -81,7 +81,7 @@ Solo se encontró el dump MySQL antiguo en la carpeta de respaldos del manual; n
 
 ## Revisión editorial para entrega
 
-El manual incorpora 33 capturas de 57 originales, organizadas junto a sus procedimientos. El inventario general identifica indicadores, alcance, protección y exclusiones; no se repitieron pruebas. La fuente docs/MANUAL_ENTREGA.md contiene un borrador editable de conclusiones con marcadores que el alumno debe confirmar personalmente. El indicador 52 sigue pendiente.
+El manual incorpora 39 capturas de 57 originales, organizadas junto a sus procedimientos. El inventario general identifica indicadores, alcance, protección y exclusiones; no se repitieron pruebas. La fuente docs/MANUAL_ENTREGA.md contiene un borrador editable de conclusiones con marcadores que el alumno debe confirmar personalmente. El indicador 52 sigue pendiente.
 
 Se revisaron coherencia, portada, índice y referencias; los datos personales faltantes y la lista exacta del administrador están en docs/PENDIENTES_ENTREGA.md. Las diferencias SQL/Compose se documentan en docs/REVISION_TECNICA.md sin modificar esos archivos. Los ocho apartados siguen pendientes como serie oficial; 9/10 y la relación exacta de E08 con la rúbrica requieren aclaración. No se ejecutaron SQL, cargas o respaldos.
 
@@ -93,4 +93,10 @@ El manual ahora sigue el recorrido Windows → VPS → Compose → despliegue �
 - [Inventario completo de 57 originales](evidencias/INVENTARIO_GENERAL.csv): procedimiento, capítulo, indicador, página del PDF, protección y exclusión.
 - [Fuente editable](docs/MANUAL_ENTREGA.md): personalizar portada y conclusiones. Las referencias FIG identifican imágenes del inventario.
 
-Se incorporan 16 imágenes del documento anterior y 17 de caps.docx. Las 24 excluidas no equivalen a 24 fotos que haya que repetir. Git/Docker/Compose en VPS ya tienen evidencia DOCX-11. No hubo acciones remotas, commit, push o merge.
+Se incorporan 18 imágenes del documento anterior y 21 de caps.docx. Las 18 excluidas no equivalen a 18 fotos que haya que repetir. Git/Docker/Compose en VPS ya tienen evidencia DOCX-11. Las ramas seguras ya publicadas se conservan. Esta revisión guarda cambios documentales locales, sin nuevo push ni merge a main.
+
+## Entrega local revisada (27/10/2026)
+
+La rúbrica p. 7 pide Reporte_Unidad1_Matricula.pdf. [Reporte_Unidad1_240516.pdf](docs/Reporte_Unidad1_240516.pdf) es la copia de entrega, idéntica al manual con nombre anterior para conservar enlaces. Fuente editable única: docs/MANUAL_ENTREGA.md. No se declara cumplimiento completo: MySQL 1419, pruebas y datos personales siguen pendientes.
+
+Las ramas seguras ya publicadas terminan en 579c439 y 10c3fe0. Esta revisión queda local. La rama Manual_VPS_BDs_Relacionales existe y hereda secretos: mantenerla intacta impide convertir su historia en segura con un commit adicional. No se cambia de rama, no se borra ni se fuerza publicación. Hay que autorizar expresamente cómo conservar su nombre histórico y asignar el nombre de entrega antes de publicar con ese nombre.

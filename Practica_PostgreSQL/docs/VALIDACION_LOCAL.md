@@ -121,3 +121,14 @@ Esta sección sustituye las cantidades de ediciones históricas anteriores; se c
 - Se cotejaron consultas con nombres reales de columnas de los scripts (vistas exponen id, no log_id). No se ejecutó SQL ni pruebas de datos. Respaldos: bloques completos reutilizados, no ejecutados.
 - Hash del índice Git, HEAD, rama y archivos protegidos de Prácticas 02/03, SQL y Compose conservados. .env ignorado, no seguido ni preparado; contenido no leído. git diff --check sin errores. Sin commit/push/merge, cambios de permisos o acciones VPS.
 - Falta contenido docente 9/10, confirmación Support/actores/carga y pruebas funcionales: ninguna se aprueba por tener solo instrucciones.
+
+
+## Entrega local revisada: 27/10/2026
+
+- Se reutilizó el manual anterior, sin operaciones VPS/SQL reales. 57 originales revisados; 39 incorporados y 18 excluidos individualmente. Se recuperaron DOCX-16/25 y CAPS-02/03/10/21. No se reabrieron valores de variables privadas.
+- PDF vigente: 78 páginas, 17 capítulos, 45 subtítulos en índice, 39 figuras con explicación e indicadores. Reabierto, todas las páginas renderizadas e inspeccionadas. Destinos del índice cotejados, nueve enlaces externos y ningún adjunto/página vacía inesperada/texto fuera de página. Se corrigió codificación de acentos en metadatos.
+- SHA-256 manual: `fabb46fb990d7b7d4137802a9e7c8da72e1a1c34ad85f24bf79ba662c4c0f77d`. Reporte_Unidad1_240516.pdf es copia idéntica conforme al nombre de la rúbrica; MANUAL_ENTREGA.md es su fuente única.
+- 37 recursos técnicos extraíbles comprobados: zonas protegidas sin píxeles originales recuperables. Las imágenes en el manual coinciden con sus copias seguras y los hashes de los 57 originales permanecen iguales. DOCX-16 es parcial y CAPS-21 de menor resolución; límites declarados, sin afirmar captura completa en ambos casos.
+- Matriz de 56 indicadores: 15 cumplidos documentales, 17 parciales, 23 pendientes y uno bloqueado. El indicador 55 ahora tiene commits reales verificados: 3463afd/10c3fe0, sin confundirlos con ejecución SQL, privacidad o fusión a main.
+- Historial original preservado: rama normal existente conserva secretos heredados y no se declara publicable. No se renombraron ramas ni se reescribió historia para forzar el nombre de entrega.
+- Prácticas 02/03, SQL y Compose conservan hashes registrados al inicio. No se ejecutaron ni modificaron. El índice ajeno a la selección se conserva al guardar documentación por rutas explícitas. No hubo push nuevo.

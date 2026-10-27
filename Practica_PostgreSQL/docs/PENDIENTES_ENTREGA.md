@@ -1,6 +1,6 @@
 # Pendientes de entrega
 
-Revisión documental 26/10/2026. No se ejecutaron operaciones remotas ni Git de escritura. La matriz completa conserva 56 indicadores: 14 cumplidos documentalmente, 17 parciales, 24 pendientes y 1 bloqueado; no es una calificación. El PDF es provisional.
+Revisión documental 26/10/2026. No se ejecutaron operaciones remotas ni Git de escritura. La matriz completa conserva 56 indicadores: 15 cumplidos documentalmente, 17 parciales, 23 pendientes y 1 bloqueado; no es una calificación. El PDF es provisional.
 
 ## 1. Confirmaciones del estudiante y docente
 
@@ -8,7 +8,7 @@ Revisión documental 26/10/2026. No se ejecutaron operaciones remotas ni Git de 
 - Personalizar conclusiones en MANUAL_ENTREGA.md (indicador 52).
 - Obtener enunciados 9/10 y correspondencia de los ocho apartados con los diez casos (38-47). No inventarlos ni dividir actividades.
 - Confirmar actores Root/sin rol, DELETE Support y alcance de E08/5000 productos. No ejecutar carga ni crear tablas adicionales sin definición oficial.
-- Confirmar nombre final del reporte conforme al formato docente; conservar por ahora el PDF solicitado.
+- Nombre de entrega aplicado según rúbrica p.7: Reporte_Unidad1_240516.pdf, idéntico al manual con nombre anterior.
 
 ## 2. Evidencia faltante sin repetir trabajo
 
@@ -32,8 +32,13 @@ CAPTURAS_PENDIENTES.md contiene 12 fichas indispensables, 3 de auditoría MySQL 
 
 ## 4. Cierre documental y Git
 
-El manual integra 33 imágenes de 57 originales; 24 excluidas con motivo no son 24 capturas pendientes. Las secuencias pgAdmin y trazabilidad ya están incorporadas y protegidas. Algunos JSON estaban truncados en origen: no se afirma detalle exhaustivo.
+El manual integra 39 imágenes de 57 originales; 18 excluidas con motivo no son 18 capturas pendientes. Las secuencias pgAdmin y trazabilidad ya están incorporadas y protegidas. Algunos JSON estaban truncados en origen: no se afirma detalle exhaustivo.
 
-48: completar campos de portada. 52: confirmar conclusiones personales. 53: completar solo etapas/casos sin evidencia. 54-56: comprobar privacidad, revisar archivos y autorizar commits/fusión en una tarea posterior. No se hizo commit, push ni merge; no se alteró el índice.
+48: completar campos de portada. 52: confirmar conclusiones personales. 53: completar solo etapas/casos sin evidencia. 54 y 56: comprobar privacidad y autorizar fusión después. 55: commits verificados; no volver a crearlos. Los commits 3463afd/10c3fe0 ya están publicados en rama segura; esta revisión no hace push ni merge a main.
 
 Siguiente acción: solicitar al docente casos 9/10 y política Support/actores, y al administrador resolución de auditoría MySQL. Mientras responde, completar portada y capturar conexiones externas/roles mediante lecturas autorizadas. Después actualizar matriz y PDF, sin dar la entrega por terminada anticipadamente.
+
+
+## Rama de nombre normal: limitación de seguridad
+
+Manual_VPS_BDs_Relacionales existe con 9319fb8 y ascendencia sensible. No se puede conservar intacta su referencia y convertir esa misma historia en limpia simultáneamente. Se conserva local, sin push ni reescritura. Autorizar por separado la preservación de su referencia bajo otro nombre y asignación del nombre de entrega a la historia segura, o aceptar el nombre seguro existente. Ninguna de esas operaciones se ejecuta automáticamente.
