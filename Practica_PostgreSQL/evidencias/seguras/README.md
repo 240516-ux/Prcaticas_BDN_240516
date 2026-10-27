@@ -1,5 +1,5 @@
-# Copias documentales protegidas
+# Evidencias técnicas protegidas
 
-Evidencias_tecnicas_redactadas.pdf contiene 31 capturas técnicas (14 del documento de instalación y 17 de caps.docx). Se suman dos Docker seguras en ../seleccionadas para las 33 figuras del manual.
+37 páginas de copias documentales: 16 DOCX y 21 CAPS. Más dos Docker seguras en ../seleccionadas, son las 39 figuras del manual. El índice CSV registra coordenadas eliminadas, hash original y páginas. No son pruebas ejecutadas en esta revisión.
 
-Redacción explícita de datos privados mediante eliminación de píxeles en el recurso de imagen PDF. Las zonas y hashes originales están en indice_redacciones.csv; las páginas del manual también. Los originales se conservan privadamente intactos y no se adjuntan al PDF. No son capturas nuevas ni pruebas ejecutadas en esta revisión.
+Se eliminaron píxeles sensibles de los recursos extraíbles del PDF. No se adjuntaron originales ni secretos. Los originales privados permanecen intactos. Los resultados técnicos no se alteraron para cambiar su significado.

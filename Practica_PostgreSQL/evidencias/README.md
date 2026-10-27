@@ -1,9 +1,9 @@
-# Evidencias de la guía
+# Evidencias del manual
 
-57 capturas originales diferentes: 35 del documento de instalación y 22 de caps.docx. 33 se incorporan en el manual de 69 páginas, dentro de sus capítulos; 24 se excluyen con motivo. No son 24 capturas pendientes.
+Revisión local 27/10/2026: 57 originales diferentes, 39 incorporados (18 DOCX + 21 CAPS) y 18 excluidos con motivo. Las seis recuperadas son DOCX-16/25 y CAPS-02/03/10/21: aportan configuración, colocación de archivos, identidad interna, lectura directa de logs y segundo UPDATE. No son pruebas nuevas.
 
-El inventario vigente es [INVENTARIO_GENERAL.csv](INVENTARIO_GENERAL.csv), con archivo original, procedimiento, capítulo, indicador, uso/página PDF, protección, legibilidad y motivo de exclusión. Los inventarios anteriores conservan identificación y procedencia.
+[INVENTARIO_GENERAL.csv](INVENTARIO_GENERAL.csv) relaciona las 57 fuentes con procedimiento, capítulo, indicador, uso y página, protección, legibilidad y exclusión. No pedir repetir una imagen que ya demuestra el resultado. Las excluidas no equivalen a capturas faltantes.
 
-Las 31 copias técnicas protegidas están en seguras/Evidencias_tecnicas_redactadas.pdf; sus coordenadas y SHA-256 originales constan en seguras/indice_redacciones.csv. Las dos Docker seguras permanecen en seleccionadas/. Los Word y originales privados no se publican. Las copias eliminan los píxeles sensibles de la imagen extraíble, no solo los cubren visualmente.
+El PDF tiene 78 páginas y 39 figuras dentro de sus capítulos, con título, explicación e indicadores. Las 37 técnicas están en seguras/Evidencias_tecnicas_redactadas.pdf y las dos Docker seguras en seleccionadas/. Sus recursos de imagen tienen eliminados los píxeles privados; originales preservados fuera de publicación. DOCX-16 es parcial en origen: se declara su límite.
 
-Capturas pendientes: ../docs/CAPTURAS_PENDIENTES.md. Los ejemplos no autorizan SQL ni operaciones remotas.
+Faltantes reales: ../docs/CAPTURAS_PENDIENTES.md. Respaldo SQL, .env, Word privados y originales sensibles no se publican.

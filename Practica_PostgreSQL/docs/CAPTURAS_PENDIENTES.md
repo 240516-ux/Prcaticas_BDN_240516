@@ -1,6 +1,6 @@
 # Capturas realmente pendientes
 
-Revisión de 57 originales: 33 incorporados y 24 excluidos. Estos últimos NO son 24 capturas que deban repetirse. Hay 17 fichas de seguimiento abajo: algunas requieren series por actor/motor, por lo que no se conoce aún el número final de archivos nuevos. Los casos 9/10 no tienen enunciado disponible. Ninguna ficha se marca obtenida sin archivo comprobado.
+Revisión de 57 originales: 39 incorporados y 18 excluidos. Estos últimos NO son 18 capturas que deban repetirse. Hay 17 fichas de seguimiento abajo: algunas requieren series por actor/motor, por lo que no se conoce aún el número final de archivos nuevos. Los casos 9/10 no tienen enunciado disponible. Ninguna ficha se marca obtenida sin archivo comprobado.
 
 Ya existen y no se piden de nuevo: Git/Docker/Compose en VPS (DOCX-11), servicios/puertos (CAPS-01), login y registro pgAdmin (CAPS-04/05/06/07), tablas/vistas PG (DOCX-32, CAPS-08/09), eventos de triggers PG (CAPS-11), trazabilidad INSERT/UPDATE (DOCX-33, CAPS-15/16/18/20/22), variable OFF y conteos MySQL (CAPS-13). La rama también aparece en capturas existentes.
 
@@ -21,7 +21,7 @@ Para toda captura nueva: pantalla completa, aplicación/consulta y resultado leg
 | I09 `I09_restricciones_MOTOR.png` | 30-31,36 | Definiciones de las tres tablas, claves/índices/restricciones cotejadas con lo visto en clase. No crear FK inventadas. | Clientes SQL externos | 10 | Falta definición docente suficiente para cotejo completo |
 | I10 `I10_E0N_ACTOR_MOTOR.png` | 38-47 | Serie de los ocho apartados oficiales: actor/base, SQL autorizado, resultado y log o denegación. Usar historial válido sin repetir escrituras. 9/10 solo después de recibir enunciados. | Clientes externos PG/MySQL | 13 | Docente, autorización de escrituras y desbloqueo MySQL para auditoría |
 | I11 `I11_respaldo_MOTOR.png` | Foto manuscrita; apoyo a entrega | Exportación terminada con código correcto, tamaño, fecha, SHA-256 e inventario compatible. Sin mostrar contenido del dump. Un índice de pg_restore no prueba restauración. | PowerShell Windows y directorio privado fuera de Git | 14 | Permisos de exportación; no hay dumps actuales comprobados |
-| I12 `I12_entrega_git.png` | 54-56 | Privacidad del repositorio, commits con entregables y fusión final autorizada. Rama ya documentada. | Git y GitHub del estudiante | 16 | Autorización futura: aquí no commit/push/merge |
+| I12 `I12_entrega_git.png` | 54-56 | Privacidad del repositorio y fusión final autorizada; commits 3463afd/10c3fe0 ya verificados, no rehacerlos. Rama ya documentada. | Git y GitHub del estudiante | 16 | Autorización futura para fusión; aquí no push ni merge a main |
 
 ## B. Cuando el administrador habilite la auditoría MySQL
 
@@ -45,3 +45,10 @@ Para toda captura nueva: pantalla completa, aplicación/consulta y resultado leg
 - Cuenta real de Root y del usuario sin rol; expectativa de DELETE Support frente a la política de Práctica 02.
 - Diseño/obligatoriedad de las tres tablas adicionales y restricciones de clase.
 - Nombre de archivo final del reporte; portada y conclusiones personales.
+
+
+## Revisión del 27/10/2026
+
+Se recuperaron DOCX-16/25 y CAPS-02/03/10/21. Ya no se piden identidad interna, colocación de archivos, lectura directa de logs ni segundo UPDATE: existen copias seguras. La identidad interna NO resuelve I04/I05 de clientes externos. La captura parcial DOCX-16 no sustituye pantalla completa.
+
+La existencia de commits está comprobada por Git (55 cumplido documentalmente). I12 se limita a la evidencia pendiente de privacidad y fusión. El nombre exacto de rama segura requiere resolver el conflicto con la rama original local que hereda secretos; no se publica ni se reescribe.
