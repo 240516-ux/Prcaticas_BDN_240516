@@ -1,0 +1,22 @@
+# Secretos locales; el ejemplo contiene solamente marcadores ficticios.
+.env
+.env.*
+!.env.example
+/respaldos/
+/evidencias/originales/
+/evidencias/privadas/
+/docs/.revision/
+__pycache__/
+*.tmp
+
+# Material de autenticación privado del proyecto.
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+.pgpass
+.my.cnf
+.mylogin.cnf
+credentials*.json
