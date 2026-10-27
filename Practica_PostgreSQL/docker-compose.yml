@@ -1,0 +1,44 @@
+
+services:
+  postgres:
+    image: postgres:18
+    container_name: alan-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bd_test_alan
+      POSTGRES_USER: alan_admin
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "40516:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+  mysql:
+    image: mysql:8.4
+    container_name: alan-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: bd_test_alan
+      MYSQL_USER: alan_admin
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "40517:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  pgadmin:
+    image: dpage/pgadmin4:9.17
+    container_name: alan-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+    ports:
+      - "40518:80"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+  mysql_data:
