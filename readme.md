@@ -1,26 +1,30 @@
-# Entrega del manual de Bases de Datos en la Nube - 240516
+# Bases de Datos en la Nube — 240516
 
-Rama de entrega: `Manual_VPS_BDs_Relacionales`. Esta historia reúne los avances seguros de Práctica 03 y del manual sin incluir los ancestros locales sensibles.
+Alan Cruz Baltazar · Grupo 7A.
 
-## Abrir la entrega
+## Manual y reporte
 
-- [Reporte con el nombre de la rúbrica](Practica_PostgreSQL/docs/Reporte_Unidad1_240516.pdf).
-- [Manual final local](Practica_PostgreSQL/docs/Manual_Bases_Datos_Nube_FINAL.pdf): 78 páginas, 17 capítulos y 39 capturas. Ambos PDF son idénticos.
-- [Fuente editable](Practica_PostgreSQL/docs/MANUAL_ENTREGA.md).
-- [README técnico del manual](Practica_PostgreSQL/README.md).
-- [Matriz de los 56 indicadores](Practica_PostgreSQL/docs/CUMPLIMIENTO_RUBRICA.md).
-- [Capturas realmente pendientes](Practica_PostgreSQL/docs/CAPTURAS_PENDIENTES.md).
-- [Inventario de los 57 originales](Practica_PostgreSQL/evidencias/INVENTARIO_GENERAL.csv).
-- [37 evidencias técnicas redactadas](Practica_PostgreSQL/evidencias/seguras/Evidencias_tecnicas_redactadas.pdf), más dos Docker seguras en evidencias/seleccionadas.
+La documentación de entrega se encuentra en `Practica_PostgreSQL/docs/`, que contiene únicamente archivos PDF:
 
-## Archivos técnicos y avances de Práctica 03
+- [Manual de Bases de Datos en la Nube](Practica_PostgreSQL/docs/Manual_Bases_Datos_Nube_FINAL.pdf): edición provisional de 78 páginas con 39 capturas integradas.
+- [Reporte de la Unidad 1](Practica_PostgreSQL/docs/Reporte_Unidad1_240516.pdf): mismo contenido del manual, con el nombre de entrega solicitado.
+- [Borrador anterior](Practica_PostgreSQL/docs/Manual_BDs_Nube_BORRADOR.pdf): versión histórica, no utilizar como entrega actual.
 
-El proyecto del manual conserva su Compose y SQL revisados en `Practica_PostgreSQL/`. Los avances seguros de Práctica 03 se conservan en commits propios, con migraciones y consultas en `Practica03/`, diccionario y diagramas en `docs/`.
+Las capturas incluidas en el manual permanecen dentro del PDF. La carpeta independiente de evidencias y los archivos auxiliares de documentación se retiraron del proyecto; sus originales y la versión Word se conservaron en un archivo privado fuera del repositorio.
 
-No se incluyen respaldos privados, .env, scripts con contraseñas ni evidencias originales sensibles. Los commits originales locales 338c15d y f6fe132 se conservan; esta entrega incorpora sus cambios documentales mediante commits nuevos para no arrastrar su historia sensible.
+## Archivos técnicos
 
-## Estado honesto de la entrega
+- [Docker Compose](Practica_PostgreSQL/docker-compose.yml): PostgreSQL 40516, MySQL 40517 y pgAdmin 40518.
+- [Scripts SQL del manual](Practica_PostgreSQL/sql/): revisar cada script antes de ejecutarlo; no reimportar scripts completos sobre bases existentes.
+- [Práctica 03](Practica03/): avances seguros de la práctica anterior.
+- [diccionario CSV](docs/diccionario_datos.csv), [diccionario Excel](docs/diccionario_datos.xlsx) y [diagrama](docs/diagramas/bd_test.html).
 
-La publicación de esta rama resuelve el acceso conjunto a los archivos seguros con el nombre solicitado. Las notas anteriores del PDF sobre el impedimento de publicar la rama local describen esa revisión histórica: la rama local original se conservó intacta y esta rama remota se construyó independientemente desde las dos entregas seguras.
+## Estado de la entrega
 
-No implica que todos los indicadores estén cumplidos: MySQL 1419, conexiones externas, permisos y casos oficiales completos, casos 9/10, alcance de los 5000 productos y DELETE de Support, respaldos actuales y datos pendientes de portada/conclusiones siguen sujetos a evidencia o confirmación. No se ejecutaron operaciones de VPS ni SQL para publicar estos archivos. La fusión a la rama predeterminada no se realizó.
+El nombre FINAL del PDF no implica cumplimiento completo. Siguen pendientes la resolución del error MySQL 1419, la comprobación de permisos y conexiones externas, las pruebas oficiales sin evidencia, la aclaración de los casos 9/10 y los respaldos actuales. La portada requiere equipo y fecha real de entrega; las conclusiones deben personalizarse.
+
+Algunas referencias impresas en el PDF corresponden a documentos auxiliares históricos que ya no se incluyen en esta estructura simplificada.
+
+## Seguridad
+
+No publicar `.env`, contraseñas, tokens, claves privadas ni respaldos sensibles. La rama local conserva historial sensible y no debe enviarse directamente al remoto. La entrega remota se publica desde una historia limpia, conservando los originales locales por separado.

@@ -1,3 +1,0 @@
-﻿id,fuente,archivo,sha256,alcance,revision_privacidad
-E-LOCAL-01,DOCX-04,seleccionadas/E_LOCAL_01_docker_instalado.png,7610268d4f56a8d2e508fe6d79622dd935cf2f6031294afc73a1e67b8420539f,Instalador Docker Desktop 4.96.3: Installation succeeded; reloj 25/10/2026 16:48. No acredita VPS ni PostgreSQL nativo.,Revisada visualmente; sin secretos ni rutas personales visibles; copia sin editar
-E-LOCAL-02,DOCX-05,seleccionadas/E_LOCAL_02_docker_interfaz.png,9322b6b2715e7ae62cb32a1e1e1893245650483f419284c388b50aedecc4c1c5,Docker Desktop abierto y Engine running; reloj 25/10/2026 16:50. No muestra contenedores desplegados.,Revisada visualmente; sin secretos ni rutas personales visibles; copia sin editar
