@@ -17,7 +17,7 @@ Las capturas incluidas en el manual permanecen dentro del PDF. La carpeta indepe
 - [Docker Compose](Practica_PostgreSQL/docker-compose.yml): PostgreSQL 40516, MySQL 40517 y pgAdmin 40518.
 - [Scripts SQL del manual](Practica_PostgreSQL/sql/): revisar cada script antes de ejecutarlo; no reimportar scripts completos sobre bases existentes.
 - [Práctica 03](Practica03/): avances seguros de la práctica anterior.
-- [diccionario CSV](docs/diccionario_datos.csv), [diccionario Excel](docs/diccionario_datos.xlsx) y [diagrama](docs/diagramas/bd_test.html).
+- [Diagrama del esquema](docs/diagramas/bd_test.html), con versiones [PNG](docs/diagramas/bd_test.png) y [SVG](docs/diagramas/bd_test.svg).
 
 ## Estado de la entrega
 
