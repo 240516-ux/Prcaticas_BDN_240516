@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diccionario de datos · bd_test | Alan Cruz Baltazar</title>
+<style>
+:root{color-scheme:dark;--bg:#090f1e;--card:#111b2e;--line:#2a3850;--ink:#f0f5ff;--muted:#b0bfd6;--accent:#65d9ea}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 0,#1b2544 0,transparent 46rem),var(--bg);color:var(--ink);font:15px/1.5 "Segoe UI",system-ui,sans-serif}
+a{color:var(--accent);text-underline-offset:.2em}header{background:#0c1425;border-bottom:1px solid var(--line)}.bar,main{max-width:1500px;margin:auto;padding:1rem clamp(.85rem,3vw,2.25rem)}.bar{display:flex;align-items:center;flex-wrap:wrap;gap:.65rem 1.15rem}.bar strong{margin-right:auto}.brand{display:inline-block;width:.6rem;height:.6rem;border-radius:50%;background:var(--accent);margin-right:.65rem}.hero{padding:1rem 0 .25rem}h1{font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.035em;line-height:1.08;margin:.15rem 0 .6rem}h2{font-size:1.15rem;margin:.15rem 0 .65rem}p{margin:.35rem 0;color:var(--muted)}.author{font-size:1.05rem;color:var(--ink);font-weight:600}.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:.65rem;margin:1rem 0 1.2rem}.kpi{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--accent);border-radius:.65rem;padding:.6rem .85rem}.kpi b{display:block;font-size:1.6rem}.kpi span,.meta{color:var(--muted)}
+.panel,.table-card,.constraints{background:var(--card);border:1px solid var(--line);border-radius:.7rem;padding:.85rem;margin:0 0 .65rem}.controls{display:flex;align-items:end;flex-wrap:wrap;gap:.65rem}.controls label{display:grid;gap:.25rem;color:var(--muted)}input,select,button{font:inherit;background:#0c1527;color:var(--ink);border:1px solid #455671;border-radius:.45rem;padding:.42rem .6rem}input{width:min(22rem,75vw)}button,summary{cursor:pointer}button:hover{background:#23324d}:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.inventory{margin-top:.65rem}.inventory ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:.3rem;list-style:none;padding:0}.inventory button{width:100%;text-align:left;overflow-wrap:anywhere}.table-card{border-left:4px solid var(--module);padding:0}.table-card summary{padding:.65rem .85rem}.table-card summary code{color:var(--module);font-weight:700}.table-card summary span{margin-left:.65rem;color:var(--muted)}.table-card[open] summary{border-bottom:1px solid var(--line)}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;text-align:left;font-size:.88rem}th,td{padding:.48rem .6rem;vertical-align:top;border-bottom:1px solid var(--line)}th{background:#1a2740;white-space:nowrap}tbody tr:nth-child(even){background:#152037}tbody tr:hover{background:#22324d}code{font-family:Consolas,monospace;overflow-wrap:anywhere}td:first-child{white-space:nowrap}td:nth-child(2){min-width:12rem;max-width:28rem}td:nth-child(7){min-width:10rem}td:last-child{min-width:12rem}.key{color:#ffd08a;font-weight:700}.muted{color:var(--muted)}pre{overflow:auto;max-height:22rem;padding:.75rem;background:#0c1527;border-radius:.45rem}footer{padding:1rem 0;color:var(--muted)}[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header><nav class="bar" aria-label="Documentación de Práctica 03"><strong><span class="brand"></span>bd_test · Práctica 03</strong><a href="index.html">Visor del esquema</a><a href="diagramas/modelo_validado.html">MERE Archify</a><a href="diccionario_datos.csv" download>Descargar CSV</a></nav></header>
+<main>
+<section class="hero"><h1>Diccionario de datos</h1><p class="author">Alan Cruz Baltazar</p><p>__SOURCE__</p><div class="kpis" aria-label="Totales del esquema">__TOTALS__</div></section>
+<section class="panel" aria-labelledby="explore"><h2 id="explore">Explorar tablas y columnas</h2>
+<div class="controls"><label>Buscar <input id="search" type="search" placeholder="Nombre, columna, tipo o referencia"></label>
+<label>Módulo <select id="module"><option value="">Todos</option>__MODULES__</select></label>
+<button type="button" id="expand">Expandir visibles</button><button type="button" id="clear">Restablecer</button></div>
+<p id="visible" role="status"></p>
+<details class="inventory"><summary>Columnas por tabla</summary><ul>__INVENTORY__</ul></details>
+</section>
+<div id="tables">__TABLES__</div>
+<section aria-labelledby="restrictions"><h2 id="restrictions">Índices y restricciones</h2>__CONSTRAINTS__</section>
+<footer>Alan Cruz Baltazar · Práctica 03 · Metadatos de bd_test</footer>
+</main>
+<script>
+const search = document.getElementById('search');
+const moduleSelect = document.getElementById('module');
+const tables = Array.from(document.querySelectorAll('.table-card'));
+const entries = tables.map(table => ({
+  table, rows: Array.from(table.querySelectorAll('tbody tr'), row => ({
+    row, text: row.textContent.toLowerCase()
+  }))
+}));
+function filter() {
+  const term = search.value.trim().toLowerCase();
+  let visibleTables = 0, visibleColumns = 0;
+  for (const {table, rows} of entries) {
+    const inModule = !moduleSelect.value || table.dataset.module === moduleSelect.value;
+    const matchesTable = table.id.toLowerCase().includes(term);
+    let count = 0;
+    for (const {row, text} of rows) {
+      row.hidden = !(inModule && (matchesTable || text.includes(term)));
+      if (!row.hidden) count++;
+    }
+    table.hidden = !count;
+    if (count) visibleTables++;
+    visibleColumns += count;
+    if (term && count) table.open = true;
+  }
+  document.getElementById('visible').textContent =
+    visibleTables + ' de ' + tables.length + ' tablas · ' + visibleColumns +
+    ' de ' + entries.reduce((n, entry) => n + entry.rows.length, 0) + ' columnas';
+}
+search.addEventListener('input', filter);
+moduleSelect.addEventListener('change', filter);
+document.getElementById('expand').onclick = () => {
+  const shown = tables.filter(table => !table.hidden);
+  const expand = shown.some(table => !table.open);
+  shown.forEach(table => { table.open = expand; });
+  document.getElementById('expand').textContent = expand ? 'Plegar visibles' : 'Expandir visibles';
+};
+function reset() {
+  search.value = '';
+  moduleSelect.value = '';
+  tables.forEach((table, index) => { table.open = index === 0; });
+  document.getElementById('expand').textContent = 'Expandir visibles';
+  filter();
+}
+document.getElementById('clear').onclick = reset;
+for (const button of document.querySelectorAll('[data-table]')) {
+  button.onclick = () => {
+    reset();
+    const table = document.getElementById(button.dataset.table);
+    table.open = true;
+    table.scrollIntoView({block: 'start'});
+    table.querySelector('summary').focus({preventScroll: true});
+  };
+}
+filter();
+</script>
+</body>
+</html>

@@ -8,6 +8,64 @@ from collections import Counter
 from pathlib import Path
 
 
+def render_dictionary(metadata, entities, rows, fk_count, view_count):
+    def esc(value):
+        return html.escape('NULL' if value is None else str(value))
+
+    labels = {'Catalogo': 'Catálogo', 'Auditoria': 'Auditoría'}
+    colors = ['#b6a2ff', '#65d9ea', '#8dddac', '#ffc374', '#ffa9ce', '#f1d48a', '#a0b7da']
+    tags = list(dict.fromkeys(entity['tag'] for entity in entities))
+    accents = dict(zip(tags, colors))
+    by_table = {}
+    for row in rows:
+        by_table.setdefault(row[1], []).append(row)
+    totals = [('Tablas', len(entities)), ('Columnas', len(rows)), ('Claves foráneas', fk_count)]
+    if 'triggers' in metadata:
+        totals += [('Vistas', view_count), ('Triggers', len(metadata['triggers']))]
+    inventory, sections = [], []
+    headings = ['Columna', 'Tipo SQL', 'Admite nulos', 'Predeterminado',
+                'Clave', 'Extra', 'Referencias', 'Descripción']
+    header = ''.join(f'<th scope="col">{label}</th>' for label in headings)
+    for i, entity in enumerate(entities):
+        name, tag = entity['id'], entity['tag']
+        table_rows = by_table[name]
+        inventory.append(f'<li><button type="button" data-table="{esc(name)}">{esc(name)} · {len(table_rows)}</button></li>')
+        body = []
+        for row in table_rows:
+            cells = []
+            for index, value in enumerate(row[2:]):
+                content = '—' if value == '' else esc(value)
+                if index in (0, 1, 3, 5, 6):
+                    content = f'<code>{content}</code>'
+                css = ' class="key"' if index == 4 and value else ''
+                cells.append(f'<td{css}>{content}</td>')
+            body.append('<tr>' + ''.join(cells) + '</tr>')
+        opened = ' open' if i == 0 else ''
+        sections.append(
+            f'<details class="table-card" id="{esc(name)}" data-module="{esc(tag)}" '
+            f'style="--module:{accents[tag]}"{opened}>'
+            f'<summary><code>{esc(name)}</code><span>{esc(labels.get(tag, tag))} · {len(table_rows)} columnas</span></summary>'
+            f'<div class="scroll"><table aria-label="Columnas de {esc(name)}"><thead><tr>{header}</tr></thead>'
+            f'<tbody>{"".join(body)}</tbody></table></div></details>'
+        )
+    constraints = ''.join(
+        f'<details class="constraints"><summary>{label}</summary>'
+        f'<pre><code>{esc(json.dumps(metadata[key], ensure_ascii=False, indent=2))}</code></pre></details>'
+        for key, label in [('indexes', 'Índices'), ('foreign_keys', 'Claves foráneas'),
+                           ('checks', 'Restricciones CHECK')]
+    )
+    replacements = {
+        '__SOURCE__': esc(f"{metadata['entorno']} · MySQL {metadata['version']} · Exportación del {metadata['fecha']}"),
+        '__TOTALS__': ''.join(f'<div class="kpi"><b>{value}</b><span>{label}</span></div>' for label, value in totals),
+        '__MODULES__': ''.join(f'<option value="{esc(tag)}">{esc(labels.get(tag, tag))}</option>' for tag in tags),
+        '__INVENTORY__': ''.join(inventory),
+        '__TABLES__': '\n'.join(sections),
+        '__CONSTRAINTS__': constraints,
+    }
+    template = Path(__file__).with_name('diccionario_bd_test.html').read_text(encoding='utf-8')
+    return re.sub(r'__[A-Z]+__', lambda match: replacements[match.group()], template)
+
+
 def render_atlas(metadata, entities, rows, grouped, views):
     fields = {}
     for _, table, column, sql_type, nullable, default, key, _, references, _ in rows:
@@ -90,25 +148,6 @@ def generate(metadata_path):
     header = ['esquema', 'tabla', 'columna', 'tipo', 'admite_null', 'predeterminado', 'clave', 'extra', 'referencias', 'descripcion']
     with (out / 'diccionario_datos.csv').open('w', encoding='utf-8-sig', newline='') as stream:
         writer = csv.writer(stream); writer.writerow(header); writer.writerows(rows)
-    esc = lambda value: html.escape('NULL' if value is None else str(value))
-    style = '<style>body{font:16px system-ui;margin:2rem;color:#183047}table{border-collapse:collapse;width:100%;margin:1rem 0}th,td{padding:.5rem;border:1px solid #ccd7df;text-align:left;overflow-wrap:anywhere}th{background:#eaf1f7}code{white-space:pre-wrap}input{padding:.6rem;width:min(90%,35rem)}.notice{padding:1rem;background:#fff4ce}details{margin:1rem 0}</style>'
-    body = ['<!doctype html><html lang="es"><meta charset="utf-8"><title>Diccionario bd_test</title>', style,
-            '<h1>Diccionario de datos: bd_test</h1>',
-            '<p class="notice">Origen: ' + esc(d['entorno']) + '. Validado el ' + esc(d['fecha']) +
-            '. ' + esc(totals) + '.</p>',
-            '<p><a href="index.html">Entrega</a> Â· <a href="diagramas/modelo_validado.html">MERE Archify</a> Â· <a href="diccionario_datos.csv">CSV</a></p>',
-            '<input id="f" placeholder="Filtrar por tabla o columna" aria-label="Filtro"><table id="dic"><thead><tr>' + ''.join('<th>'+esc(x)+'</th>' for x in header) + '</tr></thead><tbody>']
-    columns_per_table = Counter(c['TABLE_NAME'] for c in columns)
-    body.insert(-1, '<details><summary>Columnas por tabla</summary><ul>' + ''.join(
-        f'<li>{esc(table)}: {count}</li>' for table, count in sorted(columns_per_table.items())
-    ) + '</ul></details>')
-    body += ['<tr>' + ''.join('<td>'+esc(x)+'</td>' for x in row) + '</tr>' for row in rows]
-    body += ['</tbody></table>']
-    for key,title in [('indexes','Indices'),('foreign_keys','Claves foraneas'),('checks','Restricciones CHECK')]:
-        entries=d[key]
-        body += ['<details open><summary>'+title+'</summary><pre><code>'+esc(json.dumps(entries,ensure_ascii=False,indent=2))+'</code></pre></details>']
-    body += ["<script>document.querySelector('#f').addEventListener('input',e=>{for(const r of document.querySelectorAll('#dic tbody tr'))r.hidden=!r.textContent.toLowerCase().includes(e.target.value.toLowerCase())})</script></html>"]
-    (out/'diccionario_datos.html').write_text('\n'.join(body),encoding='utf-8')
     domains={
         'Identidad': ['tb_users','tb_people','tb_user_addresses','tbd_address_components'],
         'Catalogo': ['tb_products','tbc_categories','tbd_products_categories','tbd_products_users_providers','tbd_users_wishlist_products'],
@@ -181,6 +220,9 @@ def generate(metadata_path):
                                       *self_refs]}]}
     diagrams=out/'diagramas';diagrams.mkdir(exist_ok=True)
     (diagrams/'modelo_validado.erd.json').write_text(json.dumps(candidate,ensure_ascii=False,indent=2),encoding='utf-8')
+    (out / 'diccionario_datos.html').write_text(
+        render_dictionary(d, entities, rows, len(grouped), views), encoding='utf-8'
+    )
     (out / 'index.html').write_text(render_atlas(d, entities, rows, grouped, views), encoding='utf-8')
     print('Diccionario exportado:',len(rows),'columnas; Archify:',len(entities),'recuadros,',len(relationships),'relaciones.')
 
