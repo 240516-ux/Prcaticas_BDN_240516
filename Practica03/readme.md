@@ -31,3 +31,7 @@ El [índice de la práctica](docs/index.html) enlaza el diccionario y el MERE pa
 ## Siguiente paso en el VPS
 
 José Luis queda como segundo vendedor. Su conexión con el rol seller está comprobada. Bryan debe incorporar su perfil en tb_users con el correo autorizado por José Luis. Los 2,000 productos históricos del lote SELLER2 conservan a su autor original.
+
+## Validar en el VPS
+
+Abre [validacion_vps.sql](queries/validacion_vps.sql) en Workbench, conectado a bd_test del VPS. El script consulta estructura, lotes, perfiles, auditoría y evento. Al final genera consultas SELECT para revisar claves foráneas, incluidas las compuestas. Ejecuta esas consultas y registra los resultados. El diccionario HTML se abre directamente en el navegador.
