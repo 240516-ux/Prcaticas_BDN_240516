@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>bd_test · Modelo de datos | Práctica 03</title>
+<style>
+:root{color-scheme:light;--ink:#182638;--muted:#516176;--line:#d5dee8;--paper:#f2f5f9}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 "Segoe UI",system-ui,sans-serif}button,input,select{font:inherit}button,input,select{border:1px solid var(--line);border-radius:6px;background:white;color:var(--ink);padding:.42rem .65rem}button{cursor:pointer}button:hover{background:#e9eff7}a{color:#15547a}header{background:#14243b;color:#fff}header>div,main{max-width:1380px;margin:auto;padding:1rem 1.4rem}header>div{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}header a{color:#e0efff}header strong{margin-right:auto;font-size:1.15rem}h1,h2,h3,p{margin:.35rem 0 .75rem}h1{font-size:clamp(1.85rem,4vw,2.75rem)}h2{font-size:1.25rem}small,.muted{color:var(--muted)}.kpis{display:flex;gap:.65rem;flex-wrap:wrap;margin:1rem 0}.kpi{background:white;border:1px solid var(--line);border-radius:8px;padding:.65rem .9rem;min-width:106px}.kpi b{display:block;font-size:1.55rem}.panel{background:white;border:1px solid var(--line);border-radius:10px;margin:1rem 0;padding:1rem}.toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem}.toolbar label{display:flex;align-items:center;gap:.3rem}.toolbar input{width:min(230px,60vw)}.viewport{height:540px;overflow:auto;border:1px solid var(--line);margin:.75rem 0;background-color:#f8fafc;background-image:radial-gradient(#c9d5e1 1px,transparent 1px);background-size:18px 18px}.scrollbox,.canvas{position:relative}.canvas{transform-origin:top left}.canvas svg{position:absolute;inset:0;pointer-events:none;overflow:visible}.edge{fill:none;stroke:#93a3b5;stroke-width:1.5}.edge.active{stroke:#194e75;stroke-width:3}.node{position:absolute;width:238px;text-align:left;padding:.6rem .55rem;border:1px solid #b8c7d8;border-left:5px solid var(--module);box-shadow:0 2px 4px #1c32421a;touch-action:none;user-select:none;cursor:grab}.node b{display:block;font-size:.82rem;overflow-wrap:anywhere}.node.active,.node[aria-pressed=true]{outline:2px solid var(--module);background:#eef4fa}.node.dim,.edge.dim{opacity:.18}.module-tag{display:inline-block;border-left:4px solid var(--module);padding:0 .45rem;margin:.25rem .4rem .25rem 0}.detail-scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}th{background:#edf2f7}code{font-family:Consolas,monospace;overflow-wrap:anywhere}pre{overflow:auto;max-height:420px;background:#14243b;color:white;padding:1rem;border-radius:6px}summary{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #226c9c;outline-offset:2px}
+</style>
+<header><div><strong>bd_test · Práctica 03</strong><a href="diccionario_datos.html">Diccionario completo</a><a href="diagramas/modelo_validado.html">MERE Archify</a><a href="diccionario_datos.csv">CSV</a></div></header>
+<main>
+  <h1>Modelo de datos del VPS</h1>
+  <p class="muted" id="source"></p>
+  <div class="kpis" id="totals"></div>
+  <section class="panel" aria-labelledby="graph-title">
+    <h2 id="graph-title">Esquema relacional</h2>
+    <div id="modules"></div>
+    <div class="toolbar">
+      <label>Tabla <input id="search" type="search" placeholder="Buscar por nombre"></label>
+      <label>Módulo <select id="module"><option value="">Todos</option></select></label>
+      <button id="out" aria-label="Alejar">−</button><output id="zoom">85 %</output><button id="in" aria-label="Acercar">+</button>
+      <button id="fit">Ajustar</button><button id="copy">Copiar Mermaid</button><span id="feedback" role="status"></span>
+    </div>
+    <p class="muted">Selecciona una tabla para ver sus columnas. Puedes moverla, usar la rueda para acercar o recorrer el lienzo con las barras de desplazamiento.</p>
+    <div class="viewport" id="viewport"><div class="scrollbox" id="scrollbox"><div class="canvas" id="canvas">
+      <svg id="edges" aria-hidden="true"></svg>
+    </div></div></div>
+    <p class="muted" id="visible" role="status"></p>
+    <details id="mermaid"><summary>Ver el código fuente del diagrama</summary><pre><code id="code"></code></pre></details>
+  </section>
+  <section class="panel" aria-labelledby="detail-title">
+    <h2 id="detail-title">Detalle de las tablas</h2><h3 id="table-title"></h3>
+    <div class="detail-scroll"><table><thead><tr><th>Columna</th><th>Tipo SQL</th><th>Nulos</th><th>Predeterminado</th><th>Clave</th><th>Referencias</th></tr></thead><tbody id="fields"></tbody></table></div>
+  </section>
+</main>
+<script type="application/json" id="snapshot">__ATLAS_DATA__</script>
+<script>
+const $ = id => document.getElementById(id);
+const data = JSON.parse($('snapshot').textContent);
+const palette = ['#625587','#226a83','#46735e','#92602f','#845769','#6e6341','#485e76'];
+const modules = [...new Set(data.tables.map(t => t.tag))];
+const nodes = new Map(), edges = [];
+const svg = 'http://www.w3.org/2000/svg';
+let zoom = .85, selected = '', hovered = '', width = 0, height = 0;
+const make = (tag, value, parent) => {
+  const e = document.createElement(tag);
+  e.textContent = value;
+  parent.append(e);
+  return e;
+};
+$('source').textContent = data.source;
+for (const [label, value] of Object.entries(data.totals)) {
+  const card = make('div', '', $('totals'));
+  card.className = 'kpi';
+  make('b', value, card);
+  make('span', label, card);
+}
+modules.forEach((tag, column) => {
+  const tables = data.tables.filter(t => t.tag === tag);
+  const color = palette[column % palette.length];
+  const tagLabel = make('span', tag + ' · ' + tables.length, $('modules'));
+  tagLabel.className = 'module-tag';
+  tagLabel.style.setProperty('--module', color);
+  make('option', tag, $('module')).value = tag;
+  tables.forEach((table, row) => {
+    const button = make('button', '', $('canvas'));
+    button.className = 'node';
+    button.style.setProperty('--module', color);
+    make('b', table.id, button);
+    make('small', table.tag + ' · ' + table.fields.length + ' columnas', button);
+    const node = {table, button, x: 24 + 305 * column, y: 26 + 105 * row};
+    nodes.set(table.id, node);
+    button.addEventListener('pointerenter', () => { hovered = table.id; highlight(); });
+    button.addEventListener('pointerleave', () => { hovered = ''; highlight(); });
+    button.addEventListener('click', () => {
+      if (!node.dragged) select(table.id);
+      node.dragged = false;
+    });
+    button.addEventListener('pointerdown', event => {
+      if (event.button !== 0) return;
+      node.dragged = false;
+      node.start = {x: event.clientX, y: event.clientY, left: node.x, top: node.y};
+      button.setPointerCapture(event.pointerId);
+    });
+    button.addEventListener('pointermove', event => {
+      if (!node.start) return;
+      const dx = event.clientX - node.start.x, dy = event.clientY - node.start.y;
+      if (!node.dragged && Math.hypot(dx,dy) < 4) return;
+      node.dragged = true;
+      node.x = Math.max(8, node.start.left + dx / zoom);
+      node.y = Math.max(8, node.start.top + dy / zoom);
+      draw();
+    });
+    for (const name of ['pointerup','pointercancel','lostpointercapture']) {
+      button.addEventListener(name, () => { node.start = null; });
+    }
+  });
+});
+for (const rel of data.relationships) {
+  const path = document.createElementNS(svg, 'path');
+  path.setAttribute('class', 'edge');
+  $('edges').append(path);
+  edges.push({...rel,path});
+}
+function draw() {
+  width = Math.max(350, ...Array.from(nodes.values(), n => n.x + 295));
+  height = Math.max(380, ...Array.from(nodes.values(), n => n.y + 105));
+  Object.assign($('canvas').style, {width: width+'px',height: height+'px',transform:'scale('+zoom+')'});
+  Object.assign($('scrollbox').style, {width: width*zoom+'px',height: height*zoom+'px',overflow:'hidden'});
+  $('edges').setAttribute('width', width);
+  $('edges').setAttribute('height', height);
+  for (const {button,x,y} of nodes.values()) Object.assign(button.style,{left:x+'px',top:y+'px'});
+  for (const {from,to,path} of edges) {
+    const a = nodes.get(from), b = nodes.get(to);
+    const ay=a.y+28, by=b.y+28;
+    if (a===b) {
+      path.setAttribute('d', 'M '+(a.x+238)+' '+ay+' c 45 -40 45 40 0 14');
+      continue;
+    }
+    const right = b.x >= a.x;
+    const ax=a.x+(right?238:0), bx=b.x+(right?0:238);
+    const offset = right ? 38 : -38;
+    path.setAttribute('d', 'M '+ax+' '+ay+' C '+(ax+offset)+' '+ay+' '+(bx-offset)+' '+by+' '+bx+' '+by);
+  }
+  $('zoom').textContent = Math.round(zoom*100)+' %';
+}
+function highlight() {
+  const active = hovered || selected;
+  const related = new Set([active]);
+  for (const e of edges) {
+    const match = active && (e.from===active || e.to===active);
+    if (match) { related.add(e.from); related.add(e.to); }
+    e.path.classList.toggle('active', Boolean(match));
+    e.path.classList.toggle('dim', Boolean(hovered && !match));
+  }
+  for (const [id,n] of nodes) {
+    n.button.classList.toggle('active', Boolean(hovered && related.has(id)));
+    n.button.classList.toggle('dim', Boolean(hovered && !related.has(id)));
+    n.button.setAttribute('aria-pressed', id===selected);
+  }
+}
+function select(id) {
+  selected=id;
+  const {table}=nodes.get(id);
+  $('table-title').textContent=id+' · '+table.fields.length+' columnas';
+  $('fields').replaceChildren();
+  for (const field of table.fields) {
+    const tr=make('tr','',$('fields'));
+    for (const value of field) make('td',value ?? 'NULL',tr);
+  }
+  highlight();
+}
+function filter() {
+  const term = $('search').value.trim().toLowerCase(), tag=$('module').value;
+  let count=0;
+  for (const [id,n] of nodes) {
+    n.button.hidden=!(id.toLowerCase().includes(term) && (!tag || n.table.tag===tag));
+    if (!n.button.hidden) count++;
+  }
+  for (const e of edges) e.path.style.display=nodes.get(e.from).button.hidden || nodes.get(e.to).button.hidden ? 'none' : '';
+  $('visible').textContent=count+' de '+nodes.size+' tablas visibles';
+  const first = Array.from(nodes.values()).find(n => !n.button.hidden);
+  if (first && (term || tag)) {
+    $('viewport').scrollLeft = Math.max(0,first.x*zoom-20);
+    $('viewport').scrollTop = Math.max(0,first.y*zoom-20);
+  }
+}
+function scale(value) { zoom = Math.max(.22,Math.min(1.7,value)); draw(); }
+$('out').onclick=()=>scale(zoom-.1);
+$('in').onclick=()=>scale(zoom+.1);
+$('fit').onclick=()=>{ scale(Math.min(1,$('viewport').clientWidth/width,$('viewport').clientHeight/height)); $('viewport').scrollTo(0,0); };
+$('viewport').addEventListener('wheel',event=>{
+  if (event.shiftKey) return;
+  event.preventDefault();
+  const v=$('viewport'), bounds=v.getBoundingClientRect();
+  const x=event.clientX-bounds.left, y=event.clientY-bounds.top, before=zoom;
+  const left=v.scrollLeft, top=v.scrollTop;
+  scale(zoom*(event.deltaY>0?.9:1.11));
+  v.scrollLeft=(left+x)*zoom/before-x;
+  v.scrollTop=(top+y)*zoom/before-y;
+},{passive:false});
+$('search').addEventListener('input',filter);
+$('module').addEventListener('change',filter);
+$('code').textContent=data.mermaid;
+$('copy').onclick=async()=>{
+  try { await navigator.clipboard.writeText(data.mermaid); }
+  catch {
+    const field=make('textarea',data.mermaid,document.body);
+    field.style.position='fixed';field.style.left='-9999px';field.select();
+    const copied=document.execCommand('copy');field.remove();
+    if (!copied) {
+      $('mermaid').open=true;
+      const range=document.createRange();range.selectNodeContents($('code'));
+      const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);
+      $('feedback').textContent='Pulsa Ctrl+C para copiar la selección.';
+      return;
+    }
+  }
+  $('feedback').textContent='Mermaid copiado.';
+};
+draw(); filter(); select(nodes.has('tb_users')?'tb_users':nodes.keys().next().value);
+</script>
+</html>
