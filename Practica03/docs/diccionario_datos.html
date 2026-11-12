@@ -1,0 +1,1508 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><title>Diccionario bd_test</title>
+<style>body{font:16px system-ui;margin:2rem;color:#183047}table{border-collapse:collapse;width:100%;margin:1rem 0}th,td{padding:.5rem;border:1px solid #ccd7df;text-align:left;overflow-wrap:anywhere}th{background:#eaf1f7}code{white-space:pre-wrap}input{padding:.6rem;width:min(90%,35rem)}.notice{padding:1rem;background:#fff4ce}details{margin:1rem 0}</style>
+<h1>Diccionario de datos: bd_test</h1>
+<p class="notice">Origen: MySQL del VPS. Validado el 2026-11-11. 25 tablas, 207 columnas y 36 claves foráneas, 25 vistas y 72 triggers.</p>
+<p><a href="index.html">Entrega</a> Â· <a href="diagramas/modelo_validado.html">MERE Archify</a> Â· <a href="diccionario_datos.csv">CSV</a></p>
+<details><summary>Columnas por tabla</summary><ul><li>tb_buyer_orders: 9</li><li>tb_carts: 3</li><li>tb_logs: 11</li><li>tb_order_cancellations: 7</li><li>tb_orders: 9</li><li>tb_payment_transaction: 10</li><li>tb_payments: 9</li><li>tb_people: 12</li><li>tb_products: 9</li><li>tb_refunds: 10</li><li>tb_returns: 7</li><li>tb_shipments: 11</li><li>tb_user_addresses: 12</li><li>tb_users: 8</li><li>tbc_categories: 7</li><li>tbc_payment_methods_types: 6</li><li>tbd_address_components: 8</li><li>tbd_cancellation_items: 8</li><li>tbd_cart_items: 5</li><li>tbd_order_items: 9</li><li>tbd_products_categories: 5</li><li>tbd_products_users_providers: 7</li><li>tbd_return_items: 9</li><li>tbd_user_payment_methods: 11</li><li>tbd_users_wishlist_products: 5</li></ul></details>
+<input id="f" placeholder="Filtrar por tabla o columna" aria-label="Filtro"><table id="dic"><thead><tr><th>esquema</th><th>tabla</th><th>columna</th><th>tipo</th><th>admite_null</th><th>predeterminado</th><th>clave</th><th>extra</th><th>referencias</th><th>descripcion</th></tr></thead><tbody>
+<tr><td>bd_test</td><td>tb_buyer_orders</td><td>ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_buyer_orders</td><td>seller_ID</td><td>int</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_users.ID</td><td>Referencia a tb_users.ID</td></tr>
+<tr><td>bd_test</td><td>tb_buyer_orders</td><td>subtotal</td><td>decimal(12,2)</td><td>NO</td><td>0.00</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_buyer_orders</td><td>shipping_cost</td><td>decimal(12,2)</td><td>NO</td><td>0.00</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_buyer_orders</td><td>fulfillment_status</td><td>enum(&#x27;Pending&#x27;,&#x27;Accepted&#x27;,&#x27;Preparing&#x27;,&#x27;Sent&#x27;,&#x27;Delivered&#x27;,&#x27;Canceled&#x27;,&#x27;Returned&#x27;)</td><td>NO</td><td>Pending</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_buyer_orders</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_buyer_orders</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_buyer_orders</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_buyer_orders</td><td>order_ID</td><td>bigint unsigned</td><td>YES</td><td>NULL</td><td>MUL</td><td></td><td>tb_orders.ID</td><td>Referencia a tb_orders.ID</td></tr>
+<tr><td>bd_test</td><td>tb_carts</td><td>ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_carts</td><td>user_ID</td><td>int</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_users.ID</td><td>Referencia a tb_users.ID</td></tr>
+<tr><td>bd_test</td><td>tb_carts</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_logs</td><td>ID</td><td>int</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_logs</td><td>table_name</td><td>varchar(100)</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_logs</td><td>table_operation</td><td>enum(&#x27;Create&#x27;,&#x27;Read&#x27;,&#x27;Update&#x27;,&#x27;Delete&#x27;)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_logs</td><td>db_user</td><td>varchar(80)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_logs</td><td>operation_description</td><td>text</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_logs</td><td>operation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_logs</td><td>operation_status</td><td>bit(1)</td><td>YES</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_logs</td><td>record_id</td><td>int unsigned</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_logs</td><td>record_key</td><td>varchar(100)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_logs</td><td>actor_roles</td><td>varchar(255)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_logs</td><td>legacy_product_log_id</td><td>int</td><td>YES</td><td>NULL</td><td>UNI</td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_order_cancellations</td><td>ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_order_cancellations</td><td>seller_order_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_buyer_orders.ID</td><td>Referencia a tb_buyer_orders.ID</td></tr>
+<tr><td>bd_test</td><td>tb_order_cancellations</td><td>reason</td><td>varchar(500)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_order_cancellations</td><td>cancellation_status</td><td>enum(&#x27;Requested&#x27;,&#x27;Approved&#x27;,&#x27;Rejected&#x27;,&#x27;Completed&#x27;)</td><td>NO</td><td>Requested</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_order_cancellations</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_order_cancellations</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_order_cancellations</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_orders</td><td>ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_orders</td><td>buyer_ID</td><td>int</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_users.ID</td><td>Referencia a tb_users.ID</td></tr>
+<tr><td>bd_test</td><td>tb_orders</td><td>address_ID</td><td>bigint unsigned</td><td>YES</td><td>NULL</td><td>MUL</td><td></td><td>tb_user_addresses.ID</td><td>Referencia a tb_user_addresses.ID</td></tr>
+<tr><td>bd_test</td><td>tb_orders</td><td>order_code</td><td>varchar(50)</td><td>NO</td><td>NULL</td><td>UNI</td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_orders</td><td>currency</td><td>char(3)</td><td>NO</td><td>MXN</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_orders</td><td>order_status</td><td>enum(&#x27;Pending&#x27;,&#x27;Paid&#x27;,&#x27;Preparing&#x27;,&#x27;Sent&#x27;,&#x27;Delivered&#x27;,&#x27;Canceled&#x27;,&#x27;Returned&#x27;)</td><td>NO</td><td>Pending</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_orders</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_orders</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_orders</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payment_transaction</td><td>ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payment_transaction</td><td>payment_ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_payments.ID</td><td>Referencia a tb_payments.ID</td></tr>
+<tr><td>bd_test</td><td>tb_payment_transaction</td><td>provider</td><td>varchar(60)</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payment_transaction</td><td>transaction_ref</td><td>varchar(150)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payment_transaction</td><td>transaction_type</td><td>enum(&#x27;Authorization&#x27;,&#x27;Capture&#x27;,&#x27;Refund&#x27;,&#x27;Void&#x27;)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payment_transaction</td><td>amount</td><td>decimal(12,2)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payment_transaction</td><td>transaction_status</td><td>enum(&#x27;Pending&#x27;,&#x27;Success&#x27;,&#x27;Failed&#x27;)</td><td>NO</td><td>Pending</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payment_transaction</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payment_transaction</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payment_transaction</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payments</td><td>ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payments</td><td>order_ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_orders.ID</td><td>Referencia a tb_orders.ID</td></tr>
+<tr><td>bd_test</td><td>tb_payments</td><td>user_payment_method_ID</td><td>bigint unsigned</td><td>YES</td><td>NULL</td><td>MUL</td><td></td><td>tbd_user_payment_methods.ID</td><td>Referencia a tbd_user_payment_methods.ID</td></tr>
+<tr><td>bd_test</td><td>tb_payments</td><td>amount</td><td>decimal(12,2)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payments</td><td>currency</td><td>char(3)</td><td>NO</td><td>MXN</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payments</td><td>payment_status</td><td>enum(&#x27;Pending&#x27;,&#x27;Authorized&#x27;,&#x27;Paid&#x27;,&#x27;Failed&#x27;,&#x27;Refunded&#x27;)</td><td>NO</td><td>Pending</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payments</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payments</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_payments</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_people</td><td>id</td><td>int</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_people</td><td>user_id</td><td>int</td><td>NO</td><td>NULL</td><td>UNI</td><td></td><td>tb_users.ID</td><td>Referencia a tb_users.ID</td></tr>
+<tr><td>bd_test</td><td>tb_people</td><td>first_name</td><td>varchar(100)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_people</td><td>last_name</td><td>varchar(100)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_people</td><td>second_last_name</td><td>varchar(100)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_people</td><td>birth_date</td><td>date</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_people</td><td>gender</td><td>varchar(30)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_people</td><td>phone</td><td>varchar(25)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_people</td><td>nationality</td><td>varchar(80)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_people</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_people</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_people</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_products</td><td>ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_products</td><td>SKU</td><td>varchar(50)</td><td>NO</td><td>NULL</td><td>UNI</td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_products</td><td>name</td><td>varchar(250)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_products</td><td>description</td><td>text</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_products</td><td>current_price</td><td>decimal(10,2)</td><td>NO</td><td>0.00</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_products</td><td>current_stock</td><td>int unsigned</td><td>NO</td><td>0</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_products</td><td>status</td><td>bit(1)</td><td>YES</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_products</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_products</td><td>last_update</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_refunds</td><td>ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_refunds</td><td>payment_ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_payments.ID</td><td>Referencia a tb_payments.ID</td></tr>
+<tr><td>bd_test</td><td>tb_refunds</td><td>return_ID</td><td>bigint unsigned</td><td>YES</td><td>NULL</td><td>MUL</td><td></td><td>tb_returns.ID</td><td>Referencia a tb_returns.ID</td></tr>
+<tr><td>bd_test</td><td>tb_refunds</td><td>cancellation_ID</td><td>bigint unsigned</td><td>YES</td><td>NULL</td><td>MUL</td><td></td><td>tb_order_cancellations.ID</td><td>Referencia a tb_order_cancellations.ID</td></tr>
+<tr><td>bd_test</td><td>tb_refunds</td><td>amount</td><td>decimal(12,2)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_refunds</td><td>reason</td><td>varchar(500)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_refunds</td><td>refund_status</td><td>enum(&#x27;Pending&#x27;,&#x27;Approved&#x27;,&#x27;Paid&#x27;,&#x27;Rejected&#x27;)</td><td>NO</td><td>Pending</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_refunds</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_refunds</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_refunds</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_returns</td><td>ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_returns</td><td>seller_order_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_buyer_orders.ID</td><td>Referencia a tb_buyer_orders.ID</td></tr>
+<tr><td>bd_test</td><td>tb_returns</td><td>reason</td><td>varchar(500)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_returns</td><td>return_status</td><td>enum(&#x27;Requested&#x27;,&#x27;Approved&#x27;,&#x27;Rejected&#x27;,&#x27;Received&#x27;,&#x27;Completed&#x27;)</td><td>NO</td><td>Requested</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_returns</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_returns</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_returns</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_shipments</td><td>ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_shipments</td><td>seller_order_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_buyer_orders.ID</td><td>Referencia a tb_buyer_orders.ID</td></tr>
+<tr><td>bd_test</td><td>tb_shipments</td><td>address_ID</td><td>bigint unsigned</td><td>YES</td><td>NULL</td><td>MUL</td><td></td><td>tb_user_addresses.ID</td><td>Referencia a tb_user_addresses.ID</td></tr>
+<tr><td>bd_test</td><td>tb_shipments</td><td>carrier</td><td>varchar(100)</td><td>YES</td><td>NULL</td><td>MUL</td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_shipments</td><td>tracking_number</td><td>varchar(150)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_shipments</td><td>shipment_status</td><td>enum(&#x27;Pending&#x27;,&#x27;Preparing&#x27;,&#x27;Shipped&#x27;,&#x27;Delivered&#x27;,&#x27;Failed&#x27;,&#x27;Returned&#x27;)</td><td>NO</td><td>Pending</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_shipments</td><td>shipped_at</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_shipments</td><td>delivered_at</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_shipments</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_shipments</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_shipments</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_user_addresses</td><td>ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_user_addresses</td><td>user_ID</td><td>int</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_users.ID</td><td>Referencia a tb_users.ID</td></tr>
+<tr><td>bd_test</td><td>tb_user_addresses</td><td>address_label</td><td>varchar(100)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_user_addresses</td><td>recipient_name</td><td>varchar(150)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_user_addresses</td><td>recipient_phone</td><td>varchar(25)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_user_addresses</td><td>delivery_instructions</td><td>varchar(500)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_user_addresses</td><td>latitude</td><td>decimal(10,7)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_user_addresses</td><td>longitude</td><td>decimal(10,7)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_user_addresses</td><td>is_default</td><td>tinyint(1)</td><td>NO</td><td>0</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_user_addresses</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_user_addresses</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_user_addresses</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_users</td><td>ID</td><td>int</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_users</td><td>email</td><td>varchar(80)</td><td>NO</td><td>NULL</td><td>UNI</td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_users</td><td>nick</td><td>varchar(100)</td><td>NO</td><td>NULL</td><td>UNI</td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_users</td><td>password</td><td>varchar(255)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_users</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_users</td><td>last_update</td><td>datetime</td><td>YES</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_users</td><td>last_login</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tb_users</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbc_categories</td><td>ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbc_categories</td><td>name</td><td>varchar(120)</td><td>NO</td><td>NULL</td><td>UNI</td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbc_categories</td><td>description</td><td>text</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbc_categories</td><td>sup_id_category</td><td>int unsigned</td><td>YES</td><td>NULL</td><td>MUL</td><td></td><td>tbc_categories.ID</td><td>Referencia a tbc_categories.ID</td></tr>
+<tr><td>bd_test</td><td>tbc_categories</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbc_categories</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbc_categories</td><td>last_update</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbc_payment_methods_types</td><td>ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbc_payment_methods_types</td><td>code</td><td>varchar(30)</td><td>NO</td><td>NULL</td><td>UNI</td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbc_payment_methods_types</td><td>description</td><td>text</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbc_payment_methods_types</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbc_payment_methods_types</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbc_payment_methods_types</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_address_components</td><td>ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_address_components</td><td>address_ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_user_addresses.ID, tbd_address_components.address_ID</td><td>Referencia a tb_user_addresses.ID, tbd_address_components.address_ID</td></tr>
+<tr><td>bd_test</td><td>tbd_address_components</td><td>value</td><td>varchar(255)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_address_components</td><td>component_type</td><td>varchar(50)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_address_components</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_address_components</td><td>address_sup_ID</td><td>bigint unsigned</td><td>YES</td><td>NULL</td><td></td><td></td><td>tbd_address_components.ID</td><td>Referencia a tbd_address_components.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_address_components</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_address_components</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_cancellation_items</td><td>ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_cancellation_items</td><td>cancellation_ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_order_cancellations.ID</td><td>Referencia a tb_order_cancellations.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_cancellation_items</td><td>seller_order_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td></td><td></td><td>tbd_order_items.seller_order_ID, tb_order_cancellations.seller_order_ID</td><td>Referencia a tbd_order_items.seller_order_ID, tb_order_cancellations.seller_order_ID</td></tr>
+<tr><td>bd_test</td><td>tbd_cancellation_items</td><td>order_item_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tbd_order_items.ID</td><td>Referencia a tbd_order_items.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_cancellation_items</td><td>quantity</td><td>int unsigned</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_cancellation_items</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_cancellation_items</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_cancellation_items</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_cart_items</td><td>cart_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td></td><td>tb_carts.ID</td><td>Referencia a tb_carts.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_cart_items</td><td>provider_ID</td><td>int</td><td>NO</td><td>NULL</td><td>PRI</td><td></td><td>tbd_products_users_providers.user_ID</td><td>Referencia a tbd_products_users_providers.user_ID</td></tr>
+<tr><td>bd_test</td><td>tbd_cart_items</td><td>product_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td></td><td>tbd_products_users_providers.product_ID</td><td>Referencia a tbd_products_users_providers.product_ID</td></tr>
+<tr><td>bd_test</td><td>tbd_cart_items</td><td>quantity</td><td>int unsigned</td><td>NO</td><td>1</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_cart_items</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_order_items</td><td>ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_order_items</td><td>seller_order_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_buyer_orders.ID</td><td>Referencia a tb_buyer_orders.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_order_items</td><td>product_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tbd_products_users_providers.product_ID</td><td>Referencia a tbd_products_users_providers.product_ID</td></tr>
+<tr><td>bd_test</td><td>tbd_order_items</td><td>provider_ID</td><td>int</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tbd_products_users_providers.user_ID</td><td>Referencia a tbd_products_users_providers.user_ID</td></tr>
+<tr><td>bd_test</td><td>tbd_order_items</td><td>product_name</td><td>varchar(255)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_order_items</td><td>quantity</td><td>int unsigned</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_order_items</td><td>unit_price</td><td>decimal(12,2)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_order_items</td><td>subtotal</td><td>decimal(12,2)</td><td>YES</td><td>NULL</td><td></td><td>STORED GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_order_items</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_products_categories</td><td>category_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td></td><td>tbc_categories.ID</td><td>Referencia a tbc_categories.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_products_categories</td><td>product_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td></td><td>tb_products.ID</td><td>Referencia a tb_products.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_products_categories</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_products_categories</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_products_categories</td><td>last_update</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_products_users_providers</td><td>user_ID</td><td>int</td><td>NO</td><td>NULL</td><td>PRI</td><td></td><td>tb_users.ID</td><td>Referencia a tb_users.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_products_users_providers</td><td>product_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td></td><td>tb_products.ID</td><td>Referencia a tb_products.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_products_users_providers</td><td>type_ownership</td><td>enum(&#x27;Owner&#x27;,&#x27;Reseller&#x27;,&#x27;Distributor&#x27;)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_products_users_providers</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_products_users_providers</td><td>avalaible_date</td><td>datetime</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_products_users_providers</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_products_users_providers</td><td>last_update</td><td>datetime</td><td>NO</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_return_items</td><td>ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_return_items</td><td>return_ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_returns.ID</td><td>Referencia a tb_returns.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_return_items</td><td>seller_order_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td></td><td></td><td>tbd_order_items.seller_order_ID, tb_returns.seller_order_ID</td><td>Referencia a tbd_order_items.seller_order_ID, tb_returns.seller_order_ID</td></tr>
+<tr><td>bd_test</td><td>tbd_return_items</td><td>order_item_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tbd_order_items.ID</td><td>Referencia a tbd_order_items.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_return_items</td><td>quantity</td><td>int unsigned</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_return_items</td><td>item_condition</td><td>enum(&#x27;Unopened&#x27;,&#x27;Opened&#x27;,&#x27;Damaged&#x27;,&#x27;Defective&#x27;)</td><td>NO</td><td>Unopened</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_return_items</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_return_items</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_return_items</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_user_payment_methods</td><td>ID</td><td>bigint unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td>auto_increment</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_user_payment_methods</td><td>user_ID</td><td>int</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tb_users.ID</td><td>Referencia a tb_users.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_user_payment_methods</td><td>payment_method_type_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td>tbc_payment_methods_types.ID</td><td>Referencia a tbc_payment_methods_types.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_user_payment_methods</td><td>provider</td><td>varchar(60)</td><td>NO</td><td>NULL</td><td>MUL</td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_user_payment_methods</td><td>provider_method_ref</td><td>varchar(255)</td><td>NO</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_user_payment_methods</td><td>label</td><td>varchar(100)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_user_payment_methods</td><td>last_four</td><td>char(4)</td><td>YES</td><td>NULL</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_user_payment_methods</td><td>is_default</td><td>tinyint(1)</td><td>NO</td><td>0</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_user_payment_methods</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_user_payment_methods</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_user_payment_methods</td><td>last_update</td><td>datetime</td><td>YES</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_users_wishlist_products</td><td>user_ID</td><td>int</td><td>NO</td><td>NULL</td><td>PRI</td><td></td><td>tb_users.ID</td><td>Referencia a tb_users.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_users_wishlist_products</td><td>product_ID</td><td>int unsigned</td><td>NO</td><td>NULL</td><td>PRI</td><td></td><td>tb_products.ID</td><td>Referencia a tb_products.ID</td></tr>
+<tr><td>bd_test</td><td>tbd_users_wishlist_products</td><td>status</td><td>bit(1)</td><td>NO</td><td>b&#x27;1&#x27;</td><td></td><td></td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_users_wishlist_products</td><td>creation_date</td><td>datetime</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td></td><td>DEFAULT_GENERATED</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+<tr><td>bd_test</td><td>tbd_users_wishlist_products</td><td>last_update</td><td>datetime</td><td>NO</td><td>NULL</td><td></td><td>on update CURRENT_TIMESTAMP</td><td></td><td>Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.</td></tr>
+</tbody></table>
+<details open><summary>Indices</summary><pre><code>[
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_buyer_orders&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;seller_ID&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_buyer_orders&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_seller_orders_order&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_buyer_orders&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_carts&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_carts_user&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_carts&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_logs&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_logs_legacy_product&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_logs&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;legacy_product_log_id&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;ix_trace&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_logs&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;table_name&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;ix_trace&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_logs&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;record_id&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;ix_trace&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_logs&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;table_operation&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 3
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_order_cancellations&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_cancellation_order&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_order_cancellations&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_cancellation_order&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_order_cancellations&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_cancellation_order&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_order_cancellations&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_orders&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_orders_code&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_orders&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;order_code&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_orders_buyer&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_orders&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;buyer_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_orders_address&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_orders&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;address_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_payment_transaction&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_payment_transaction&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_payment_transaction&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;provider&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_payment_transaction&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_payment_transaction&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;transaction_ref&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_transaction_payment&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_payment_transaction&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;payment_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_payments&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_payments_order&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_payments&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_payments_method&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_payments&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_payment_method_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_people&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;id&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_people_user&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_people&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_id&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_products&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;SKU&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_products&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;SKU&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_refunds&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_refund_payment&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_refunds&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;payment_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_refund_return&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_refunds&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;return_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_refund_cancellation&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_refunds&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;cancellation_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_returns&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_return_order&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_returns&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_return_order&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_returns&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_return_order&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_returns&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_shipments&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_shipment_tracking&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_shipments&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;carrier&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_shipment_tracking&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_shipments&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;tracking_number&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_shipments_order&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_shipments&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_shipments_address&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_shipments&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;address_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_user_addresses&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;idx_user_addresses&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tb_user_addresses&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_users&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;email&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_users&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;email&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;nickname&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tb_users&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;nick&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbc_categories&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;name&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbc_categories&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;name&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_superior_category&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbc_categories&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;sup_id_category&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbc_payment_methods_types&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;code_UNIQUE&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbc_payment_methods_types&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;code&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_address_components&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_address_component&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_address_components&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;address_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_address_component&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_address_components&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;idx_address_parent&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_address_components&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;address_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;idx_address_parent&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_address_components&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;address_sup_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_cancellation_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_cancellation_item&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_cancellation_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;cancellation_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_cancellation_item&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_cancellation_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;order_item_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_cancellation_parent&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_cancellation_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;cancellation_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_cancellation_parent&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_cancellation_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_cancellation_item&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_cancellation_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;order_item_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_cancellation_item&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_cancellation_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_cart_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;cart_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_cart_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;provider_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_cart_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 3
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;idx_cart_items_provider_product&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_cart_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;provider_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;idx_cart_items_provider_product&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_cart_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_item_seller_order&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_item_seller_order&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;product_ID&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;provider_ID&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;provider_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;idx_order_provider_product&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;provider_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;idx_order_provider_product&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_products_categories&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;category_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_products_categories&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_product&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_products_categories&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_products_users_providers&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_products_users_providers&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_products2&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_products_users_providers&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_return_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_return_item&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_return_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;return_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_return_item&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_return_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;order_item_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_return_parent&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_return_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;return_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_return_parent&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_return_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_return_item&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_return_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;order_item_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_return_item&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_return_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_user_payment_methods&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_provider_method&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_user_payment_methods&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;provider&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;uk_provider_method&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_user_payment_methods&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;provider_method_ref&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;idx_user_ID&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_user_payment_methods&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;idx_payment_method_type_ID&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_user_payment_methods&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;payment_method_type_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_users_wishlist_products&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;PRIMARY&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 0,
+    &quot;TABLE_NAME&quot;: &quot;tbd_users_wishlist_products&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 2
+  },
+  {
+    &quot;SUB_PART&quot;: null,
+    &quot;INDEX_NAME&quot;: &quot;fk_products3&quot;,
+    &quot;INDEX_TYPE&quot;: &quot;BTREE&quot;,
+    &quot;NON_UNIQUE&quot;: 1,
+    &quot;TABLE_NAME&quot;: &quot;tbd_users_wishlist_products&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;SEQ_IN_INDEX&quot;: 1
+  }
+]</code></pre></details>
+<details open><summary>Claves foraneas</summary><pre><code>[
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_buyer_orders&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;order_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_seller_orders_order&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_orders&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_buyer_orders&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;tb_buyer_orders_ibfk_1&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_users&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_carts&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_carts_user&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_users&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_order_cancellations&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_cancellation_order&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_buyer_orders&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_orders&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;address_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_orders_address&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_user_addresses&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_orders&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;buyer_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_orders_buyer&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_users&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_payment_transaction&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;payment_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_transaction_payment&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_payments&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_payments&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_payment_method_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_payments_method&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbd_user_payment_methods&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_payments&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;order_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_payments_order&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_orders&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_people&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_id&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_people_user&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_users&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_refunds&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;cancellation_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_refund_cancellation&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_order_cancellations&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_refunds&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;payment_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_refund_payment&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_payments&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_refunds&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;return_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_refund_return&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_returns&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_returns&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_return_order&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_buyer_orders&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_shipments&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;address_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_shipments_address&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_user_addresses&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_shipments&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_shipments_order&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_buyer_orders&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tb_user_addresses&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_addresses_users&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_users&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbc_categories&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;sup_id_category&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_superior_category&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbc_categories&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_address_components&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;address_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_component_address&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_user_addresses&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_address_components&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;address_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_component_parent&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbd_address_components&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;address_ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_address_components&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;address_sup_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_component_parent&quot;,
+    &quot;ORDINAL_POSITION&quot;: 2,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbd_address_components&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_cancellation_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;order_item_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_cancellation_item&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_cancellation_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_cancellation_item&quot;,
+    &quot;ORDINAL_POSITION&quot;: 2,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;seller_order_ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_cancellation_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;cancellation_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_cancellation_parent&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_order_cancellations&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_cancellation_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_cancellation_parent&quot;,
+    &quot;ORDINAL_POSITION&quot;: 2,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_order_cancellations&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;seller_order_ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_cart_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;cart_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_cart_items_cart&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_carts&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_cart_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;provider_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_cart_items_provider_product&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbd_products_users_providers&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;user_ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_cart_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_cart_items_provider_product&quot;,
+    &quot;ORDINAL_POSITION&quot;: 2,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbd_products_users_providers&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;product_ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;provider_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_order_provider_product&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbd_products_users_providers&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;user_ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_order_provider_product&quot;,
+    &quot;ORDINAL_POSITION&quot;: 2,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbd_products_users_providers&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;product_ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;tbd_order_items_ibfk_1&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_buyer_orders&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_products_categories&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;category_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_category&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbc_categories&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_products_categories&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_product&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_products&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_products_users_providers&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_products2&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_products&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_products_users_providers&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_user1&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_users&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_return_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;order_item_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_return_item&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_return_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_return_item&quot;,
+    &quot;ORDINAL_POSITION&quot;: 2,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbd_order_items&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;seller_order_ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_return_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;return_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_return_parent&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_returns&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_return_items&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;seller_order_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_return_parent&quot;,
+    &quot;ORDINAL_POSITION&quot;: 2,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_returns&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;seller_order_ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_user_payment_methods&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;payment_method_type_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_user_payment_methods_type&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tbc_payment_methods_types&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_user_payment_methods&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_user_payment_methods_user&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_users&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_users_wishlist_products&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;product_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_products3&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_products&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  },
+  {
+    &quot;TABLE_NAME&quot;: &quot;tbd_users_wishlist_products&quot;,
+    &quot;COLUMN_NAME&quot;: &quot;user_ID&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;fk_user2&quot;,
+    &quot;ORDINAL_POSITION&quot;: 1,
+    &quot;REFERENCED_TABLE_NAME&quot;: &quot;tb_users&quot;,
+    &quot;REFERENCED_COLUMN_NAME&quot;: &quot;ID&quot;
+  }
+]</code></pre></details>
+<details open><summary>Restricciones CHECK</summary><pre><code>[
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(`subtotal` &gt;= 0)&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;tb_buyer_orders_chk_1&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(`shipping_cost` &gt;= 0)&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;tb_buyer_orders_chk_2&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(`amount` &gt; 0)&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;chk_transaction_amount&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(`amount` &gt; 0)&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;chk_payment_amount&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(`amount` &gt; 0)&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;chk_refund_amount&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;((`return_ID` is null) or (`cancellation_ID` is null))&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;chk_refund_origin&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;((`delivered_at` is null) or ((`shipped_at` is not null) and (`delivered_at` &gt;= `shipped_at`)))&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;chk_shipment_dates&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(((`latitude` is null) and (`longitude` is null)) or ((`latitude` is not null) and (`longitude` is not null)))&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;chk_coordinates&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(`latitude` between -(90) and 90)&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;chk_latitude&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(`longitude` between -(180) and 180)&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;chk_longitude&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(`quantity` &gt; 0)&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;chk_cancellation_quantity&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(`quantity` &gt; 0)&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;chk_cart_quantity&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(`quantity` &gt; 0)&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;tbd_order_items_chk_1&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(`unit_price` &gt;= 0)&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;tbd_order_items_chk_2&quot;
+  },
+  {
+    &quot;CHECK_CLAUSE&quot;: &quot;(`quantity` &gt; 0)&quot;,
+    &quot;CONSTRAINT_NAME&quot;: &quot;chk_return_quantity&quot;
+  }
+]</code></pre></details>
+<script>document.querySelector('#f').addEventListener('input',e=>{for(const r of document.querySelectorAll('#dic tbody tr'))r.hidden=!r.textContent.toLowerCase().includes(e.target.value.toLowerCase())})</script></html>
