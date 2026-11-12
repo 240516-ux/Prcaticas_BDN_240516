@@ -26,7 +26,7 @@ Para refrescar los metadatos, abre [exportar_metadatos_vps.sql](queries/exportar
 
 ## GitHub Pages
 
-El [índice de la práctica](docs/index.html) enlaza el diccionario y el MERE para revisión local. El flujo `practica03-pages.yml` prepara exclusivamente el índice, el diccionario HTML y CSV y el diagrama HTML. Su publicación manual queda pendiente de verificar los documentos del VPS y revisar las credenciales históricas antes de publicar la rama.
+El [visor del modelo de datos](docs/index.html) abre en el navegador y permite buscar, filtrar, mover tablas y copiar el Mermaid completo. Incluye enlaces al diccionario y al MERE de Archify. Los totales corresponden a la exportación del VPS. El flujo `practica03-pages.yml` prepara exclusivamente el índice, el diccionario HTML y CSV y el diagrama HTML. Su publicación manual queda pendiente de verificar los documentos del VPS y revisar las credenciales históricas antes de publicar la rama.
 
 ## Siguiente paso en el VPS
 

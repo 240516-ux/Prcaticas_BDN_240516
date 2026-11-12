@@ -3,8 +3,62 @@ import argparse
 import csv
 import html
 import json
+import re
 from collections import Counter
 from pathlib import Path
+
+
+def render_atlas(metadata, entities, rows, grouped, views):
+    fields = {}
+    for _, table, column, sql_type, nullable, default, key, _, references, _ in rows:
+        fields.setdefault(table, []).append(
+            [column, sql_type, nullable, default, key or '—', references or '—']
+        )
+    mermaid = ['erDiagram', '    direction LR']
+    for entity in entities:
+        mermaid.append(f"    {entity['id']} {{")
+        for attribute in entity['attributes']:
+            sql_type = attribute['type']
+            # Mermaid accepts a restricted token for types. Keep the full SQL type as a comment.
+            token = re.match(r'[a-zA-Z0-9_]+', sql_type).group()
+            keys = attribute.get('key', [])
+            keys = [keys] if isinstance(keys, str) else keys
+            roles = ','.join(key.upper() for key in keys)
+            comment = sql_type.replace('"', "'")
+            mermaid.append(f'        {token} {attribute["name"]} {roles} "{comment}"')
+        mermaid.append('    }')
+    relationships = []
+    for (child, name, parent), keys in grouped.items():
+        child_columns = [k['COLUMN_NAME'] for k in keys]
+        parent_columns = [k['REFERENCED_COLUMN_NAME'] for k in keys]
+        fields_by_name = {f[0]: f for f in fields[child]}
+        nullable = any(fields_by_name[col][2] == 'YES' for col in child_columns)
+        unique_indexes = {}
+        for index in metadata['indexes']:
+            if index['TABLE_NAME'] == child and index['NON_UNIQUE'] == 0:
+                unique_indexes.setdefault(index['INDEX_NAME'], []).append(index)
+        unique = any(
+            {i['COLUMN_NAME'] for i in index} <= set(child_columns)
+            for index in unique_indexes.values()
+        )
+        identifying = all(fields_by_name[col][4] == 'PRI' for col in child_columns)
+        parent_cardinality = '|o' if nullable else '||'
+        child_cardinality = 'o|' if unique else 'o{'
+        line = '--' if identifying else '..'
+        label = f"{name} ({', '.join(child_columns)} → {', '.join(parent_columns)})"
+        mermaid.append(f'    {parent} {parent_cardinality}{line}{child_cardinality} {child} : "{label}"')
+        relationships.append({'from': child, 'to': parent})
+    payload = {
+        'source': f"{metadata['entorno']} · MySQL {metadata['version']} · {metadata['fecha']}",
+        'totals': {'Tablas': len(entities), 'Columnas': len(rows),
+                   'Claves foráneas': len(relationships), 'Vistas': views,
+                   'Triggers': len(metadata.get('triggers', []))},
+        'tables': [{'id': e['id'], 'tag': e['tag'], 'fields': fields[e['id']]} for e in entities],
+        'relationships': relationships,
+        'mermaid': '\n'.join(mermaid),
+    }
+    template = Path(__file__).with_name('visor_bd_test.html').read_text(encoding='utf-8')
+    return template.replace('__ATLAS_DATA__', json.dumps(payload, ensure_ascii=False).replace('<', '\\u003c'))
 
 
 def generate(metadata_path):
@@ -127,25 +181,7 @@ def generate(metadata_path):
                                       *self_refs]}]}
     diagrams=out/'diagramas';diagrams.mkdir(exist_ok=True)
     (diagrams/'modelo_validado.erd.json').write_text(json.dumps(candidate,ensure_ascii=False,indent=2),encoding='utf-8')
-    index='<!doctype html><html lang="es"><meta charset="utf-8"><title>Practica03 â€” 240516</title>'+style+'<h1>Practica03 â€” 240516</h1><p>Alan Cruz Baltazar Â· Grupo 7A</p><p class="notice">Implementacion validada en una instancia aislada. No se certifica instalacion en el VPS ni ejecucion remota de los escenarios.</p><ul><li><a href="diccionario_datos.html">Diccionario de datos</a></li><li><a href="diagramas/modelo_validado.html">MERE interactivo Archify</a></li><li><a href="diccionario_datos.csv">Metadatos CSV</a></li></ul><p>Para GitHub Pages, publicar solo estos documentos seguros mediante el flujo manual preparado. No incluir respaldos ni credenciales.</p></html>'
-    index = index.replace(
-        'Implementacion validada en una instancia aislada. No se certifica instalacion en el VPS ni ejecucion remota de los escenarios.',
-        esc(f"{d['entorno']} · {d['fecha']} · {totals}."),
-    )
-    if d.get('events') is not None:
-        routines = Counter(r['ROUTINE_TYPE'] for r in d['routines'])
-        event_rows = ''.join(
-            f'<li>{esc(e["EVENT_NAME"])}: {esc(e["STATUS"])}. Última ejecución: '
-            f'{esc(e["LAST_EXECUTED"] or "sin registro")}.</li>' for e in d['events']
-        )
-        index = index.replace('</html>', (
-            '<h2>Rutinas y eventos observados</h2>'
-            f'<p>{routines["PROCEDURE"]} procedimientos y {routines["FUNCTION"]} funciones.</p>'
-            f'<ul>{event_rows}</ul>'
-            '<p>La presencia de los objetos se comprobó mediante metadatos. '
-            'Las ejecuciones remotas y el respaldo final del VPS se registran por separado.</p></html>'
-        ))
-    (out/'index.html').write_text(index,encoding='utf-8')
+    (out / 'index.html').write_text(render_atlas(d, entities, rows, grouped, views), encoding='utf-8')
     print('Diccionario exportado:',len(rows),'columnas; Archify:',len(entities),'recuadros,',len(relationships),'relaciones.')
 
 
