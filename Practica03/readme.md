@@ -4,6 +4,21 @@ Alan Cruz Baltazar · Matrícula 240516 · Grupo 7A.
 
 El esquema `bd_test` está desplegado en MySQL 8.4.13 del VPS. El proyecto integra el modelo de comercio electrónico, la auditoría de operaciones, las vistas de trazabilidad, las rutinas de carga y la gestión de accesos remotos.
 
+
+## Explora bd_test
+
+**25 tablas · 207 columnas · 36 claves foráneas · 25 vistas · 72 triggers**
+
+| Recurso | Qué encontrarás |
+| --- | --- |
+| [Diccionario interactivo](docs/diccionario_datos.html) | Columnas, tipos, claves y referencias. Incluye búsqueda, filtros por módulo y navegación lateral. |
+| [Diccionario CSV](docs/diccionario_datos.csv) | Las 207 columnas en formato tabular para revisar en GitHub o descargar. |
+| [Visor del esquema](docs/index.html) | Explora tablas y relaciones, ajusta el zoom y copia el Mermaid. |
+| [MERE de Archify](docs/diagramas/modelo_validado.html) | Diagrama entidad–relación del VPS con campos, claves y vistas por dominio. |
+| [Validación del VPS](queries/validacion_vps.sql) | Consultas de lectura para revisar conteos, lotes, auditoría, relaciones y evento. |
+
+Para usar los filtros y los diagramas, conserva junta la carpeta **docs** y abre los archivos HTML en Edge o Chrome. Los enlaces de GitHub muestran los archivos del repositorio. La publicación de GitHub Pages está pendiente.
+
 ## Actividades y resultados
 
 | Actividad | Resultado comprobado | Pendiente |
