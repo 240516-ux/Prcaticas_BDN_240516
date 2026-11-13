@@ -20,15 +20,15 @@ USER_COLUMN_DESCRIPTIONS = {
 
 # Muestras no sensibles verificadas en el respaldo propio del 2026-11-04.
 BACKUP_EXAMPLES = {
-    'tb_products': 'SKU: ROOT-001',
+    'tb_products': 'SKU: AUD-SON-00010-Y163',
     'tbc_categories': 'Categoría: Ropa',
 }
 
 # Campos públicos de tres productos del respaldo histórico propio bd_test.sql.
 PRODUCT_SAMPLES = [
-    ('ROOT-001', 'Laptop Lenovo IdeaPad', 'Producto de demostración de Práctica 02', '100.00', 10),
-    ('ROOT-002', 'Monitor Samsung 24 pulgadas', 'Producto de demostración de Práctica 02', '150.00', 10),
-    ('VEN1-001', 'Teclado Logitech K120', 'Producto de demostración de Práctica 02', '100.00', 10),
+    ('AUD-SON-00010-Y163', 'Sony Barra de sonido Smart Y163 2.1', 'Acabado gris y Dolby Audio', '6990.00', 48),
+    ('ENE-DUR-00009-U892', 'Duracell Regulador de voltaje Select U892 600 VA', 'Acabado plata y supresor de picos', '9059.90', 43),
+    ('ALM-WES-00011-X202', 'Western Digital Memoria USB Smart X202 32 GB', 'Acabado negro y formato compacto', '3709.90', 80),
 ]
 
 TABLE_DESCRIPTIONS = {
@@ -243,7 +243,7 @@ def render_dictionary(metadata, entities, rows, fk_count, view_count, snapshot=N
                                   + '</tr>' for row in PRODUCT_SAMPLES)
             sample_html += (
                 '<h3>Muestra histórica del catálogo</h3>'
-                '<p>3 productos de Práctica 02 extraídos del respaldo propio <code>bd_test.sql</code>.</p>'
+                '<p>3 productos del respaldo propio <code>bd_test.sql</code>, con descripciones abreviadas.</p>'
                 '<div class="scroll"><table aria-label="Productos del respaldo histórico">'
                 '<thead><tr><th scope="col">SKU</th><th scope="col">Nombre</th>'
                 '<th scope="col">Descripción</th><th scope="col">Precio</th>'
