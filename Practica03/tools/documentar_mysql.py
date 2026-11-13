@@ -20,9 +20,7 @@ USER_COLUMN_DESCRIPTIONS = {
 
 # Muestras no sensibles verificadas en el respaldo propio del 2026-11-04.
 BACKUP_EXAMPLES = {
-    'tb_users': 'Alias simulado: sim_T1_1',
-    'tb_people': 'Nombre simulado: Simulado00001',
-    'tb_products': 'SKU: P03-SELLER1-00001',
+    'tb_products': 'SKU: ROOT-001',
     'tbc_categories': 'Categoría: Ropa',
 }
 
@@ -232,8 +230,14 @@ def render_dictionary(metadata, entities, rows, fk_count, view_count, snapshot=N
                    ('Campos PK', pk_fields), ('Campos FK', fk_fields), ('NOT NULL', required_fields)]
         stats = ''.join(f'<div class="kpi"><b>{value}</b><span>{label}</span></div>'
                         for label, value in metrics)
-        sample_html = (f'<p><strong>Ejemplo del respaldo del 4 de noviembre de 2026</strong> · {esc(sample)}</p>'
+        sample_html = (f'<p><strong>Ejemplo del respaldo propio</strong> · {esc(sample)}</p>'
                        if sample else '')
+        if name == 'tb_users':
+            sample_html = (
+                '<h3>Cuentas originales verificadas</h3>'
+                '<p>Alias observados en <code>bd_test.tb_users</code> del VPS: '
+                '<code>alan.cruz</code> y <code>bryan.javier</code>.</p>'
+            )
         if name == 'tb_products':
             sample_rows = ''.join('<tr>' + ''.join(f'<td>{esc(value)}</td>' for value in row)
                                   + '</tr>' for row in PRODUCT_SAMPLES)
