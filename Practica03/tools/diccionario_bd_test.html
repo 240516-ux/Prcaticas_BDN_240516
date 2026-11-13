@@ -30,7 +30,11 @@ a{color:var(--accent);text-underline-offset:.2em}header{background:#0d1612;borde
 .sample-pages{display:flex;gap:.5rem;margin:.65rem 0}.sample-pages button:disabled{opacity:.45;cursor:default}
 .field-details{border-top:1px solid var(--line)}
 .key{display:inline-block;background:#383021;border-radius:.25rem;padding:.02rem .3rem}
+.return-panel{border:1px solid var(--line);border-radius:.75rem;background:linear-gradient(115deg,var(--card),#17382a);text-align:center;margin:.35rem 0 .75rem;overflow:hidden}
+.return-panel summary{padding:.65rem 1rem;color:var(--ink);font-weight:650}
+.return-panel p{margin:0;padding:0 1rem .75rem;color:var(--accent);font-size:clamp(1.1rem,3vw,1.65rem)}
 @media(prefers-reduced-motion:no-preference){
+  .return-panel[open] p{animation:appear .45s ease-out both}
   .kpi,.table-card{animation:appear .38s ease-out both;transition:border-color .2s,background .2s}
   .table-card[open] .scroll{animation:appear .24s ease-out both}
   .table-card:hover{background:#1a2b22}
@@ -41,6 +45,10 @@ a{color:var(--accent);text-underline-offset:.2em}header{background:#0d1612;borde
 <body>
 <header><div class="bar"><strong><span class="brand"></span>bd_test · Práctica 03</strong></div></header>
 <main>
+<details class="return-panel" open>
+  <summary>Alan Cruz Baltazar regresará</summary>
+  <p>en <strong>Avengers: Doomsday</strong></p>
+</details>
 <section class="hero"><h1>Diccionario de datos</h1><p class="author">Alan Cruz Baltazar</p><p>__SOURCE__</p><div class="kpis" aria-label="Totales del esquema">__TOTALS__</div></section>
 <div class="dictionary-layout">
 <div class="dictionary-content">
