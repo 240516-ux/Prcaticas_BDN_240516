@@ -456,21 +456,36 @@ def generate(metadata_path, counts_path=None):
         f"{child}.({', '.join(k['COLUMN_NAME'] for k in keys)}) referencia ({', '.join(k['REFERENCED_COLUMN_NAME'] for k in keys)})."
         for (child, _, parent), keys in grouped.items() if child == parent
     ]
+    snapshot = json.loads(counts_path.read_text(encoding='utf-8-sig')) if counts_path else None
+    dictionary = render_dictionary(d, entities, rows, len(grouped), views, snapshot)
+    diagram_entities = entities
+    count_note = []
+    if snapshot:
+        diagram_entities = []
+        for entity in entities:
+            count = f"{snapshot['counts'][entity['id']]:,}".replace(',', '\u202f')
+            label = f"{entity['label']} · {count} filas"
+            diagram_entities.append({
+                **entity, 'label': label,
+                'width': max(entity['width'], len(label) * 8 + 48),
+            })
+        count_note = [f"Filas por tabla: {snapshot['origen']} · {snapshot['fecha']}."]
     candidate = {'schema_version': 1, 'diagram_type': 'erd',
                  'meta': {'title': 'Modelo de datos de bd_test', 'locale': 'es',
                           'output': 'Practica03/docs/diagramas/modelo_validado.html',
                           'quality_profile': 'standard', 'views': guided},
                  'layout': {'mode': 'grid', 'gapX': 40, 'gapY': 32},
-                 'entities': entities, 'relationships': relationships,
+                 'entities': diagram_entities, 'relationships': relationships,
                  'cards': [{'dot': 'amber', 'title': 'Inventario del esquema',
                             'items': [f"{d['entorno']} · {d['fecha']}", totals,
                                       f'{len(relationships)} relaciones dibujadas y {len(self_refs)} autorreferencias documentadas.',
-                                      *self_refs]}]}
+                                      *count_note, *self_refs]}]}
+    if count_note:
+        candidate['meta']['subtitle'] = count_note[0]
     diagrams=out/'diagramas';diagrams.mkdir(exist_ok=True)
     (diagrams/'modelo_validado.erd.json').write_text(json.dumps(candidate,ensure_ascii=False,indent=2),encoding='utf-8')
-    snapshot = json.loads(counts_path.read_text(encoding='utf-8-sig')) if counts_path else None
     (out / 'diccionario_datos.html').write_text(
-        render_dictionary(d, entities, rows, len(grouped), views, snapshot), encoding='utf-8'
+        dictionary, encoding='utf-8'
     )
     (out / 'index.html').write_text(render_atlas(d, entities, rows, grouped, views), encoding='utf-8')
     print('Diccionario exportado:',len(rows),'columnas; Archify:',len(entities),'recuadros,',len(relationships),'relaciones.')

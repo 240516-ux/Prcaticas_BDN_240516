@@ -67,7 +67,8 @@
         ],
         "note": "Tablas del dominio Posventa."
       }
-    ]
+    ],
+    "subtitle": "Filas por tabla: VPS · COUNT(*) · 2026-11-13."
   },
   "layout": {
     "mode": "grid",
@@ -77,7 +78,7 @@
   "entities": [
     {
       "id": "tb_users",
-      "label": "tb_users",
+      "label": "tb_users · 7 506 filas",
       "tag": "Identidad",
       "row": 0,
       "col": 0,
@@ -122,7 +123,7 @@
     },
     {
       "id": "tb_people",
-      "label": "tb_people",
+      "label": "tb_people · 7 500 filas",
       "tag": "Identidad",
       "row": 1,
       "col": 0,
@@ -186,7 +187,7 @@
     },
     {
       "id": "tb_user_addresses",
-      "label": "tb_user_addresses",
+      "label": "tb_user_addresses · 0 filas",
       "tag": "Identidad",
       "row": 2,
       "col": 0,
@@ -247,11 +248,11 @@
     },
     {
       "id": "tbd_address_components",
-      "label": "tbd_address_components",
+      "label": "tbd_address_components · 0 filas",
       "tag": "Identidad",
       "row": 3,
       "col": 0,
-      "width": 294,
+      "width": 304,
       "attributes": [
         {
           "name": "ID",
@@ -297,7 +298,7 @@
     },
     {
       "id": "tb_products",
-      "label": "tb_products",
+      "label": "tb_products · 22 007 filas",
       "tag": "Catalogo",
       "row": 0,
       "col": 1,
@@ -345,7 +346,7 @@
     },
     {
       "id": "tbc_categories",
-      "label": "tbc_categories",
+      "label": "tbc_categories · 100 filas",
       "tag": "Catalogo",
       "row": 1,
       "col": 1,
@@ -387,11 +388,11 @@
     },
     {
       "id": "tbd_products_categories",
-      "label": "tbd_products_categories",
+      "label": "tbd_products_categories · 48 713 filas",
       "tag": "Catalogo",
       "row": 2,
       "col": 1,
-      "width": 280,
+      "width": 352,
       "attributes": [
         {
           "name": "category_ID",
@@ -427,7 +428,7 @@
     },
     {
       "id": "tbd_products_users_providers",
-      "label": "tbd_products_users_providers",
+      "label": "tbd_products_users_providers · 7 000 filas",
       "tag": "Catalogo",
       "row": 3,
       "col": 1,
@@ -475,11 +476,11 @@
     },
     {
       "id": "tbd_users_wishlist_products",
-      "label": "tbd_users_wishlist_products",
+      "label": "tbd_users_wishlist_products · 0 filas",
       "tag": "Catalogo",
       "row": 4,
       "col": 1,
-      "width": 280,
+      "width": 344,
       "attributes": [
         {
           "name": "user_ID",
@@ -515,7 +516,7 @@
     },
     {
       "id": "tb_carts",
-      "label": "tb_carts",
+      "label": "tb_carts · 0 filas",
       "tag": "Carritos",
       "row": 4,
       "col": 0,
@@ -540,7 +541,7 @@
     },
     {
       "id": "tbd_cart_items",
-      "label": "tbd_cart_items",
+      "label": "tbd_cart_items · 0 filas",
       "tag": "Carritos",
       "row": 5,
       "col": 0,
@@ -585,7 +586,7 @@
     },
     {
       "id": "tb_orders",
-      "label": "tb_orders",
+      "label": "tb_orders · 0 filas",
       "tag": "Pedidos",
       "row": 0,
       "col": 2,
@@ -637,7 +638,7 @@
     },
     {
       "id": "tb_buyer_orders",
-      "label": "tb_buyer_orders",
+      "label": "tb_buyer_orders · 0 filas",
       "tag": "Pedidos",
       "row": 1,
       "col": 2,
@@ -688,7 +689,7 @@
     },
     {
       "id": "tbd_order_items",
-      "label": "tbd_order_items",
+      "label": "tbd_order_items · 0 filas",
       "tag": "Pedidos",
       "row": 2,
       "col": 2,
@@ -744,7 +745,7 @@
     },
     {
       "id": "tb_shipments",
-      "label": "tb_shipments",
+      "label": "tb_shipments · 0 filas",
       "tag": "Pedidos",
       "row": 3,
       "col": 2,
@@ -805,11 +806,11 @@
     },
     {
       "id": "tbc_payment_methods_types",
-      "label": "tbc_payment_methods_types",
+      "label": "tbc_payment_methods_types · 0 filas",
       "tag": "Pagos",
       "row": 0,
       "col": 3,
-      "width": 280,
+      "width": 328,
       "attributes": [
         {
           "name": "ID",
@@ -841,7 +842,7 @@
     },
     {
       "id": "tbd_user_payment_methods",
-      "label": "tbd_user_payment_methods",
+      "label": "tbd_user_payment_methods · 0 filas",
       "tag": "Pagos",
       "row": 1,
       "col": 3,
@@ -902,7 +903,7 @@
     },
     {
       "id": "tb_payments",
-      "label": "tb_payments",
+      "label": "tb_payments · 0 filas",
       "tag": "Pagos",
       "row": 2,
       "col": 3,
@@ -953,7 +954,7 @@
     },
     {
       "id": "tb_payment_transaction",
-      "label": "tb_payment_transaction",
+      "label": "tb_payment_transaction · 0 filas",
       "tag": "Pagos",
       "row": 3,
       "col": 3,
@@ -1008,7 +1009,7 @@
     },
     {
       "id": "tb_order_cancellations",
-      "label": "tb_order_cancellations",
+      "label": "tb_order_cancellations · 0 filas",
       "tag": "Posventa",
       "row": 4,
       "col": 2,
@@ -1052,11 +1053,11 @@
     },
     {
       "id": "tbd_cancellation_items",
-      "label": "tbd_cancellation_items",
+      "label": "tbd_cancellation_items · 0 filas",
       "tag": "Posventa",
       "row": 5,
       "col": 2,
-      "width": 301,
+      "width": 304,
       "attributes": [
         {
           "name": "ID",
@@ -1107,7 +1108,7 @@
     },
     {
       "id": "tb_returns",
-      "label": "tb_returns",
+      "label": "tb_returns · 0 filas",
       "tag": "Posventa",
       "row": 6,
       "col": 2,
@@ -1151,7 +1152,7 @@
     },
     {
       "id": "tbd_return_items",
-      "label": "tbd_return_items",
+      "label": "tbd_return_items · 0 filas",
       "tag": "Posventa",
       "row": 7,
       "col": 2,
@@ -1210,7 +1211,7 @@
     },
     {
       "id": "tb_refunds",
-      "label": "tb_refunds",
+      "label": "tb_refunds · 0 filas",
       "tag": "Posventa",
       "row": 8,
       "col": 2,
@@ -1267,7 +1268,7 @@
     },
     {
       "id": "tb_logs",
-      "label": "tb_logs",
+      "label": "tb_logs · 92 846 filas",
       "tag": "Auditoria",
       "row": 6,
       "col": 0,
@@ -1698,6 +1699,7 @@
         "MySQL del VPS · 2026-11-11",
         "25 tablas, 207 columnas y 36 claves foráneas, 25 vistas y 72 triggers",
         "34 relaciones dibujadas y 2 autorreferencias documentadas.",
+        "Filas por tabla: VPS · COUNT(*) · 2026-11-13.",
         "tbc_categories.(sup_id_category) referencia (ID).",
         "tbd_address_components.(address_ID, address_sup_ID) referencia (address_ID, ID)."
       ]
