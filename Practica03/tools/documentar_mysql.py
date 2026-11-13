@@ -26,24 +26,36 @@ BACKUP_EXAMPLES = {
 
 # Campos públicos de tres productos del respaldo histórico propio bd_test.sql.
 PRODUCT_SAMPLES = [
-    ('AUD-SON-00010-Y163', 'Sony Barra de sonido Smart Y163 2.1', 'Acabado gris y Dolby Audio', '6990.00', 48),
-    ('ENE-DUR-00009-U892', 'Duracell Regulador de voltaje Select U892 600 VA', 'Acabado plata y supresor de picos', '9059.90', 43),
-    ('ALM-WES-00011-X202', 'Western Digital Memoria USB Smart X202 32 GB', 'Acabado negro y formato compacto', '3709.90', 80),
+    (10, 'AUD-SON-00010-Y163', 'Sony Barra de sonido Smart Y163 2.1', 'Acabado gris y Dolby Audio', '6990.00', 48, 1, '2025-08-20 15:09:00', '2025-11-30 18:34:00'),
+    (9, 'ENE-DUR-00009-U892', 'Duracell Regulador de voltaje Select U892 600 VA', 'Acabado plata y supresor de picos', '9059.90', 43, 1, '2024-02-05 08:47:00', '2024-10-19 08:22:00'),
+    (11, 'ALM-WES-00011-X202', 'Western Digital Memoria USB Smart X202 32 GB', 'Acabado negro y formato compacto', '3709.90', 80, 1, '2023-04-04 06:56:00', '2023-11-21 06:16:00'),
 ]
 
 # Proyección de campos seleccionados del respaldo propio bd_test.sql.
 RECORD_SAMPLES = {
-    'tb_users': (('ID', 'Alias'), (
+    'tb_users': (('ID', 'email', 'nick', 'password', 'creation_date', 'last_update', 'last_login', 'status'), tuple(
+        (user_id, '[Oculto]', nick, '[Oculto]', '2026-10-09 16:24:22', '2026-10-09 16:24:22', None, 1)
+        for user_id, nick in (
         (10, 'alan.cruz'), (11, 'marco.ramirez'), (12, 'luis.david'),
         (13, 'bryan.javier'), (14, 'ivan.ojeda'), (15, 'ivan.macin'),
+        )
     )),
-    'tb_products': (('SKU', 'Nombre', 'Descripción abreviada', 'Precio', 'Existencias'), PRODUCT_SAMPLES),
-    'tbc_categories': (('ID', 'Categoría'), (
-        (1, 'Ropa'), (2, 'Hombre'), (3, 'Mujer'), (4, 'Unisex'),
-        (5, 'Caballero'), (6, 'Juvenil Hombre'),
+    'tb_products': (('ID', 'SKU', 'name', 'description (abreviada)', 'current_price', 'current_stock',
+                     'status', 'creation_date', 'last_update'), PRODUCT_SAMPLES),
+    'tbc_categories': (('ID', 'name', 'description', 'sup_id_category', 'status', 'creation_date', 'last_update'), tuple(
+        (category_id, name, description, parent, 1, '2026-10-20 08:19:55', '2026-10-20 08:19:55')
+        for category_id, name, description, parent in (
+            (1, 'Ropa', 'Prendas de vestir para todas las edades y estilos.', None),
+            (2, 'Hombre', 'Ropa para hombre.', 1),
+            (3, 'Mujer', 'Ropa para mujer.', 1),
+            (4, 'Unisex', 'Ropa y prendas sin distinción de género.', 1),
+            (5, 'Caballero', 'Prendas de línea formal y casual para caballero.', 2),
+            (6, 'Juvenil Hombre', 'Moda juvenil para hombre.', 2),
+        )
     )),
-    'tbd_products_categories': (('ID de categoría', 'ID de producto'), (
-        (1, 32), (1, 47), (1, 56), (1, 61),
+    'tbd_products_categories': (('category_ID', 'product_ID', 'status', 'creation_date', 'last_update'), tuple(
+        (1, product_id, 1, '2026-10-20 08:19:57', '2026-10-20 08:19:57')
+        for product_id in (32, 47, 56, 61, 64, 92)
     )),
 }
 
@@ -253,17 +265,22 @@ def render_dictionary(metadata, entities, rows, fk_count, view_count, snapshot=N
             record_rows = ''.join('<tr>' + ''.join(f'<td>{esc(value)}</td>' for value in record)
                                   + '</tr>' for record in records)
             records_html += (
-                '<p>Muestra histórica de campos seleccionados de tu respaldo <code>bd_test.sql</code>.</p>'
+                '<p class="sample-source">Muestra histórica de tu respaldo <code>bd_test.sql</code>. '
+                'Los datos sensibles aparecen como [Oculto].</p>'
                 '<div class="record-sample">'
                 '<label>Buscar en esta muestra <input type="search"></label>'
                 f'<p role="status">Mostrando {len(records)} de {len(records)} filas de la muestra.</p>'
                 f'<div class="scroll"><table aria-label="Muestra de {esc(name)}">'
-                f'<thead><tr>{record_header}</tr></thead><tbody>{record_rows}</tbody></table></div></div>'
+                f'<thead><tr>{record_header}</tr></thead><tbody>{record_rows}</tbody></table></div>'
+                '<div class="sample-pages"><button type="button" data-step="-1">Anterior</button>'
+                '<button type="button" data-step="1">Siguiente</button></div></div>'
             )
         elif count == 0:
             records_html += '<p>0 filas en el conteo del VPS.</p>'
+        elif name == 'tb_people':
+            records_html += '<p>El conteo del VPS incluye los perfiles. Sus datos personales se mantienen privados.</p>'
         else:
-            records_html += '<p>Consulta el conteo de esta tabla arriba. La página pública solo incluye muestras de campos seleccionados.</p>'
+            records_html += '<p>Conteo disponible arriba. Esta tabla no tiene una muestra publicada.</p>'
         sections.append(
             f'<details class="table-card" id="{esc(name)}" data-module="{esc(tag)}" '
             f'style="--module:{accents[tag]}"{opened}>'
@@ -271,9 +288,10 @@ def render_dictionary(metadata, entities, rows, fk_count, view_count, snapshot=N
             + (f'<strong class="row-count">{fmt(count)} filas</strong>' if count is not None else '')
             + '</summary>'
             f'<div class="table-overview"><p>{esc(TABLE_DESCRIPTIONS[name])}</p>'
-            f'<div class="kpis">{stats}</div>{records_html}<h3>Estructura de la tabla</h3></div>'
+            f'<div class="kpis">{stats}</div>{records_html}</div>'
+            f'<details class="field-details"><summary>Ver los {len(table_rows)} campos del diccionario</summary>'
             f'<div class="scroll"><table aria-label="Columnas de {esc(name)}"><thead><tr>{header}</tr></thead>'
-            f'<tbody>{"".join(body)}</tbody></table></div></details>'
+            f'<tbody>{"".join(body)}</tbody></table></div></details></details>'
         )
     constraints = ''.join(
         f'<details class="constraints"><summary>{label}</summary>'
