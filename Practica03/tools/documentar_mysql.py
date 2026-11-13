@@ -31,6 +31,22 @@ PRODUCT_SAMPLES = [
     ('ALM-WES-00011-X202', 'Western Digital Memoria USB Smart X202 32 GB', 'Acabado negro y formato compacto', '3709.90', 80),
 ]
 
+# Proyección de campos seleccionados del respaldo propio bd_test.sql.
+RECORD_SAMPLES = {
+    'tb_users': (('ID', 'Alias'), (
+        (10, 'alan.cruz'), (11, 'marco.ramirez'), (12, 'luis.david'),
+        (13, 'bryan.javier'), (14, 'ivan.ojeda'), (15, 'ivan.macin'),
+    )),
+    'tb_products': (('SKU', 'Nombre', 'Descripción abreviada', 'Precio', 'Existencias'), PRODUCT_SAMPLES),
+    'tbc_categories': (('ID', 'Categoría'), (
+        (1, 'Ropa'), (2, 'Hombre'), (3, 'Mujer'), (4, 'Unisex'),
+        (5, 'Caballero'), (6, 'Juvenil Hombre'),
+    )),
+    'tbd_products_categories': (('ID de categoría', 'ID de producto'), (
+        (1, 32), (1, 47), (1, 56), (1, 61),
+    )),
+}
+
 TABLE_DESCRIPTIONS = {
     'tb_buyer_orders': 'Parte de un pedido asignada a un vendedor para su preparación y entrega.',
     'tb_carts': 'Carritos asociados a usuarios.',
@@ -230,26 +246,24 @@ def render_dictionary(metadata, entities, rows, fk_count, view_count, snapshot=N
                    ('Campos PK', pk_fields), ('Campos FK', fk_fields), ('NOT NULL', required_fields)]
         stats = ''.join(f'<div class="kpi"><b>{value}</b><span>{label}</span></div>'
                         for label, value in metrics)
-        sample_html = (f'<p><strong>Ejemplo del respaldo propio</strong> · {esc(sample)}</p>'
-                       if sample else '')
-        if name == 'tb_users':
-            sample_html = (
-                '<h3>Cuentas originales verificadas</h3>'
-                '<p>Alias observados en <code>bd_test.tb_users</code> del VPS: '
-                '<code>alan.cruz</code> y <code>bryan.javier</code>.</p>'
+        records_html = f'<h3>Datos de <code>{esc(name)}</code></h3>'
+        if name in RECORD_SAMPLES:
+            record_columns, records = RECORD_SAMPLES[name]
+            record_header = ''.join(f'<th scope="col">{esc(label)}</th>' for label in record_columns)
+            record_rows = ''.join('<tr>' + ''.join(f'<td>{esc(value)}</td>' for value in record)
+                                  + '</tr>' for record in records)
+            records_html += (
+                '<p>Muestra histórica de campos seleccionados de tu respaldo <code>bd_test.sql</code>.</p>'
+                '<div class="record-sample">'
+                '<label>Buscar en esta muestra <input type="search"></label>'
+                f'<p role="status">Mostrando {len(records)} de {len(records)} filas de la muestra.</p>'
+                f'<div class="scroll"><table aria-label="Muestra de {esc(name)}">'
+                f'<thead><tr>{record_header}</tr></thead><tbody>{record_rows}</tbody></table></div></div>'
             )
-        if name == 'tb_products':
-            sample_rows = ''.join('<tr>' + ''.join(f'<td>{esc(value)}</td>' for value in row)
-                                  + '</tr>' for row in PRODUCT_SAMPLES)
-            sample_html += (
-                '<h3>Muestra histórica del catálogo</h3>'
-                '<p>3 productos del respaldo propio <code>bd_test.sql</code>, con descripciones abreviadas.</p>'
-                '<div class="scroll"><table aria-label="Productos del respaldo histórico">'
-                '<thead><tr><th scope="col">SKU</th><th scope="col">Nombre</th>'
-                '<th scope="col">Descripción</th><th scope="col">Precio</th>'
-                '<th scope="col">Existencias</th></tr></thead>'
-                f'<tbody>{sample_rows}</tbody></table></div>'
-            )
+        elif count == 0:
+            records_html += '<p>0 filas en el conteo del VPS.</p>'
+        else:
+            records_html += '<p>Consulta el conteo de esta tabla arriba. La página pública solo incluye muestras de campos seleccionados.</p>'
         sections.append(
             f'<details class="table-card" id="{esc(name)}" data-module="{esc(tag)}" '
             f'style="--module:{accents[tag]}"{opened}>'
@@ -257,7 +271,7 @@ def render_dictionary(metadata, entities, rows, fk_count, view_count, snapshot=N
             + (f'<strong class="row-count">{fmt(count)} filas</strong>' if count is not None else '')
             + '</summary>'
             f'<div class="table-overview"><p>{esc(TABLE_DESCRIPTIONS[name])}</p>'
-            f'<div class="kpis">{stats}</div>{sample_html}</div>'
+            f'<div class="kpis">{stats}</div>{records_html}<h3>Estructura de la tabla</h3></div>'
             f'<div class="scroll"><table aria-label="Columnas de {esc(name)}"><thead><tr>{header}</tr></thead>'
             f'<tbody>{"".join(body)}</tbody></table></div></details>'
         )

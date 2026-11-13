@@ -69,6 +69,17 @@ __RESULTSLINK__
 <footer>Alan Cruz Baltazar · Práctica 03 · Metadatos de bd_test</footer>
 </main>
 <script>
+for (const sample of document.querySelectorAll('.record-sample')) {
+  const input = sample.querySelector('input');
+  const rows = Array.from(sample.querySelectorAll('tbody tr'));
+  const status = sample.querySelector('[role="status"]');
+  input.addEventListener('input', () => {
+    const term = input.value.trim().toLowerCase();
+    for (const row of rows) row.hidden = !row.textContent.toLowerCase().includes(term);
+    status.textContent = 'Mostrando ' + rows.filter(row => !row.hidden).length +
+      ' de ' + rows.length + ' filas de la muestra.';
+  });
+}
 const search = document.getElementById('search');
 const moduleSelect = document.getElementById('module');
 const tables = Array.from(document.querySelectorAll('.table-card'));
