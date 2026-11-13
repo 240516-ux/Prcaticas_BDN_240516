@@ -7,14 +7,165 @@ import re
 from collections import Counter
 from pathlib import Path
 
+USER_COLUMN_DESCRIPTIONS = {
+    'ID': 'Identificador único del usuario, asignado automáticamente.',
+    'email': 'Correo electrónico único del usuario.',
+    'nick': 'Alias único del usuario.',
+    'password': 'Campo de credencial de la aplicación.',
+    'creation_date': 'Fecha y hora en que se creó el registro.',
+    'last_update': 'Fecha y hora de la última actualización del registro.',
+    'last_login': 'Fecha y hora del último inicio de sesión registrado.',
+    'status': 'Estado del usuario. 1 indica activo y 0 indica inactivo.',
+}
 
-def render_dictionary(metadata, entities, rows, fk_count, view_count):
+# Muestras no sensibles verificadas en el respaldo propio del 2026-11-04.
+BACKUP_EXAMPLES = {
+    'tb_users': 'Alias simulado: sim_T1_1',
+    'tb_people': 'Nombre simulado: Simulado00001',
+    'tb_products': 'SKU: P03-SELLER1-00001',
+    'tbc_categories': 'Categoría: Ropa',
+}
+
+# Campos públicos de tres productos del respaldo histórico propio bd_test.sql.
+PRODUCT_SAMPLES = [
+    ('ROOT-001', 'Laptop Lenovo IdeaPad', 'Producto de demostración de Práctica 02', '100.00', 10),
+    ('ROOT-002', 'Monitor Samsung 24 pulgadas', 'Producto de demostración de Práctica 02', '150.00', 10),
+    ('VEN1-001', 'Teclado Logitech K120', 'Producto de demostración de Práctica 02', '100.00', 10),
+]
+
+TABLE_DESCRIPTIONS = {
+    'tb_buyer_orders': 'Parte de un pedido asignada a un vendedor para su preparación y entrega.',
+    'tb_carts': 'Carritos asociados a usuarios.',
+    'tb_logs': 'Historial de operaciones auditadas en el esquema.',
+    'tb_order_cancellations': 'Cancelaciones de pedidos de vendedor.',
+    'tb_orders': 'Pedidos de compradores y sus estados.',
+    'tb_payment_transaction': 'Operaciones registradas para un pago.',
+    'tb_payments': 'Pagos asociados a pedidos y métodos de pago.',
+    'tb_people': 'Perfiles personales asociados a cuentas de la aplicación.',
+    'tb_products': 'Catálogo de productos con SKU, precio actual y existencias.',
+    'tb_refunds': 'Reembolsos asociados a pagos, devoluciones o cancelaciones.',
+    'tb_returns': 'Devoluciones de pedidos de vendedor.',
+    'tb_shipments': 'Envíos de pedidos de vendedor y su seguimiento.',
+    'tb_user_addresses': 'Direcciones de entrega asociadas a usuarios.',
+    'tb_users': 'Cuentas de la aplicación, identificadas por correo y alias.',
+    'tbc_categories': 'Catálogo de categorías y subcategorías de productos.',
+    'tbc_payment_methods_types': 'Catálogo de tipos de métodos de pago.',
+    'tbd_address_components': 'Componentes de ubicación y su jerarquía.',
+    'tbd_cancellation_items': 'Partidas y cantidades incluidas en una cancelación.',
+    'tbd_cart_items': 'Productos, proveedores y cantidades de cada carrito.',
+    'tbd_order_items': 'Partidas del pedido con cantidades e importes unitarios.',
+    'tbd_products_categories': 'Asignaciones de productos a categorías.',
+    'tbd_products_users_providers': 'Vínculos entre productos y usuarios proveedores.',
+    'tbd_return_items': 'Partidas, cantidades y condiciones de una devolución.',
+    'tbd_user_payment_methods': 'Métodos de pago asociados a usuarios.',
+    'tbd_users_wishlist_products': 'Productos guardados por usuarios en su lista de deseos.',
+}
+
+FIELD_DESCRIPTIONS = {
+    'id': 'Identificador del registro.',
+    'subtotal': 'Importe subtotal registrado.',
+    'shipping_cost': 'Importe del envío.',
+    'status': 'Indicador de estado del registro.',
+    'creation_date': 'Fecha y hora de creación del registro.',
+    'last_update': 'Fecha y hora de la última actualización.',
+    'table_name': 'Nombre de la tabla donde ocurrió la operación.',
+    'table_operation': 'Tipo de operación auditada.',
+    'db_user': 'Cuenta de base de datos registrada como autora de la operación.',
+    'operation_description': 'Detalle guardado de la operación auditada.',
+    'operation_date': 'Fecha y hora de la operación.',
+    'operation_status': 'Indicador de estado de la operación auditada.',
+    'record_id': 'Identificador del registro afectado.',
+    'record_key': 'Clave registrada para identificar el registro afectado.',
+    'actor_roles': 'Roles registrados para la cuenta que ejecutó la operación.',
+    'legacy_product_log_id': 'Identificador de la entrada en la bitácora histórica de productos.',
+    'reason': 'Motivo registrado para la operación.',
+    'order_code': 'Código de identificación del pedido.',
+    'currency': 'Código de la moneda del importe.',
+    'provider': 'Proveedor del servicio de pago.',
+    'transaction_ref': 'Referencia de la transacción.',
+    'transaction_type': 'Tipo de operación de pago.',
+    'amount': 'Importe monetario registrado.',
+    'first_name': 'Nombre de la persona.',
+    'last_name': 'Primer apellido de la persona.',
+    'second_last_name': 'Segundo apellido de la persona.',
+    'birth_date': 'Fecha de nacimiento.',
+    'gender': 'Género registrado en el perfil.',
+    'phone': 'Teléfono del perfil.',
+    'nationality': 'Nacionalidad registrada en el perfil.',
+    'sku': 'Código único de inventario del producto.',
+    'name': 'Nombre visible en el catálogo.',
+    'description': 'Detalle descriptivo del elemento del catálogo.',
+    'current_price': 'Precio actual del producto.',
+    'current_stock': 'Cantidad de unidades en inventario.',
+    'carrier': 'Empresa que transporta el envío.',
+    'tracking_number': 'Número de seguimiento del envío.',
+    'shipped_at': 'Fecha y hora de despacho.',
+    'delivered_at': 'Fecha y hora de entrega.',
+    'address_label': 'Etiqueta para distinguir la dirección.',
+    'recipient_name': 'Nombre de quien recibe el envío.',
+    'recipient_phone': 'Teléfono de contacto del destinatario.',
+    'delivery_instructions': 'Indicaciones para realizar la entrega.',
+    'latitude': 'Latitud de la dirección.',
+    'longitude': 'Longitud de la dirección.',
+    'is_default': 'Indica si es la opción predeterminada.',
+    'code': 'Código del tipo de método de pago.',
+    'value': 'Valor del componente de dirección.',
+    'component_type': 'Tipo de componente de la dirección.',
+    'quantity': 'Cantidad de unidades de la partida.',
+    'product_name': 'Nombre del producto registrado en la partida.',
+    'unit_price': 'Precio por unidad registrado en la partida.',
+    'type_ownership': 'Tipo de vínculo comercial entre proveedor y producto.',
+    'avalaible_date': 'Fecha y hora de disponibilidad registrada.',
+    'item_condition': 'Condición registrada para el artículo devuelto.',
+    'provider_method_ref': 'Referencia del método en el proveedor de pagos.',
+    'label': 'Etiqueta para distinguir el método de pago.',
+    'last_four': 'Últimos cuatro caracteres guardados del identificador del método.',
+}
+
+def describe_column(column, references):
+    table, name = column['TABLE_NAME'], column['COLUMN_NAME']
+    if column.get('COLUMN_COMMENT'):
+        return column['COLUMN_COMMENT']
+    if table == 'tb_users' and name in USER_COLUMN_DESCRIPTIONS:
+        return USER_COLUMN_DESCRIPTIONS[name]
+    if references:
+        return 'Vincula este registro con ' + ', '.join(references) + '.'
+    if name.endswith('_status'):
+        return 'Estado registrado para ' + {
+            'fulfillment_status': 'la preparación y entrega del pedido',
+            'cancellation_status': 'la cancelación',
+            'order_status': 'el pedido',
+            'transaction_status': 'la transacción',
+            'payment_status': 'el pago',
+            'refund_status': 'el reembolso',
+            'return_status': 'la devolución',
+            'shipment_status': 'el envío',
+        }.get(name, 'el registro') + '.'
+    return FIELD_DESCRIPTIONS.get(name.lower(), f"Campo {name} de tipo {column['COLUMN_TYPE']}.")
+
+def render_dictionary(metadata, entities, rows, fk_count, view_count, snapshot=None):
     def esc(value):
         return html.escape('NULL' if value is None else str(value))
 
     labels = {'Catalogo': 'Catálogo', 'Auditoria': 'Auditoría'}
     colors = ['#b6a2ff', '#65d9ea', '#8dddac', '#ffc374', '#ffa9ce', '#f1d48a', '#a0b7da']
     tags = list(dict.fromkeys(entity['tag'] for entity in entities))
+    counts = snapshot['counts'] if snapshot else {}
+    fmt = lambda value: f'{value:,}'.replace(',', ' ')
+    results = ''
+    if snapshot:
+        names = {e['id'] for e in entities}
+        if snapshot['schema'] != metadata['schema'] or set(counts) != names or any(
+            type(n) is not int or n < 0 for n in counts.values()
+        ):
+            raise ValueError('Los conteos deben cubrir exactamente las tablas del esquema.')
+        results = (
+            '<details id="resultados" class="panel"><summary>Totales de estructura y registros</summary>'
+            f'<p>{esc(snapshot["origen"])} · {esc(snapshot["fecha"])}</p>'
+            f'<p>{fmt(sum(counts.values()))} filas sumadas entre todas las tablas físicas. '
+            f'Incluye {fmt(counts["tb_people"])} perfiles y {fmt(counts["tb_logs"])} entradas de bitácora.</p>'
+            f'<p>{len(rows)} columnas · {fk_count} claves foráneas · {view_count} vistas.</p></details>'
+        )
     accents = dict(zip(tags, colors))
     by_table = {}
     for row in rows:
@@ -22,29 +173,87 @@ def render_dictionary(metadata, entities, rows, fk_count, view_count):
     totals = [('Tablas', len(entities)), ('Columnas', len(rows)), ('Claves foráneas', fk_count)]
     if 'triggers' in metadata:
         totals += [('Vistas', view_count), ('Triggers', len(metadata['triggers']))]
-    inventory, sections = [], []
-    headings = ['Columna', 'Tipo SQL', 'Admite nulos', 'Predeterminado',
-                'Clave', 'Extra', 'Referencias', 'Descripción']
+    if snapshot:
+        totals = [('Tablas', len(entities)), ('Triggers', len(metadata['triggers'])),
+                  ('Productos', counts['tb_products']), ('Usuarios', counts['tb_users'])]
+    inventory, sections, overview = [], [], []
+    trigger_counts = Counter(t['EVENT_OBJECT_TABLE'] for t in metadata.get('triggers', []))
+    headings = ['Nombre del campo', 'Tipo de dato', 'Llave (PK/FK)', 'Nulo (Sí/No)',
+                'Descripción / lógica']
     header = ''.join(f'<th scope="col">{label}</th>' for label in headings)
+    foreign_keys = {}
+    for key in metadata['foreign_keys']:
+        foreign_keys.setdefault((key['TABLE_NAME'], key['COLUMN_NAME']), []).append(
+            f"{key['REFERENCED_TABLE_NAME']}.{key['REFERENCED_COLUMN_NAME']}"
+        )
     for i, entity in enumerate(entities):
         name, tag = entity['id'], entity['tag']
         table_rows = by_table[name]
-        inventory.append(f'<li><button type="button" data-table="{esc(name)}">{esc(name)} · {len(table_rows)}</button></li>')
+        count = counts.get(name)
+        count_label = f' · {fmt(count)} filas' if count is not None else ''
+        primary_keys = int(any(row[6] == 'PRI' for row in table_rows))
+        foreign_key_count = len({k['CONSTRAINT_NAME'] for k in metadata['foreign_keys'] if k['TABLE_NAME'] == name})
+        sample = BACKUP_EXAMPLES.get(name)
+        example = sample or ('Tabla vacía en el conteo del VPS' if count == 0 else 'Muestra no publicada')
+        overview.append(
+            f'<tr><td><a href="#{esc(name)}" data-open-table="{esc(name)}"><code>{esc(name)}</code></a></td>'
+            f'<td>{esc(labels.get(tag, tag))}</td><td>{len(table_rows)}</td>'
+            f'<td>{fmt(count) if count is not None else "—"}</td>'
+            f'<td>{primary_keys}</td><td>{foreign_key_count}</td>'
+            f'<td>{esc(example)}</td></tr>'
+        )
+        inventory.append(f'<li><button type="button" data-table="{esc(name)}">{esc(name)} · {len(table_rows)} columnas{count_label}</button></li>')
         body = []
-        for row in table_rows:
-            cells = []
-            for index, value in enumerate(row[2:]):
-                content = '—' if value == '' else esc(value)
-                if index in (0, 1, 3, 5, 6):
-                    content = f'<code>{content}</code>'
-                css = ' class="key"' if index == 4 and value else ''
-                cells.append(f'<td{css}>{content}</td>')
-            body.append('<tr>' + ''.join(cells) + '</tr>')
+        attributes = {attribute['name']: attribute for attribute in entity['attributes']}
+        for _, _, column, sql_type, nullable, default, _, extra, _, description in table_rows:
+            roles = attributes[column].get('key', [])
+            if isinstance(roles, str):
+                roles = [roles]
+            badges = ' '.join(f'<span class="key">{esc(role.upper())}</span>' for role in roles) or '—'
+            default_value = 'Sin predeterminado' if default is None and nullable == 'NO' else esc(default)
+            logic = [f'<span>{esc(description)}</span>',
+                     f'<small>Predeterminado <code>{default_value}</code></small>']
+            refs = foreign_keys.get((name, column), [])
+            if refs:
+                logic.append(f'<small>Referencia <code>{esc(", ".join(refs))}</code></small>')
+            if extra:
+                logic.append(f'<small>Extra <code>{esc(extra)}</code></small>')
+            body.append(
+                f'<tr><th scope="row"><code>{esc(column)}</code></th>'
+                f'<td><code>{esc(sql_type)}</code></td><td>{badges}</td>'
+                f'<td>{"Sí" if nullable == "YES" else "No"}</td>'
+                f'<td class="field-logic">{"".join(logic)}</td></tr>'
+            )
         opened = ' open' if i == 0 else ''
+        pk_fields = sum(row[6] == 'PRI' for row in table_rows)
+        fk_fields = sum((name, row[2]) in foreign_keys for row in table_rows)
+        required_fields = sum(row[4] == 'NO' for row in table_rows)
+        metrics = [('Campos', len(table_rows)), ('Filas del VPS', fmt(count) if count is not None else '—'),
+                   ('Campos PK', pk_fields), ('Campos FK', fk_fields), ('NOT NULL', required_fields)]
+        stats = ''.join(f'<div class="kpi"><b>{value}</b><span>{label}</span></div>'
+                        for label, value in metrics)
+        sample_html = (f'<p><strong>Ejemplo del respaldo del 4 de noviembre de 2026</strong> · {esc(sample)}</p>'
+                       if sample else '')
+        if name == 'tb_products':
+            sample_rows = ''.join('<tr>' + ''.join(f'<td>{esc(value)}</td>' for value in row)
+                                  + '</tr>' for row in PRODUCT_SAMPLES)
+            sample_html += (
+                '<h3>Muestra histórica del catálogo</h3>'
+                '<p>3 productos de Práctica 02 extraídos del respaldo propio <code>bd_test.sql</code>.</p>'
+                '<div class="scroll"><table aria-label="Productos del respaldo histórico">'
+                '<thead><tr><th scope="col">SKU</th><th scope="col">Nombre</th>'
+                '<th scope="col">Descripción</th><th scope="col">Precio</th>'
+                '<th scope="col">Existencias</th></tr></thead>'
+                f'<tbody>{sample_rows}</tbody></table></div>'
+            )
         sections.append(
             f'<details class="table-card" id="{esc(name)}" data-module="{esc(tag)}" '
             f'style="--module:{accents[tag]}"{opened}>'
-            f'<summary><code>{esc(name)}</code><span>{esc(labels.get(tag, tag))} · {len(table_rows)} columnas</span></summary>'
+            f'<summary><code>{esc(name)}</code><span>{esc(labels.get(tag, tag))} · {len(table_rows)} columnas</span>'
+            + (f'<strong class="row-count">{fmt(count)} filas</strong>' if count is not None else '')
+            + '</summary>'
+            f'<div class="table-overview"><p>{esc(TABLE_DESCRIPTIONS[name])}</p>'
+            f'<div class="kpis">{stats}</div>{sample_html}</div>'
             f'<div class="scroll"><table aria-label="Columnas de {esc(name)}"><thead><tr>{header}</tr></thead>'
             f'<tbody>{"".join(body)}</tbody></table></div></details>'
         )
@@ -61,6 +270,9 @@ def render_dictionary(metadata, entities, rows, fk_count, view_count):
         '__INVENTORY__': ''.join(inventory),
         '__TABLES__': '\n'.join(sections),
         '__CONSTRAINTS__': constraints,
+        '__RESULTS__': results,
+        '__RESULTSLINK__': '<a href="#resultados">Resultados del VPS</a>' if snapshot else '',
+        '__OVERVIEW__': ''.join(overview),
     }
     template = Path(__file__).with_name('diccionario_bd_test.html').read_text(encoding='utf-8')
     return re.sub(r'__[A-Z]+__', lambda match: replacements[match.group()], template)
@@ -119,7 +331,7 @@ def render_atlas(metadata, entities, rows, grouped, views):
     return template.replace('__ATLAS_DATA__', json.dumps(payload, ensure_ascii=False).replace('<', '\\u003c'))
 
 
-def generate(metadata_path):
+def generate(metadata_path, counts_path=None):
     p = Path(__file__).resolve().parents[1]
     out = p / 'docs'
     out.mkdir(exist_ok=True)
@@ -140,8 +352,8 @@ def generate(metadata_path):
             k['REFERENCED_TABLE_NAME'] + '.' + k['REFERENCED_COLUMN_NAME'])
     rows = []
     for c in columns:
-        description = c.get('COLUMN_COMMENT') or ('Referencia a ' + ', '.join(refs[(c['TABLE_NAME'], c['COLUMN_NAME'])])
-            if (c['TABLE_NAME'], c['COLUMN_NAME']) in refs else 'Sin comentario de clase confirmado; consultar nombre, tipo y restricciones.')
+        column_refs = refs.get((c['TABLE_NAME'], c['COLUMN_NAME']), [])
+        description = describe_column(c, column_refs)
         rows.append([d['schema'], c['TABLE_NAME'], c['COLUMN_NAME'], c['COLUMN_TYPE'],
                      c['IS_NULLABLE'], c['COLUMN_DEFAULT'], c['COLUMN_KEY'], c['EXTRA'],
                      ', '.join(refs.get((c['TABLE_NAME'], c['COLUMN_NAME']), [])), description])
@@ -220,8 +432,9 @@ def generate(metadata_path):
                                       *self_refs]}]}
     diagrams=out/'diagramas';diagrams.mkdir(exist_ok=True)
     (diagrams/'modelo_validado.erd.json').write_text(json.dumps(candidate,ensure_ascii=False,indent=2),encoding='utf-8')
+    snapshot = json.loads(counts_path.read_text(encoding='utf-8-sig')) if counts_path else None
     (out / 'diccionario_datos.html').write_text(
-        render_dictionary(d, entities, rows, len(grouped), views), encoding='utf-8'
+        render_dictionary(d, entities, rows, len(grouped), views, snapshot), encoding='utf-8'
     )
     (out / 'index.html').write_text(render_atlas(d, entities, rows, grouped, views), encoding='utf-8')
     print('Diccionario exportado:',len(rows),'columnas; Archify:',len(entities),'recuadros,',len(relationships),'relaciones.')
@@ -229,4 +442,6 @@ def generate(metadata_path):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('metadatos',type=Path)
-    generate(parser.parse_args().metadatos)
+    parser.add_argument('--conteos', type=Path)
+    args = parser.parse_args()
+    generate(args.metadatos, args.conteos)
