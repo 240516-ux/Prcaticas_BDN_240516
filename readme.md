@@ -18,6 +18,4 @@ Ingeniería en Tecnologías de la Información e Innovación Digital
 
 ## Diccionario de datos
 
-Consulta las **25 tablas y 207 columnas** de mi esquema `bd_test` del VPS, con sus tipos, claves y relaciones.
-
-[Diccionario interactivo](Practica03/docs/diccionario_datos.html) · [CSV](Practica03/docs/diccionario_datos.csv) · [Visor del esquema](Practica03/docs/index.html) · [MERE de Archify](Practica03/docs/diagramas/modelo_validado.html)
+[Abrir el diccionario de datos de `bd_test`](https://240516-ux.github.io/Prcaticas_BDN_240516/diccionario_datos.html)
